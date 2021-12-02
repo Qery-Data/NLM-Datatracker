@@ -1,5 +1,10 @@
 name: SSB
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "15 7 * * *"
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
