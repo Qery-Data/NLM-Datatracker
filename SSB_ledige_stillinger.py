@@ -32,3 +32,4 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_ledige_stillinger.csv', index=False)
+ 
