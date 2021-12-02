@@ -1,5 +1,6 @@
 from pyjstat import pyjstat
 import requests
+os.makedirs('data', exist_ok=True)
 ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
 query = {
   "query": [
@@ -30,4 +31,4 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df.to_csv('SSB_ledige_stillinger.csv', index=False)
+df.to_csv('data/SSB_ledige_stillinger.csv', index=False)
