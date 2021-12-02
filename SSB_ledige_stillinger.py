@@ -1,5 +1,6 @@
 from pyjstat import pyjstat
 import requests
+import os
 os.makedirs('data', exist_ok=True)
 ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
 query = {
