@@ -2,7 +2,7 @@ name: SSB
 on: 
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "15 7 * * *"
 jobs:
