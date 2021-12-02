@@ -15,7 +15,7 @@ jobs:
       - name: 💿 Install Requirements
         run: pip install -r requirements.txt
       - name: 🍳 Update dataset
-        run: python ssb_ledigestillinger.py
+        run: python ssb_ledige_stillinger.py
       - name: 🚀 Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
