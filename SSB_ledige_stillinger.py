@@ -100,16 +100,19 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "LedigeStillinger"
+          "LedigeStillinger",
+          "StillingerEndring",
+          "LedigeStillingerPros",
+          "StillingerEndrPros"
         ]
       }
     },
     {
       "code": "Tid",
       "selection": {
-        "filter": "top",
+        "filter": "item",
         "values": [
-          "1"
+          "2021K3"
         ]
       }
     }
