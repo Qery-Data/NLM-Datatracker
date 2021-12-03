@@ -1,21 +1,81 @@
 næring (SN2007),statistikkvariabel,kvartal,value
-"Jordbruk, skogbruk og fiske","Ledige stillingar, sesongjustert",2021K3,3900
-Bergverksdrift og utvinning,"Ledige stillingar, sesongjustert",2021K3,1200
-Industri,"Ledige stillingar, sesongjustert",2021K3,4700
-"Elektrisitet, vatn og renovasjon","Ledige stillingar, sesongjustert",2021K3,600
-Byggje- og anleggsverksemd,"Ledige stillingar, sesongjustert",2021K3,8200
-"Varehandel, motorvognreparasjonar","Ledige stillingar, sesongjustert",2021K3,9700
-Transport og lagring,"Ledige stillingar, sesongjustert",2021K3,3500
-Overnattings- og serveringsverksemd,"Ledige stillingar, sesongjustert",2021K3,5100
-Informasjon og kommunikasjon,"Ledige stillingar, sesongjustert",2021K3,6000
-Finansierings- og forsikringsverksemd,"Ledige stillingar, sesongjustert",2021K3,1400
-Omsetning og drift av fast eigedom,"Ledige stillingar, sesongjustert",2021K3,600
-"Fagleg, vitskapleg og teknisk tenesteyting","Ledige stillingar, sesongjustert",2021K3,5800
-Forretningsmessig tenesteyting,"Ledige stillingar, sesongjustert",2021K3,9200
-"Offentleg administrasjon og forsvar, og trygdeordningar underordna offentleg forvalting","Ledige stillingar, sesongjustert",2021K3,5400
-Undervisning,"Ledige stillingar, sesongjustert",2021K3,7000
-Helsetenester,"Ledige stillingar, sesongjustert",2021K3,6300
-Pleie- og omsorgstenester i institusjon,"Ledige stillingar, sesongjustert",2021K3,9500
-Sosiale omsorgstenester utan butilbod,"Ledige stillingar, sesongjustert",2021K3,5400
-"Kulturell verksemd, underhaldning og fritidsaktivitetar","Ledige stillingar, sesongjustert",2021K3,1400
-Anna tenesteyting,"Ledige stillingar, sesongjustert",2021K3,1400
+"Jordbruk, skogbruk og fiske","Ledige stillingar, sesongjustert",2021K3,3900.0
+"Jordbruk, skogbruk og fiske","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,2200.0
+"Jordbruk, skogbruk og fiske","Prosentdelen ledige stillingar, sesongjustert",2021K3,9.5
+"Jordbruk, skogbruk og fiske","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,5.2
+Bergverksdrift og utvinning,"Ledige stillingar, sesongjustert",2021K3,1200.0
+Bergverksdrift og utvinning,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,300.0
+Bergverksdrift og utvinning,"Prosentdelen ledige stillingar, sesongjustert",2021K3,1.9
+Bergverksdrift og utvinning,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.4
+Industri,"Ledige stillingar, sesongjustert",2021K3,4700.0
+Industri,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-400.0
+Industri,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.2
+Industri,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.2
+"Elektrisitet, vatn og renovasjon","Ledige stillingar, sesongjustert",2021K3,600.0
+"Elektrisitet, vatn og renovasjon","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.0
+"Elektrisitet, vatn og renovasjon","Prosentdelen ledige stillingar, sesongjustert",2021K3,1.7
+"Elektrisitet, vatn og renovasjon","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.1
+Byggje- og anleggsverksemd,"Ledige stillingar, sesongjustert",2021K3,8200.0
+Byggje- og anleggsverksemd,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-800.0
+Byggje- og anleggsverksemd,"Prosentdelen ledige stillingar, sesongjustert",2021K3,3.3
+Byggje- og anleggsverksemd,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.4
+"Varehandel, motorvognreparasjonar","Ledige stillingar, sesongjustert",2021K3,9700.0
+"Varehandel, motorvognreparasjonar","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,1200.0
+"Varehandel, motorvognreparasjonar","Prosentdelen ledige stillingar, sesongjustert",2021K3,2.5
+"Varehandel, motorvognreparasjonar","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.2
+Transport og lagring,"Ledige stillingar, sesongjustert",2021K3,3500.0
+Transport og lagring,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,1100.0
+Transport og lagring,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.5
+Transport og lagring,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.8
+Overnattings- og serveringsverksemd,"Ledige stillingar, sesongjustert",2021K3,5100.0
+Overnattings- og serveringsverksemd,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-200.0
+Overnattings- og serveringsverksemd,"Prosentdelen ledige stillingar, sesongjustert",2021K3,4.4
+Overnattings- og serveringsverksemd,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-2.2
+Informasjon og kommunikasjon,"Ledige stillingar, sesongjustert",2021K3,6000.0
+Informasjon og kommunikasjon,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-500.0
+Informasjon og kommunikasjon,"Prosentdelen ledige stillingar, sesongjustert",2021K3,5.3
+Informasjon og kommunikasjon,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.6
+Finansierings- og forsikringsverksemd,"Ledige stillingar, sesongjustert",2021K3,1400.0
+Finansierings- og forsikringsverksemd,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.0
+Finansierings- og forsikringsverksemd,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.7
+Finansierings- og forsikringsverksemd,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.0
+Omsetning og drift av fast eigedom,"Ledige stillingar, sesongjustert",2021K3,600.0
+Omsetning og drift av fast eigedom,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.0
+Omsetning og drift av fast eigedom,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.2
+Omsetning og drift av fast eigedom,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.1
+"Fagleg, vitskapleg og teknisk tenesteyting","Ledige stillingar, sesongjustert",2021K3,5800.0
+"Fagleg, vitskapleg og teknisk tenesteyting","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,300.0
+"Fagleg, vitskapleg og teknisk tenesteyting","Prosentdelen ledige stillingar, sesongjustert",2021K3,3.8
+"Fagleg, vitskapleg og teknisk tenesteyting","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.1
+Forretningsmessig tenesteyting,"Ledige stillingar, sesongjustert",2021K3,9200.0
+Forretningsmessig tenesteyting,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-700.0
+Forretningsmessig tenesteyting,"Prosentdelen ledige stillingar, sesongjustert",2021K3,5.7
+Forretningsmessig tenesteyting,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.6
+"Offentleg administrasjon og forsvar, og trygdeordningar underordna offentleg forvalting","Ledige stillingar, sesongjustert",2021K3,5400.0
+"Offentleg administrasjon og forsvar, og trygdeordningar underordna offentleg forvalting","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-700.0
+"Offentleg administrasjon og forsvar, og trygdeordningar underordna offentleg forvalting","Prosentdelen ledige stillingar, sesongjustert",2021K3,2.7
+"Offentleg administrasjon og forsvar, og trygdeordningar underordna offentleg forvalting","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.4
+Undervisning,"Ledige stillingar, sesongjustert",2021K3,7000.0
+Undervisning,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,1800.0
+Undervisning,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.7
+Undervisning,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.6
+Helsetenester,"Ledige stillingar, sesongjustert",2021K3,6300.0
+Helsetenester,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-1000.0
+Helsetenester,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.4
+Helsetenester,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.4
+Pleie- og omsorgstenester i institusjon,"Ledige stillingar, sesongjustert",2021K3,9500.0
+Pleie- og omsorgstenester i institusjon,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,1500.0
+Pleie- og omsorgstenester i institusjon,"Prosentdelen ledige stillingar, sesongjustert",2021K3,4.8
+Pleie- og omsorgstenester i institusjon,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,0.7
+Sosiale omsorgstenester utan butilbod,"Ledige stillingar, sesongjustert",2021K3,5400.0
+Sosiale omsorgstenester utan butilbod,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-400.0
+Sosiale omsorgstenester utan butilbod,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.4
+Sosiale omsorgstenester utan butilbod,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.2
+"Kulturell verksemd, underhaldning og fritidsaktivitetar","Ledige stillingar, sesongjustert",2021K3,1400.0
+"Kulturell verksemd, underhaldning og fritidsaktivitetar","Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-400.0
+"Kulturell verksemd, underhaldning og fritidsaktivitetar","Prosentdelen ledige stillingar, sesongjustert",2021K3,2.6
+"Kulturell verksemd, underhaldning og fritidsaktivitetar","Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-1.2
+Anna tenesteyting,"Ledige stillingar, sesongjustert",2021K3,1400.0
+Anna tenesteyting,"Ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-300.0
+Anna tenesteyting,"Prosentdelen ledige stillingar, sesongjustert",2021K3,2.7
+Anna tenesteyting,"Prosentdelen ledige stillingar, sesongjustert. Endring frå kvartalet før",2021K3,-0.7
