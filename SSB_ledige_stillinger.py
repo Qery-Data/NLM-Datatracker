@@ -110,9 +110,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2021K3"
+          "1"
         ]
       }
     }
