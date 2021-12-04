@@ -30,7 +30,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update OECD
-        run: python oecd_test.py
+        run: python oecd.py
       - name: 🚀 Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
