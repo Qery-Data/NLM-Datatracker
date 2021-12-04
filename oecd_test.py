@@ -1,4 +1,9 @@
-import pandas_datareader.data as web
-import datetime
-df = web.DataReader('TUD', 'oecd')
-df.columns
+import pandas as pd
+def get_from_oecd(sdmx_query):
+    return pd.read_csv(
+        f"https://stats.oecd.org/SDMX-JSON/data/{sdmx_query}?contentType=csv"
+    )
+data = (get_from_oecd("LAB_REG_VAC/SWE+DEN+FIN+NOR.LMUNRLTT_STSA.M/"))
+df = pd.DataFrame(data)
+df_new = df.pivot(index='TIME', columns='Country', values='Value')
+df_new.to_csv('data/OECDledigestillinger.csv', index=True)
