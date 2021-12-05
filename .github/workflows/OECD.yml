@@ -1,6 +1,6 @@
 name: OECD
 on: 
-  on: workflow_dispatch
+  workflow_dispatch
   schedule:
     - cron: "15 7 * * *"
 jobs:
