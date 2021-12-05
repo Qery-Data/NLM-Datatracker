@@ -23,6 +23,13 @@ query = {
         ]
       }
     }
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [21]
+      }
+    }
   ],
   "response": {
     "format": "json-stat2"
@@ -52,6 +59,13 @@ query = {
         "values": [
           "LedigeStillingerPros"
         ]
+      }
+    }
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [21]
       }
     }
   ],
