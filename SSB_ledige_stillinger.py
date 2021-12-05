@@ -22,7 +22,7 @@ query = {
           "LedigeStillinger"
         ]
       }
-    }
+    },
     {
       "code": "Tid",
       "selection": {
@@ -60,7 +60,7 @@ query = {
           "LedigeStillingerPros"
         ]
       }
-    }
+    },
     {
       "code": "Tid",
       "selection": {
