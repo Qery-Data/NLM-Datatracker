@@ -28,6 +28,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
+          "AntLonnstakSesong",
           "AntArbForholdSesong"
         ]
       }
@@ -41,4 +42,5 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df.to_csv('data/SSB_jobber_totalt.csv', index=False)
+df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
+df_new.to_csv('data/SSB_jobber_totalt.csv', index=False)
