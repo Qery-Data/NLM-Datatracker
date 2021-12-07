@@ -18,6 +18,8 @@ jobs:
       - name: 💿 Install Requirements
         run: pip install -r requirements.txt
       - name: 🍳 Update SSB ledige stillinger
+        env: 
+          DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_ledige_stillinger.py
       - name: 🚀 Commit and push if it changed
         run: |
