@@ -1,6 +1,7 @@
 from pyjstat import pyjstat
 import requests
 import os
+import datawrapper
 os.makedirs('data', exist_ok=True)
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
@@ -44,6 +45,8 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
+
+
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
