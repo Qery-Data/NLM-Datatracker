@@ -52,7 +52,7 @@ df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(resultat.text)
 dato = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(dato, '%Y-%m-%dT%H:%M:%SZ')
-locale.setlocale(locale.LC_ALL, "no_no")
+locale.setlocale(locale.LC_ALL, "no_NO.ISO8859-1")
 riktig_dato = oppdatert_dato.strftime ('%d. %B %Y')
 
 
