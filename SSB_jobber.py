@@ -2,6 +2,10 @@ from pyjstat import pyjstat
 import requests
 import os
 import datawrapper
+import json
+import datetime
+import locale
+
 os.makedirs('data', exist_ok=True)
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
@@ -45,7 +49,11 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
-
+json_object = json.loads(resultat.text)
+dato = json_object["updated"]
+oppdatert_dato = datetime.datetime.strptime(dato, '%Y-%m-%dT%H:%M:%SZ')
+locale.setlocale(locale.LC_ALL, "no_no")
+riktig_dato = oppdatert_dato.strftime ('%d. %B %Y')
 
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
