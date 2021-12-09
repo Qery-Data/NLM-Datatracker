@@ -50,11 +50,18 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(resultat.text)
-dato = json_object["updated"]
-oppdatert_dato = datetime.datetime.strptime(dato, '%Y-%m-%dT%H:%M:%SZ')
-locale.setlocale(locale.LC_ALL, "nb_NO")
-riktig_dato = oppdatert_dato.strftime ('%d. %B %Y')
-
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+from datawrapper import Datawrapper
+dw = Datawrapper(access_token = "")
+dw.refresh_data('5YMDQ')
+properties = {
+  'annotate' : {
+    'notes': riktig_dato,
+  }
+}
+dw.update_metadata('5YMDQ', properties)
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
