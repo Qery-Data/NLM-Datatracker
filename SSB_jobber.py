@@ -54,7 +54,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 from datawrapper import Datawrapper
-dw = Datawrapper(access_token = "${DW_TOKEN}")
+dw = Datawrapper(access_token = DW_TOKEN)
 dw.refresh_data('5YMDQ')
 properties = {
   'annotate' : {
