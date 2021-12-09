@@ -1,6 +1,3 @@
 pyjstat==2.2.1
 pandas==1.3.3
 datawrapper
-json
-locale
-datetime
