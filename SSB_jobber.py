@@ -56,13 +56,13 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('5YMDQ')
+dw.refresh_data('nzFUM')
 properties = {
   'annotate' : {
     'notes': riktig_dato,
   }
 }
-dw.update_metadata('5YMDQ', properties)
+dw.update_metadata('nzFUM', properties)
 
 from pyjstat import pyjstat
 import requests
@@ -194,6 +194,18 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_jobber_naring.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw.refresh_data('5YMDQ')
+properties = {
+  'annotate' : {
+    'notes': riktig_dato,
+  }
+}
+dw.update_metadata('5YMDQ', properties)
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
@@ -260,5 +272,16 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
 df_new["endring"] = df_new.iloc[:,1]-df_new.iloc[:,0]
 df_new.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
-
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw.refresh_data('w4msy')
+properties = {
+  'annotate' : {
+    'notes': riktig_dato,
+  }
+}
+dw.update_metadata('w4msy', properties)
 
