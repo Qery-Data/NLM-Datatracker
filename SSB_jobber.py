@@ -180,7 +180,7 @@ query = {
       "selection": {
         "filter": "top",
         "values": [
-          "1"
+          "2"
         ]
       }
     }
@@ -240,7 +240,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "02"
+          "03"
         ]
       }
     },
