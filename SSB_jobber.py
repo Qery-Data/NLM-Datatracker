@@ -240,7 +240,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "03"
+          "02"
         ]
       }
     },
@@ -257,7 +257,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "top",
-        "values": [2]
+        "values": [3]
       }
     }
   ],
