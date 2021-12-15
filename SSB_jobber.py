@@ -100,7 +100,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "Top",
-        "values": [25]
+        "values": [27]
       }
     }
   ],
@@ -113,7 +113,8 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df["value"].diff()
-df = df[:-1]
+df.head(-1)
+df.tail(-1)
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
