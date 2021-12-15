@@ -5,8 +5,10 @@ import datawrapper
 import json
 import datetime
 import locale
+from datawrapper import Datawrapper
 
 os.makedirs('data', exist_ok=True)
+
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -53,7 +55,6 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-from datawrapper import Datawrapper
 dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('5YMDQ')
 properties = {
@@ -62,6 +63,71 @@ properties = {
   }
 }
 dw.update_metadata('5YMDQ', properties)
+
+from pyjstat import pyjstat
+import requests
+ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
+query = {
+  "query": [
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00-99"
+        ]
+      }
+    },
+    {
+      "code": "ForelopigEndelig",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "02"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForhold"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "Top",
+        "values": [25]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df["endring"] = df["value"].diff()
+df = df[:-1]
+df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw.refresh_data('t8TNy')
+properties = {
+  'annotate' : {
+    'notes': riktig_dato,
+  }
+}
+dw.update_metadata('t8TNy', properties)
+
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
