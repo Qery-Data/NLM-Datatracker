@@ -1,18 +1,35 @@
 ,næring (SN2007),foreløpige og endelig tall,statistikkvariabel,måned,value
-0,"Jordbruk, skogbruk og fiske",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-1,Bergverksdrift og utvinning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-2,Industri,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-3,"Elektrisitet, vann og renovasjon",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-4,Bygge- og anleggsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-5,"Varehandel, reparasjon av motorvogner",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-6,Transport og lagring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-7,Overnattings- og serveringsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-8,Informasjon og kommunikasjon,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-9,Finansiering og forsikring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-10,"Teknisk tjenesteyting, eiendomsdrift",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-11,Forretningsmessig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-12,"Off.adm., forsvar, sosialforsikring",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-13,Undervisning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-14,Helse- og sosialtjenester,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-15,Personlig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-16,Uoppgitt,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+0,"Jordbruk, skogbruk og fiske",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,39114.0
+1,"Jordbruk, skogbruk og fiske",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+2,Bergverksdrift og utvinning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,62325.0
+3,Bergverksdrift og utvinning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+4,Industri,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,219768.0
+5,Industri,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+6,"Elektrisitet, vann og renovasjon",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,35254.0
+7,"Elektrisitet, vann og renovasjon",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+8,Bygge- og anleggsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,247162.0
+9,Bygge- og anleggsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+10,"Varehandel, reparasjon av motorvogner",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,382147.0
+11,"Varehandel, reparasjon av motorvogner",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+12,Transport og lagring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,136014.0
+13,Transport og lagring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+14,Overnattings- og serveringsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,114565.0
+15,Overnattings- og serveringsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+16,Informasjon og kommunikasjon,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,108186.0
+17,Informasjon og kommunikasjon,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+18,Finansiering og forsikring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,49110.0
+19,Finansiering og forsikring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+20,"Teknisk tjenesteyting, eiendomsdrift",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,181136.0
+21,"Teknisk tjenesteyting, eiendomsdrift",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+22,Forretningsmessig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,160764.0
+23,Forretningsmessig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+24,"Off.adm., forsvar, sosialforsikring",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,194836.0
+25,"Off.adm., forsvar, sosialforsikring",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+26,Undervisning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,259411.0
+27,Undervisning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+28,Helse- og sosialtjenester,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,668354.0
+29,Helse- og sosialtjenester,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+30,Personlig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,122548.0
+31,Personlig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+32,Uoppgitt,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,2208.0
+33,Uoppgitt,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
