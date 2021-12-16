@@ -1,8 +1,7 @@
 from pyjstat import pyjstat
-import pandas as pd
 import requests
-import datawrapper
 import os
+import datawrapper
 import json
 import datetime
 import locale
