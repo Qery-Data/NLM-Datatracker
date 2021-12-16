@@ -7,7 +7,6 @@ import datetime
 from datawrapper import Datawrapper
 import locale
 
-locale.setlocale(locale.LC_TIME, 'no')
 os.makedirs('data', exist_ok=True)
 
 #VIZ1
