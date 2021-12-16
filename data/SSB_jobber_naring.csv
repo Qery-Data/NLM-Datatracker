@@ -1,35 +1,17 @@
-,næring (SN2007),foreløpige og endelig tall,statistikkvariabel,måned,value
-0,"Jordbruk, skogbruk og fiske",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,39114.0
-1,"Jordbruk, skogbruk og fiske",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-2,Bergverksdrift og utvinning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,62325.0
-3,Bergverksdrift og utvinning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-4,Industri,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,219768.0
-5,Industri,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-6,"Elektrisitet, vann og renovasjon",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,35254.0
-7,"Elektrisitet, vann og renovasjon",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-8,Bygge- og anleggsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,247162.0
-9,Bygge- og anleggsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-10,"Varehandel, reparasjon av motorvogner",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,382147.0
-11,"Varehandel, reparasjon av motorvogner",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-12,Transport og lagring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,136014.0
-13,Transport og lagring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-14,Overnattings- og serveringsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,114565.0
-15,Overnattings- og serveringsvirksomhet,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-16,Informasjon og kommunikasjon,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,108186.0
-17,Informasjon og kommunikasjon,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-18,Finansiering og forsikring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,49110.0
-19,Finansiering og forsikring,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-20,"Teknisk tjenesteyting, eiendomsdrift",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,181136.0
-21,"Teknisk tjenesteyting, eiendomsdrift",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-22,Forretningsmessig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,160764.0
-23,Forretningsmessig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-24,"Off.adm., forsvar, sosialforsikring",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,194836.0
-25,"Off.adm., forsvar, sosialforsikring",Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-26,Undervisning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,259411.0
-27,Undervisning,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-28,Helse- og sosialtjenester,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,668354.0
-29,Helse- og sosialtjenester,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-30,Personlig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,122548.0
-31,Personlig tjenesteyting,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
-32,Uoppgitt,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M09,2208.0
-33,Uoppgitt,Endelige tall,"Antall jobber (arbeidsforhold), sesongjustert",2021M10,
+næring (SN2007),antall,0,1,2,3
+Bergverksdrift og utvinning,62325.0,383.0,945.0,5719.0,4618.0
+Bygge- og anleggsvirksomhet,247162.0,2801.0,5116.0,9623.0,29570.0
+"Elektrisitet, vann og renovasjon",35254.0,312.0,717.0,1974.0,2998.0
+Finansiering og forsikring,49110.0,296.0,996.0,2668.0,2236.0
+Forretningsmessig tjenesteyting,160764.0,4360.0,13000.0,-1906.0,12616.0
+Helse- og sosialtjenester,668354.0,1136.0,33702.0,29403.0,43311.0
+Industri,219768.0,1568.0,4121.0,655.0,2474.0
+Informasjon og kommunikasjon,108186.0,1060.0,7991.0,13934.0,19652.0
+"Jordbruk, skogbruk og fiske",39114.0,1081.0,1590.0,2991.0,5264.0
+"Off.adm., forsvar, sosialforsikring",194836.0,1463.0,8371.0,10419.0,14514.0
+Overnattings- og serveringsvirksomhet,114565.0,3387.0,13088.0,-1491.0,7128.0
+Personlig tjenesteyting,122548.0,417.0,9234.0,6326.0,12386.0
+"Teknisk tjenesteyting, eiendomsdrift",181136.0,1896.0,9438.0,10600.0,20790.0
+Transport og lagring,136014.0,1546.0,946.0,-8036.0,-9467.0
+Undervisning,259411.0,4138.0,11090.0,14042.0,18824.0
+"Varehandel, reparasjon av motorvogner",382147.0,1729.0,15265.0,2934.0,7571.0
