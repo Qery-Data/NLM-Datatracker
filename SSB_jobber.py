@@ -1,10 +1,11 @@
 from pyjstat import pyjstat
+import pandas as pd
 import requests
 import os
 import json
 import datetime
 import locale
-import datawrapper
+import datawrapper as Datawrapper
 
 os.makedirs('data', exist_ok=True)
 
@@ -54,7 +55,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('nzFUM')
 properties = {
   'annotate' : {
@@ -116,7 +117,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('t8TNy')
 properties = {
   'annotate' : {
@@ -208,7 +209,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('S6QM8')
 properties = {
   'annotate' : {
@@ -287,7 +288,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('w4msy')
 properties = {
   'annotate' : {
