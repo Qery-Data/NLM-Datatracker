@@ -289,7 +289,7 @@ df_new["endring"] = df_new.iloc[:,1]-df_new.iloc[:,0]
 df_new.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
-oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('w4msy')
