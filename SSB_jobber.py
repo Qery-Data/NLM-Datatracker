@@ -1,4 +1,4 @@
-import pyjstat
+from pyjstat import pyjstat
 import requests
 import os
 import json
