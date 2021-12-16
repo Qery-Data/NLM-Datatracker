@@ -54,7 +54,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('nzFUM')
 properties = {
   'annotate' : {
@@ -63,8 +63,6 @@ properties = {
 }
 dw.update_metadata('nzFUM', properties)
 
-from pyjstat import pyjstat
-import requests
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -118,7 +116,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('t8TNy')
 properties = {
   'annotate' : {
@@ -210,7 +208,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('S6QM8')
 properties = {
   'annotate' : {
@@ -289,7 +287,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
+dw = datawrapper(access_token = os.getenv('DW_TOKEN'))
 dw.refresh_data('w4msy')
 properties = {
   'annotate' : {
