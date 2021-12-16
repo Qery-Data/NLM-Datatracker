@@ -224,80 +224,27 @@ dw.update_description('S6QM8', intro=date_string3)
 dw.publish_chart('S6QM8', display = False)
 
 #VIZ4
-ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
-query = {
-  "query": [
-    {
-      "code": "NACE2007",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "01-03",
-          "05-09",
-          "10-33",
-          "35-39",
-          "41-43",
-          "45-47",
-          "49-53",
-          "55-56",
-          "58-63",
-          "64-66",
-          "68-75",
-          "77-82",
-          "84",
-          "85",
-          "86-88",
-          "90-99",
-          "00"
-        ]
-      }
-    },
-    {
-      "code": "ForelopigEndelig",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "02"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "AntArbForholdSesong"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [3]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
-df_new["endring"] = df_new.iloc[:,1]-df_new.iloc[:,0]
-df_new.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
+Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
+Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
+Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
+Endring_5_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
+df_new4 = pd.concat([antall, Endring_mnd_pst, Endring_12_pst, Endring_3_pst, Endring_5_pst], axis=1)
+df_new4.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
+date_string = tittel_dato.replace("M","")
+from datetime import datetime
+date_string2 = datetime.strptime(date_string, "%Y%m")
+date_string3 = date_string2.strftime ('%B %Y') +', sesongjusterte tall.'
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('w4msy')
+dw.refresh_data('96bMF')
 properties = {
   'annotate' : {
     'notes': riktig_dato,
   }
 }
-dw.update_metadata('w4msy', properties)
+dw.update_metadata('96bMF', properties)
+dw.update_description('96bMF', intro=date_string3)
+dw.publish_chart('96bMF', display = False)
