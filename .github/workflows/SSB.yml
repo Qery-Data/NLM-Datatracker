@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - name: 🐍 Set up Python 3.8
+      - name: 🐍 Set up Python 3.10
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
@@ -32,6 +32,7 @@ jobs:
       - name: 🍳 Update SSB arbeidsledige
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
+          LC_TIME: "no_NO.UTF-8"
         run: python SSB_arbeidsledige.py
       - name: 🚀 Commit and push if it changed
         run: |
