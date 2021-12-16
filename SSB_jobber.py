@@ -207,7 +207,6 @@ df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_3, Endring_5], axi
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 from datetime import datetime
-locale.setlocale(locale.LC_TIME, 'no_NO.UTF-8')
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = date_string2.strftime ('%B %Y') +', sesongjusterte tall.'
 json_object = json.loads(resultat.text)
