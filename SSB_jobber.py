@@ -221,6 +221,7 @@ properties = {
 }
 dw.update_metadata('S6QM8', properties)
 dw.update_description('S6QM8', intro=date_string3)
+dw.publish_chart('S6QM8', display = False)
 
 #VIZ4
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
