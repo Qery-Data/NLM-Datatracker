@@ -1,10 +1,10 @@
-from pyjstat import pyjstat
+import pyjstat
 import requests
 import os
 import json
-from datetime import datetime
+import datetime
 import locale
-from datawrapper import Datawrapper
+import Datawrapper
 
 os.makedirs('data', exist_ok=True)
 
