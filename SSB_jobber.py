@@ -5,7 +5,7 @@ import datawrapper
 import json
 import datetime
 import locale
-import datawrapper as Datawrapper
+from datawrapper import Datawrapper
 
 os.makedirs('data', exist_ok=True)
 
@@ -64,6 +64,8 @@ properties = {
 }
 dw.update_metadata('nzFUM', properties)
 
+from pyjstat import pyjstat
+import requests
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -150,7 +152,8 @@ query = {
           "84",
           "85",
           "86-88",
-          "90-99"
+          "90-99",
+          "00"
         ]
       }
     },
@@ -177,7 +180,7 @@ query = {
       "selection": {
         "filter": "top",
         "values": [
-          "62"
+          "2"
         ]
       }
     }
@@ -190,34 +193,19 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
-df_new2 = df_new.iloc[:,[0,24,48,59,60]]
-antall = df_new2.iloc[:,4]
-tittel_dato = (antall.name)
-antall.name = 'antall'
-Endring_mnd = df_new2.iloc[:,4] - df_new2.iloc[:,3]
-Endring_12 = df_new2.iloc[:,4] - df_new2.iloc[:,2]
-Endring_3 = df_new2.iloc[:,4] - df_new2.iloc[:,1]
-Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
-df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_3, Endring_5], axis=1)
-date_string = tittel_dato.replace("M","")
-date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') +'.'
-locale.setlocale(locale.LC_TIME, 'no')
-df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
+df.to_csv('data/SSB_jobber_naring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('S6QM8')
+dw.refresh_data('5YMDQ')
 properties = {
   'annotate' : {
     'notes': riktig_dato,
   }
 }
-dw.update_metadata('S6QM8', properties)
-dw.update_description('S6QM8', intro= date_string3)
+dw.update_metadata('5YMDQ', properties)
 
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
@@ -296,4 +284,3 @@ properties = {
   }
 }
 dw.update_metadata('w4msy', properties)
-
