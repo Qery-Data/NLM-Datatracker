@@ -4,7 +4,7 @@ import os
 import json
 import datetime
 import locale
-import Datawrapper
+import datawrapper
 
 os.makedirs('data', exist_ok=True)
 
