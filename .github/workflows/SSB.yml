@@ -44,7 +44,7 @@ jobs:
       - name: 🍳 Update SSB jobber
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
-          LC_TIME: "no_NO.UTF-8"
+          LC_TIME: "nb_NO"
         run: python SSB_jobber.py
       - name: 🚀 Commit and push if it changed
         run: |
