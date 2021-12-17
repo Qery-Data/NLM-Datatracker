@@ -1,15 +1,14 @@
 from pyjstat import pyjstat
 import requests
 import os
-import datawrapper
 import json
 import datetime
-from datawrapper import Datawrapper
 import locale
 locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
+access_token = os.getenv('DW_TOKEN')
 
-#Jobber antall utvikling
+#Jobber antall utvikling nzFUM
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -56,16 +55,17 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('nzFUM')
-properties = {
-  'annotate' : {
-    'notes': riktig_dato,
-  }
-}
-dw.update_metadata('nzFUM', properties)
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/nzFUM/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber mnd endring i antall
+#Jobber mnd endring i antall t8TNy
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -119,16 +119,17 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('t8TNy')
-properties = {
-  'annotate' : {
-    'notes': riktig_dato,
-  }
-}
-dw.update_metadata('t8TNy', properties)
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/t8TNy/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber antall endring per næring
+#Jobber antall endring per næring S6QM8
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -212,17 +213,20 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('S6QM8')
-properties = {
-  'annotate' : {
-    'notes': riktig_dato,
-  }
-}
-dw.update_metadata('S6QM8', properties)
-dw.update_description('S6QM8', intro=date_string3)
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/S6QM8/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}},
+    "description": {"intro": date_string3}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber pst endring per næring
+#Jobber pst endring per næring 96bMF
 Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
 Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
 Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
@@ -237,12 +241,15 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dw = Datawrapper(access_token = os.getenv('DW_TOKEN'))
-dw.refresh_data('96bMF')
-properties = {
-  'annotate' : {
-    'notes': riktig_dato,
-  }
-}
-dw.update_metadata('96bMF', properties)
-dw.update_description('96bMF', intro=date_string3)
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/96bMF/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}},
+    "description": {"intro": date_string3}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
