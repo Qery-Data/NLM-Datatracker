@@ -17,7 +17,7 @@ jobs:
           python-version: '3.10'
       - name: 💿 Install Requirements
         run: pip install -r requirements.txt
-      - name: SetLocale
+      - name: 🌍 SetLocale
         run: |
           sudo locale-gen nb_NO
       - name: 🍳 Update SSB ledige stillinger
