@@ -207,7 +207,7 @@ df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 from datetime import datetime
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = date_string2.strftime ('%B %Y') +', sesongjusterte tall.'
+date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
@@ -232,7 +232,7 @@ df_new4.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 from datetime import datetime
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = date_string2.strftime ('%B %Y') +', sesongjusterte tall.'
+date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
