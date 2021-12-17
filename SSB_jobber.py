@@ -6,7 +6,7 @@ import json
 import datetime
 from datawrapper import Datawrapper
 import locale
-locale.setlocale(locale.LC_TIME, 'no_NO.UTF-8')
+locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 
 #Jobber antall utvikling
