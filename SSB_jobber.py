@@ -6,10 +6,10 @@ import json
 import datetime
 from datawrapper import Datawrapper
 import locale
-
+locale.setlocale(locale.LC_TIME, 'no_NO.UTF-8')
 os.makedirs('data', exist_ok=True)
 
-#VIZ1
+#Jobber antall utvikling
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -65,7 +65,7 @@ properties = {
 }
 dw.update_metadata('nzFUM', properties)
 
-#VIZ2
+#Jobber mnd endring i antall
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -128,7 +128,7 @@ properties = {
 }
 dw.update_metadata('t8TNy', properties)
 
-#VIZ3
+#Jobber antall endring per næring
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -221,9 +221,8 @@ properties = {
 }
 dw.update_metadata('S6QM8', properties)
 dw.update_description('S6QM8', intro=date_string3)
-dw.publish_chart('S6QM8', display = False)
 
-#VIZ4
+#Jobber pst endring per næring
 Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
 Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
 Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
@@ -247,4 +246,3 @@ properties = {
 }
 dw.update_metadata('96bMF', properties)
 dw.update_description('96bMF', intro=date_string3)
-dw.publish_chart('96bMF', display = False)
