@@ -217,7 +217,7 @@ riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 url = "https://api.datawrapper.de/v3/charts/S6QM8/"
 payload = {
     "metadata": {"annotate": {"notes": riktig_dato}},
-    "description": {"intro": date_string3}
+    "metadata": {"describe": {"intro": date_string3}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -245,7 +245,7 @@ riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 url = "https://api.datawrapper.de/v3/charts/96bMF/"
 payload = {
     "metadata": {"annotate": {"notes": riktig_dato}},
-    "description": {"intro": date_string3}
+    "metadata": {"describe": {"intro": date_string3}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
