@@ -32,7 +32,6 @@ jobs:
       - name: 🍳 Update SSB arbeidsledige
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
-          LC_TIME: "no_NO.UTF-8"
         run: python SSB_arbeidsledige.py
       - name: 🚀 Commit and push if it changed
         run: |
@@ -45,6 +44,7 @@ jobs:
       - name: 🍳 Update SSB jobber
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
+          LC_TIME: "no_NO.UTF-8"
         run: python SSB_jobber.py
       - name: 🚀 Commit and push if it changed
         run: |
