@@ -337,3 +337,178 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#VIZ Jobber detaljert næring (88) SrULZ
+ssburl = 'https://data.ssb.no/api/v0/no/table/11656/'
+query = {
+  "query": [
+    {
+      "code": "Kjonn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "Alder",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "999A"
+        ]
+      }
+    },
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "03",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "41",
+          "42",
+          "43",
+          "45",
+          "46",
+          "47",
+          "49",
+          "50",
+          "51",
+          "52",
+          "53",
+          "55",
+          "56",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "68",
+          "69",
+          "70",
+          "71",
+          "72",
+          "73",
+          "74",
+          "75",
+          "77",
+          "78",
+          "79",
+          "80",
+          "81",
+          "82",
+          "84",
+          "85",
+          "86",
+          "87",
+          "88",
+          "90",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "96",
+          "97"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForhold"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [21]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
+df_new2 = df_new.iloc[:,[0,8,16,20]]
+antall = df_new2.iloc[:,3]
+tittel_dato = (antall.name)
+antall.name = 'antall'
+Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,2]
+Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
+Endring_5 = df_new2.iloc[:,3] - df_new2.iloc[:,0]
+import pandas as pd
+df_new3 = pd.concat([antall, Endring_12, Endring_3, Endring_5], axis=1)
+df_new3.to_csv('data/SSB_jobber_naring_detaljert.csv', index=True)
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
+from datetime import datetime
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/SrULZ/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}},
+    "metadata": {"describe": {"intro": date_string4}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
