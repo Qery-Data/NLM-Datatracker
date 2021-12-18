@@ -253,3 +253,87 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#VIZ Utvikling i antall jobber J2g1N
+ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
+query = {
+  "query": [
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01-03",
+          "05-09",
+          "10-33",
+          "35-39",
+          "41-43",
+          "45-47",
+          "49-53",
+          "55-56",
+          "58-63",
+          "64-66",
+          "68-75",
+          "77-82",
+          "84",
+          "85",
+          "86-88",
+          "90-99"
+        ]
+      }
+    },
+    {
+      "code": "ForelopigEndelig",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "02"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForholdSesong"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          "62"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
+df_new.to_csv('data/SSB_jobber_naring_utvikling.csv', index=True)
+#Update DW
+from datetime import datetime
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/J2g1N/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
