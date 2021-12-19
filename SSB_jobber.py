@@ -634,7 +634,7 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sektor', columns='kvartal', values='value')
-df_new2 = df_new.iloc[:,[0,5,10,15,20]]
+df_new2 = df_new.iloc[:,[0,4,9,14,20]]
 antall = df_new2.iloc[:,4]
 tittel_dato = (antall.name)
 df_new2.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
