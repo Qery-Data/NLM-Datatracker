@@ -217,8 +217,17 @@ riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW S6QM8
 url = "https://api.datawrapper.de/v3/charts/S6QM8/"
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}},
     "metadata": {"describe": {"intro": date_string3}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/S6QM8/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -229,8 +238,17 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 #Update DW Wf007 (Totalt antall sist mnd)
 url = "https://api.datawrapper.de/v3/charts/Wf007/"
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}},
     "metadata": {"describe": {"intro": date_string3}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/Wf007/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -241,7 +259,6 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 #Update DW R5eLv (Endring fra feb.20)
 url = "https://api.datawrapper.de/v3/charts/R5eLv/"
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}},
     "metadata": {"describe": {"intro": date_string3 + " sammenlignet med februar 2020."}}
     }
 headers = {
@@ -250,7 +267,16 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-
+url = "https://api.datawrapper.de/v3/charts/R5eLv/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 #Jobber pst endring per næring 96bMF
 Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
 Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
