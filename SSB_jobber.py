@@ -204,7 +204,7 @@ Endring_covid = df_new2.iloc[:,4] - df_new['2020M02']
 Endring_3 = df_new2.iloc[:,4] - df_new2.iloc[:,1]
 Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
 import pandas as pd
-df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid, Endring_3, Endring_5], axis=1)
+df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, Endring_5], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 from datetime import datetime
