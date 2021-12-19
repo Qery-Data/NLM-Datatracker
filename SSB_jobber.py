@@ -113,6 +113,7 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df["value"].diff()
+df["endring i pst"] = df["value"].pct_change()*100
 df = df[1:26]
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
