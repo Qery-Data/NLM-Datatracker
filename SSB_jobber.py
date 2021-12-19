@@ -584,7 +584,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber kvartal sektor 
+#Jobber kvartal sektor OWk86
 ssburl = 'https://data.ssb.no/api/v0/no/table/11653/'
 query = {
   "query": [
@@ -634,8 +634,8 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sektor', columns='kvartal', values='value')
-df_new2 = df_new.iloc[:,[0,4,9,14,20]]
-antall = df_new2.iloc[:,4]
+df_new2 = df_new.iloc[:,[0,4,8,12,16,20]]
+antall = df_new2.iloc[:,5]
 tittel_dato = (antall.name)
 df_new2.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
 json_object = json.loads(resultat.text)
@@ -645,3 +645,20 @@ riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
 date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste fem årene'
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/x/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/OWk86/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
