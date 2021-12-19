@@ -635,6 +635,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sektor', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4,8,12,16,20]]
+df_new2.sort_values(df_new2.columns[5])
 antall = df_new2.iloc[:,5]
 tittel_dato = (antall.name)
 df_new2.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
@@ -644,7 +645,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste fem årene'
+date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste seks årene'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/x/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
