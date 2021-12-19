@@ -280,7 +280,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 #Jobber pst endring per næring 96bMF
 Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
 Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
-Endring_covid = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02'])
+Endring_covid = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02']*100)
 Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
 Endring_5_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
 df_new4 = pd.concat([antall, Endring_mnd_pst, Endring_12_pst, Endring_covid, Endring_3_pst, Endring_5_pst], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
