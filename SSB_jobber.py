@@ -242,7 +242,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/R5eLv/"
 payload = {
     "metadata": {"annotate": {"notes": riktig_dato}},
-    "metadata": {"describe": {"intro": date_string3 + "sammenlignet med feb.20"}}
+    "metadata": {"describe": {"intro": date_string3 + " sammenlignet med februar 2020."}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
