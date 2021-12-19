@@ -635,10 +635,10 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sektor', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4,8,12,16,20]]
-df_new2.sort_values(df_new2.columns[5])
+df_new3 = df_new2.sort_values(df_new2.columns[5])
 antall = df_new2.iloc[:,5]
 tittel_dato = (antall.name)
-df_new2.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
+df_new3.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
