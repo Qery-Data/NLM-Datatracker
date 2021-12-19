@@ -8,7 +8,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Jobber antall utvikling nzFUM
+#Jobber antall utvikling totalt nzFUM
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -129,7 +129,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber antall endring per næring S6QM8
+#Jobber antall per næring og endring per næring S6QM8
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -203,7 +203,7 @@ Endring_12 = df_new2.iloc[:,4] - df_new2.iloc[:,2]
 Endring_3 = df_new2.iloc[:,4] - df_new2.iloc[:,1]
 Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
 import pandas as pd
-df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_3, Endring_5], axis=1)
+df_new3 = pd.concat([antall, Endring_mnd, Endring_12, df_new['2020M02'],Endring_3, Endring_5], axis=1)
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 from datetime import datetime
@@ -254,7 +254,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#VIZ Utvikling i antall jobber J2g1N
+#VIZ Utvikling i antall jobber flere
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
