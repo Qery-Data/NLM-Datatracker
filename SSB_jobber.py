@@ -214,11 +214,35 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW
+#Update DW S6QM8
 url = "https://api.datawrapper.de/v3/charts/S6QM8/"
 payload = {
     "metadata": {"annotate": {"notes": riktig_dato}},
     "metadata": {"describe": {"intro": date_string3}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+#Update DW Wf007 (Totalt antall sist mnd)
+url = "https://api.datawrapper.de/v3/charts/Wf007/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}},
+    "metadata": {"describe": {"intro": date_string3}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+#Update DW R5eLv (Endring fra feb.20)
+url = "https://api.datawrapper.de/v3/charts/R5eLv/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}},
+    "metadata": {"describe": {"intro": date_string3 + "sammenlignet med feb.20"}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
