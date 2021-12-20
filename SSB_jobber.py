@@ -114,7 +114,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df["value"].diff()
 df["endring i pst"] = df["value"].pct_change()*100
-df = df[1:61]
+df = df[1:62]
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
