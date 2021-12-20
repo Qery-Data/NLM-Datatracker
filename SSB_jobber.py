@@ -92,7 +92,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "AntArbForhold"
+          "AntArbForholdSesong"
         ]
       }
     },
