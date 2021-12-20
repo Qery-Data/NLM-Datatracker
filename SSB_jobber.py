@@ -100,7 +100,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "Top",
-        "values": [27]
+        "values": [63]
       }
     }
   ],
@@ -114,7 +114,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df["value"].diff()
 df["endring i pst"] = df["value"].pct_change()*100
-df = df[1:26]
+df = df[1:61]
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -584,7 +584,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber kvartal sektor OWk86
+#Jobber kvartal sektor OWk86 og u4F4z
 ssburl = 'https://data.ssb.no/api/v0/no/table/11653/'
 query = {
   "query": [
@@ -646,7 +646,7 @@ riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
 date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste seks årene'
-#Update DW
+#Update DW OWk86
 url = "https://api.datawrapper.de/v3/charts/x/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -656,6 +656,23 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/OWk86/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+#Update DW u4F4z
+url = "https://api.datawrapper.de/v3/charts/x/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/u4F4z/"
 payload = {"metadata": {"describe": {"intro": date_string4}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
