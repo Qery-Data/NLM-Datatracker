@@ -833,8 +833,8 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='sektor', values='value')
-antall = df_new.iloc[:,1]
-tittel_dato = (antall.name)
+antall = df.iloc[0,3]
+tittel_dato = (antall)
 df_new.to_csv('data/SSB_jobber_fylke_andel.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -842,7 +842,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Etter fylke' + 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Etter fylke. ' + 'Tall for ' + date_string2 + '.kvartal ' + date_string3
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/XW1f9/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
