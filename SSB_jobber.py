@@ -753,7 +753,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '.' + 'Endring fra samme kvartal året før i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -764,6 +764,95 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Andel jobber fylke XW1f9
+ssburl = 'https://data.ssb.no/api/v0/no/table/11653/'
+query = {
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "vs:FylkerFastIkkeFast",
+        "values": [
+          "30",
+          "03",
+          "34",
+          "38",
+          "42",
+          "11",
+          "46",
+          "15",
+          "50",
+          "18",
+          "54"
+        ]
+      }
+    },
+    {
+      "code": "Sektor",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "ABDEFX",
+          "6500",
+          "6100"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForhold"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [1
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='region', columns='sektor', values='value')
+antall = df_new.iloc[:,1]
+tittel_dato = (antall.name)
+df_new.to_csv('data/SSB_jobber_fylke_kvartal.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Etter fylke' + 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/XW1f9/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/XW1f9/"
 payload = {"metadata": {"describe": {"intro": date_string4}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
