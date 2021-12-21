@@ -753,7 +753,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '.' + 'Endring fra samme kvartal året før i antall og prosent.'
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra samme kvartal året før i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -842,7 +842,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Etter fylke. ' + 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/XW1f9/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
