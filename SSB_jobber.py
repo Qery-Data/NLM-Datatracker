@@ -835,7 +835,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='sektor', values='value')
 antall = df_new.iloc[:,1]
 tittel_dato = (antall.name)
-df_new.to_csv('data/SSB_jobber_fylke_kvartal.csv', index=True)
+df_new.to_csv('data/SSB_jobber_fylke_andel.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
