@@ -680,3 +680,94 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+# Antall jobber fylke
+ssburl = 'https://data.ssb.no/api/v0/no/table/11657/'
+query = {
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "vs:FylkerFastIkkeFast",
+        "values": [
+          "30",
+          "03",
+          "34",
+          "38",
+          "42",
+          "11",
+          "46",
+          "15",
+          "50",
+          "18",
+          "54"
+        ]
+      }
+    },
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00-99"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForhold"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [5]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='region', columns='kvartal', values='value')
+df_new2 = df_new.iloc[:,[0,4]]
+Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
+import pandas as pd
+df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+antall = df_new2.iloc[:,1]
+tittel_dato = (antall.name)
+df_new3.to_csv('data/SSB_jobber_fylke_kvartal.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
