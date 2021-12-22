@@ -1674,6 +1674,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
+          "95",
           "2",
           "25",
           "49"
