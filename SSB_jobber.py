@@ -2,7 +2,7 @@ from pyjstat import pyjstat
 import requests
 import os
 import json
-import datetime
+from datetime import datetime
 import locale
 import pandas as pd
 locale.setlocale(locale.LC_TIME, 'nb_NO')
