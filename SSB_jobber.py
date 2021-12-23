@@ -54,7 +54,7 @@ df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
-oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/nzFUM/"
@@ -119,7 +119,7 @@ df = df[1:62]
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
-oppdatert_dato = datetime.datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/t8TNy/"
