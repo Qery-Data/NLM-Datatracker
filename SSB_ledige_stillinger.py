@@ -185,7 +185,8 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + 'I pst. av totalt antall stillinger.'
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string5 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' I pst. av totalt antall stillinger.'
 #Update DW IwkIc
 url = "https://api.datawrapper.de/v3/charts/IwkIc/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -213,7 +214,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/EpqxL/"
-payload = {"metadata": {"describe": {"intro": date_string4}}}
+payload = {"metadata": {"describe": {"intro": date_string5}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
