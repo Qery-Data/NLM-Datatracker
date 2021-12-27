@@ -283,7 +283,7 @@ df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,8,11,12]]
 Endring_siste_kvartal = df_new2.iloc[:,3] - df_new2.iloc[:,2]
 Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
-Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
+Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,0]
 df_new3 = pd.concat([Endring_siste_kvartal, Endring_12, Endring_3], axis=1, keys=['Endring siste kvartal','Endring siste år','Endring siste 3 år'])
 df_new3.to_csv('data/SSB_ledige_stillinger_naring_endring_antall.csv', index=True)
 antall = df_new2.iloc[:,3]
@@ -374,7 +374,7 @@ df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,8,11,12]]
 Endring_siste_kvartal = df_new2.iloc[:,3] - df_new2.iloc[:,2]
 Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
-Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
+Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,0]
 df_new3 = pd.concat([Endring_siste_kvartal, Endring_12, Endring_3], axis=1, keys=['Endring siste kvartal','Endring siste år','Endring siste 3 år'])
 df_new3.to_csv('data/SSB_ledige_stillinger_naring_endring_andel.csv', index=True)
 antall = df_new2.iloc[:,3]
@@ -385,7 +385,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Sammenlignet med tall for ' + date_string2 + '.kvartal ' + date_string3 + " Endring i prosentpoeng."
+date_string4 = 'Sammenlignet med tall for ' + date_string2 + '.kvartal ' + date_string3 + ". Endring i prosentpoeng."
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/pALkV/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
