@@ -22,8 +22,8 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
-#Update DW IwkIc
+date_string4 = 'Sist oppdatert med tall for ' + date_string2 + '.kvartal ' + date_string3
+#Update DW QeY5e
 url = "https://api.datawrapper.de/v3/charts/QeY5e/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
