@@ -312,3 +312,94 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Endring i andel ledige stillinger etter næring pALkV
+ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
+query = {
+  "query": [
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "vs:NACE2007ledstillNN3",
+        "values": [
+          "01-03",
+          "05-09",
+          "10-33",
+          "35-39",
+          "41-43",
+          "45-47",
+          "49-53",
+          "55-56",
+          "58-63",
+          "64-66",
+          "68",
+          "69-75",
+          "77-82",
+          "84",
+          "85",
+          "86",
+          "87",
+          "88",
+          "90-93",
+          "94-96"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "LedigeStillingerPros"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [13]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
+df_new2 = df_new.iloc[:,[0,8,11,12]]
+Endring_siste_kvartal = df_new2.iloc[:,3] - df_new2.iloc[:,2]
+Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
+Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
+df_new3 = pd.concat([Endring_siste_kvartal, Endring_12, Endring_3], axis=1, keys=['Endring siste kvartal','Endring siste år','Endring siste 3 år'])
+df_new3.to_csv('data/SSB_ledige_stillinger_naring_endring_andel.csv', index=True)
+antall = df_new2.iloc[:,3]
+tittel_dato = (antall.name)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Sammenlignet med tall for ' + date_string2 + '.kvartal ' + date_string3 + " Endring i prosentpoeng."
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/pALkV/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/pALkV/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
