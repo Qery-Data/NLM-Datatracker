@@ -1,7 +1,15 @@
 from pyjstat import pyjstat
 import requests
 import os
+import json
+from datetime import datetime
+import locale
+import pandas as pd
+locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
+access_token = os.getenv('DW_TOKEN')
+
+#Antall ledige stillinger ZARIr
 ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
 query = {
   "query": [
@@ -40,6 +48,21 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_ledige_stillinger.csv', index=False)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/ZARIr/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Andel ledige stillinger I4KmU
 ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
 query = {
   "query": [
@@ -78,6 +101,21 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_ledige_stillinger_pst.csv', index=False)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/I4KmU/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Næring ledige stillinger antall IwkIc og andel EpqxL
 ssburl = 'https://data.ssb.no/api/v0/no/table/11587/'
 query = {
   "query": [
@@ -115,10 +153,8 @@ query = {
         "filter": "item",
         "values": [
           "LedigeStillinger",
-          "StillingerEndring",
-          "LedigeStillingerPros",
-          "StillingerEndrPros"
-        ]
+          "LedigeStillingerPros"
+          ]
       }
     },
     {
@@ -141,3 +177,46 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_ledige_stillinger_naring.csv', index=True)
+antall = df.iloc[0,2]
+tittel_dato = (antall)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Sist publiserte data: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + 'I pst. av totalt antall stillinger.'
+#Update DW IwkIc
+url = "https://api.datawrapper.de/v3/charts/IwkIc/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/IwkIc/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+#Update DW EpqxL
+url = "https://api.datawrapper.de/v3/charts/EpqxL/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/EpqxL/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)

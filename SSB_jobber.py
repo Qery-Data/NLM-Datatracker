@@ -208,7 +208,6 @@ Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
 df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, Endring_5], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
-from datetime import datetime
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
@@ -287,7 +286,6 @@ Endring_5_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100
 df_new4 = pd.concat([antall, Endring_mnd_pst, Endring_12_pst, Endring_covid, Endring_3_pst, Endring_5_pst], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
 df_new4.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
 date_string = tittel_dato.replace("M","")
-from datetime import datetime
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
@@ -383,7 +381,6 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
 df_new.to_csv('data/SSB_jobber_naring_utvikling.csv', index=True)
 #Update DW
-from datetime import datetime
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
@@ -553,7 +550,6 @@ df_new3.to_csv('data/SSB_jobber_naring_detaljert.csv', index=True)
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
 date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
-from datetime import datetime
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
 date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
