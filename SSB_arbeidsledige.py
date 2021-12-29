@@ -151,7 +151,8 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "15-74"
+          "15-24",
+          "25-74"
         ]
       }
     },
