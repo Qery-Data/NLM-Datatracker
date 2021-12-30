@@ -40,6 +40,13 @@ query = {
           "AntArbForholdSesong"
         ]
       }
+    },
+        {
+      "code": "Tid",
+      "selection": {
+        "filter": "Top",
+        "values": [63]
+      }
     }
   ],
   "response": {
