@@ -1187,7 +1187,10 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra samme kvartal året før i antall og prosent.'
+date_int5 = int(date_string3)
+date_int6 = date_int5 - 1
+date_string7 = str(date_int6)
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra ' + date_string2 + '.kvartal ' + date_string7 + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/uRrvM/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -1266,7 +1269,10 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ', ' + 'og samme kvartal de siste fem årene.'
+date_int5 = int(date_string3)
+date_int6 = date_int5 - 1
+date_string7 = str(date_int6)
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra ' + date_string2 + '.kvartal ' + date_string7 + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/PpYio/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -1349,7 +1355,10 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra samme kvartal året før i antall og prosent.'
+date_int5 = int(date_string3)
+date_int6 = date_int5 - 1
+date_string7 = str(date_int6)
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra ' + date_string2 + '.kvartal ' + date_string7 + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/3UutT/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
