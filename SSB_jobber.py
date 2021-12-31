@@ -138,7 +138,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Jobber antall per næring og endring per næring S6QM8
+#Jobber antall per næring og endring per næring Wf007/R5eLv/S6QM8
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
   "query": [
@@ -217,31 +217,12 @@ df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
+date_string4 = 'Sammenlignet med sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW S6QM8
-url = "https://api.datawrapper.de/v3/charts/S6QM8/"
-payload = {
-    "metadata": {"describe": {"intro": date_string3}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/S6QM8/"
-payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+
 #Update DW Wf007 (Totalt antall sist mnd)
 url = "https://api.datawrapper.de/v3/charts/Wf007/"
 payload = {
@@ -263,6 +244,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
 #Update DW R5eLv (Endring fra feb.20)
 url = "https://api.datawrapper.de/v3/charts/R5eLv/"
 payload = {
@@ -284,6 +266,29 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Update DW S6QM8 (Tabell endring i antall)
+url = "https://api.datawrapper.de/v3/charts/S6QM8/"
+payload = {
+    "metadata": {"describe": {"intro": date_string4}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/S6QM8/"
+payload = {
+    "metadata": {"annotate": {"notes": riktig_dato}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
 
 #Jobber pst endring per næring 96bMF
 Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
