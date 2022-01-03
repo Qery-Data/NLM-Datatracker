@@ -9,7 +9,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Antall arbeidsledige oF7tM
+#Andel sysselsatte wo6kb
 ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
 query = {
   "query": [
@@ -36,15 +36,15 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause2"
+          "SysselsetteP1"
         ]
       }
     },
     {
       "code": "Tid",
       "selection": {
-        "filter": "top",
-        "values": [60]
+        "filter": "all",
+        "values": ["*"]
       }
     }
   ],
@@ -56,13 +56,13 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df.to_csv('data/SSB_arbeidsledige.csv', index=False)
+df.to_csv('data/SSB_sysselsatte_pst.csv', index=False)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/oF7tM/"
+url = "https://api.datawrapper.de/v3/charts/wo6kb/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -71,133 +71,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Andel arbeidsledige bd63e
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
-query = {
-  "query": [
-    {
-      "code": "Kjonn",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "0"
-        ]
-      }
-    },
-    {
-      "code": "Alder",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "15-74"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "Arbeidslause4"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [61]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df.to_csv('data/SSB_arbeidsledige_pst.csv', index=False)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW
-url = "https://api.datawrapper.de/v3/charts/bd63e/"
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
-#Andel arbeidsledige etter alder UE4Of
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
-query = {
-  "query": [
-    {
-      "code": "Kjonn",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "0"
-        ]
-      }
-    },
-    {
-      "code": "Alder",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "15-24",
-          "25-74"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "Arbeidslause4"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [61]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='alder', columns='måned', values='value')
-df_new.to_csv('data/SSB_arbeidsledige_alder_pst.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW
-url = "https://api.datawrapper.de/v3/charts/UE4Of/"
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
-#Andel arbeidsledige etter kjønn qGKlW
+#Andel sysselsatte etter kjønn AE6ZC
 ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
 query = {
   "query": [
@@ -225,15 +99,15 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "SysselsetteP1"
         ]
       }
     },
     {
       "code": "Tid",
       "selection": {
-        "filter": "top",
-        "values": [61]
+        "filter": "all",
+        "values": ["*"]
       }
     }
   ],
@@ -246,13 +120,13 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='kjønn', columns='måned', values='value')
-df_new.to_csv('data/SSB_arbeidsledige_kjønn_pst.csv', index=True)
+df_new.to_csv('data/SSB_sysselsatte_kjønn_pst.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/qGKlW/"
+url = "https://api.datawrapper.de/v3/charts/AE6ZC/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
