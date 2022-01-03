@@ -59,3 +59,22 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Andel sysselsatte CS8Rb
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T')
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='time', columns='geo', values='value')
+df_new.to_csv('data/Eurostat_sysselsatte.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/CS8Rb/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
