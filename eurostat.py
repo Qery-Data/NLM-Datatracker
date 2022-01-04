@@ -136,6 +136,25 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Andel midlertidig ansatte siste kvartal ohRTM
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_pt_q?wstatus=EMP_TEMP&s_adj=SA&sex=T&age=Y15-74&unit=PC_EMP&geo=AT&geo=BE&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE&time=2021Q2')
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='time', columns='geo', values='value')
+df_new.to_csv('data/Eurostat_sysselsatte__midlertidig_siste_kvartal.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/ohRTM/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
 
 
 
