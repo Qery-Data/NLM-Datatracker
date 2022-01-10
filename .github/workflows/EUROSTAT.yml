@@ -2,7 +2,7 @@ name: Eurostat
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "5 7 * * *"
+    - cron: "5 10 * * *"
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
