@@ -90,6 +90,25 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Andel ungdomsarbeidsledige 5pqI6
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T')
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='time', columns='geo', values='value')
+df_new.to_csv('data/Eurostat_arbeidsledighet_unge.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/5pqI6/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
 #Andel sysselsatte menn sist kvartal YpL1m
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&s_adj=SA&sex=M&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE&time=2021Q2')
 type(dataset)
