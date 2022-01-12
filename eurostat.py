@@ -166,6 +166,32 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-
-
+#Andel deltid sist år Eurostat lmKlf
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
+type(dataset)
+df = dataset.write('dataframe')
+dato = df.iloc[0,4]
+df_new = df.pivot(index='geo', columns='sex', values='value')
+df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + antall
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/lmKlf/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/lmKlf/"
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
