@@ -326,7 +326,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-# Antall jobber fylke CM5AJ
+# Antall jobber fylke vuoG4
 ssburl = 'https://data.ssb.no/api/v0/no/table/11657/'
 query = {
   "query": [
@@ -402,7 +402,7 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. ' + 'Endring fra ' + date_string2 + '.kvartal ' + date_string7 + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
+url = "https://api.datawrapper.de/v3/charts/vuoG4/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -410,7 +410,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/CM5AJ/"
+url = "https://api.datawrapper.de/v3/charts/vuoG4/"
 payload = {"metadata": {"describe": {"intro": date_string4}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
