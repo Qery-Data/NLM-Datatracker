@@ -176,7 +176,7 @@ df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + antall
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + dato
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/lmKlf/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
