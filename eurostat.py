@@ -187,7 +187,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/lmKlf/"
-payload = {"metadata": {"describe": {"intro": date_string4}}}
+payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
