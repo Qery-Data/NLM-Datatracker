@@ -80,9 +80,18 @@ df_new.to_csv('data/Eurostat_sysselsatte.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/CS8Rb/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/CS8Rb/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -102,7 +111,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/UG10W/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -133,7 +142,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/YpL1m/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -164,7 +173,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/ZERuL/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
