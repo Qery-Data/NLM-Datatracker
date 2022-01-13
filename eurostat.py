@@ -99,6 +99,10 @@ df_new.to_csv('data/Eurostat_sysselsatte_andel_siste_kvartal.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato = df.iloc[0,6]
+kvartal = dato[5]
+aar = dato[0:4]
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/UG10W/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -108,9 +112,17 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/UG10W/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte menn sist kvartal YpL1m
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=1&s_adj=SA&sex=M&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&gep=PL&geo=PT&geo=SE')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=1&s_adj=SA&sex=M&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE')
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='time', columns='geo', values='value')
@@ -118,9 +130,21 @@ df_new.to_csv('data/Eurostat_sysselsatte__menn_andel_siste_kvartal.csv', index=T
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato = df.iloc[0,6]
+kvartal = dato[5]
+aar = dato[0:4]
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/YpL1m/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/YpL1m/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -137,9 +161,21 @@ df_new.to_csv('data/Eurostat_sysselsatte__kvinner_andel_siste_kvartal.csv', inde
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato = df.iloc[0,6]
+kvartal = dato[5]
+aar = dato[0:4]
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/ZERuL/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/ZERuL/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -156,9 +192,21 @@ df_new.to_csv('data/Eurostat_sysselsatte__midlertidig_siste_kvartal.csv', index=
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato = df.iloc[0,6]
+kvartal = dato[5]
+aar = dato[0:4]
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/ohRTM/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/ohRTM/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
