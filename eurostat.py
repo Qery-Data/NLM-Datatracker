@@ -252,3 +252,32 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Arbeidstid per uke avtalt/vanlig NUF70
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhuis?lastTimePeriod=1&sex=T&worktime=TOTAL&wstatus=EMP&isco08=TOTAL')
+type(dataset)
+df = dataset.write('dataframe')
+df.to_csv('data/Eurostat_arbeidstid_avtalt_siste_kvartal.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato = df.iloc[0,6]
+kvartal = dato[5]
+aar = dato[0:4]
+date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + ' ' + aar
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/NUF70/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/NUF70/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
