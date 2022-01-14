@@ -383,8 +383,8 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='region', columns='kvartal', values='value')
-df_new.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
+df_new0 = df.pivot(index='region', columns='kvartal', values='value')
+df_new = df_new0.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
 df_new2 = df_new.iloc[:,[0,4]]
 Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
 Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
