@@ -256,6 +256,8 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhuis?lastTimePeriod=1&sex=T&worktime=TOTAL&wstatus=EMP&isco08=TOTAL')
 type(dataset)
 df = dataset.write('dataframe')
+df.replace('Czechia','Czech Rep.')
+df.replace('Germany (until 1990 former territory of the FRG)','Germany')
 df.to_csv('data/Eurostat_arbeidstid_avtalt_siste_kvartal.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
