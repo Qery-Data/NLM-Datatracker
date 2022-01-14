@@ -260,7 +260,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal ' + date_string3 + ', ' + 'og ' + date_string2 + '.kvartal de siste ti årene.'
+date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal de siste ti årene.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/BOz7R/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -341,7 +341,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal ' + date_string3 + ', ' + 'og ' + date_string2 + '.kvartal de siste ti årene.'
+date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal de siste ti årene.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/smYJ7/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -425,7 +425,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal ' + date_string3 + ', ' + 'og ' + date_string2 + '.kvartal de siste ti årene.'
+date_string4 = 'I prosent av de sysselsatte. Tall for ' + date_string2 + '.kvartal de siste ti årene.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/EYDM9/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
