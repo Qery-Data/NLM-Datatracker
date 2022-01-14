@@ -281,10 +281,11 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,8,11,12]]
+Siste_kvartal = df_new.iloc[:,12]
 Endring_siste_kvartal = df_new2.iloc[:,3] - df_new2.iloc[:,2]
 Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
 Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,0]
-df_new3 = pd.concat([Endring_siste_kvartal, Endring_12, Endring_3], axis=1, keys=['Endring siste kvartal','Endring siste år','Endring siste 3 år'])
+df_new3 = pd.concat([Siste_kvartal, Endring_siste_kvartal, Endring_12, Endring_3], axis=1, keys=['Siste kvartal','Endring siste kvartal','Endring siste år','Endring siste 3 år'])
 df_new3.to_csv('data/SSB_ledige_stillinger_naring_endring_antall.csv', index=True)
 antall = df_new2.iloc[:,3]
 tittel_dato = (antall.name)
