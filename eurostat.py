@@ -173,7 +173,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/ZERuL/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -193,7 +193,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel midlertidig ansatte siste kvartal ohRTM
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_pt_q?wstatus=EMP_TEMP&lastTimePeriod=1&s_adj=SA&sex=T&age=Y15-74&unit=PC_EMP&geo=AT&geo=BE&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_pt_q?wstatus=EMP_TEMP&lastTimePeriod=1&s_adj=NSA&sex=T&age=Y15-74&unit=PC_SAL&geo=AT&geo=BE&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE')
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='time', columns='geo', values='value')
