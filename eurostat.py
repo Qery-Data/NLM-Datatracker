@@ -264,7 +264,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer (20-64 år). Tall for ' + kvartal + ' .kvartal' + aar
+date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + ' .kvartal' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/NUF70/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -295,7 +295,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte (20-64 år). Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte. Tall for ' + kvartal + '.kvartal ' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/Av2Nk/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
