@@ -264,7 +264,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + ' ' + aar
+date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + ' kvartal' + aar
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/NUF70/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
