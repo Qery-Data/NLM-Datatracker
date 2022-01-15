@@ -351,7 +351,78 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-
+#Gjennomsnittlig arbeidstid QFijl
+ssburl = 'https://data.ssb.no/api/v0/no/table/09790/'
+query = {
+  "query": [
+    {
+      "code": "Kjonn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "Yrke",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0-9",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "Andre"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "ArbeidstidPerUke"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [10
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='yrke', columns='år', values='value')
+df_new.to_csv('data/SSB_arbeidstid_snitt_yrker.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')+ ' *Prosess- og maskinoperatører, transportarbeidere mv. '
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/QFijl/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #END#
 
