@@ -26,15 +26,7 @@ dato_oppdatert2=str(dato_oppdatert)
 df_new.to_csv('data/OECD_produktivitet_time.csv', index=True)
 date_string = 'BNP per utførte timeverk i USD*. Tall for ' + dato_oppdatert2
 
-#Update DW 
-url = "https://api.datawrapper.de/v3/charts/kCW5D/"
-payload = {"metadata": {"describe": {"intro": date_string}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+
 #END
 
 
