@@ -21,9 +21,10 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+C
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Country', columns='Subject', values='Value')
-dato_oppdatert=str(df.iloc[0,7])
+dato_oppdatert=(df.iloc[0,7])
+dato_oppdatert2=str(dato_oppdatert)
 df_new.to_csv('data/OECD_produktivitet_time.csv', index=True)
-date_string = 'BNP per utførte timeverk i USD*. Tall for ' + dato_oppdatert
+date_string = 'BNP per utførte timeverk i USD*. Tall for ' + dato_oppdatert2
 
 #Update DW 
 url = "https://api.datawrapper.de/v3/charts/kCW5D/"
