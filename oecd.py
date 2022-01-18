@@ -53,6 +53,15 @@ df_index = df_new.div(df_new.iloc[0]).mul(100)
 df_index.insert(8, 'Fastlands-Norge',[100,103,105.8,109.8,113.3,117.3,119.4,120.6,119.3,119,120.9,120.9,123.3,125.8,126.8,127.5,127.6,129.6,130.5,131.3,130.8], True)
 df_index.to_csv('data/OECD_produktivitet_time_utvikling.csv', index=True)
 
+# Produktivitet per time index 2015 N1JHC
+oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+OECD+USA.T_GDPHRS_V.2015Y/all?startTime=2015'
+resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+df=pd.read_csv(io.StringIO(resultat.text))
+df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_index = df_new.div(df_new.iloc[0]).mul(100)
+df_index.insert(8, 'Fastlands-Norge',[117.3,119.4,120.6,119.3,119,120.9,120.9,123.3,125.8,126.8,127.5,127.6,129.6,130.5,131.3,130.8], True)
+df_index.to_csv('data/OECD_produktivitet_time_utvikling.csv', index=True)
+
 # Produktivitet per time vekst per tiår LIOyE
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+FRA+DEU+ISL+IRL+ITA+JPN+KOR+NLD+NOR+PRT+ESP+SWE+GBR+USA+G7.T_GDPHRS_V.GRW/all?startTime=1970'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
