@@ -35,7 +35,6 @@ query = {
           "pub2X69_75",
           "pub2X77_82",
           "nr23_6fn",
-          "nrimark"
         ]
       }
     },
@@ -92,7 +91,6 @@ query = {
           "pub2X69_75",
           "pub2X77_82",
           "nr23_6fn",
-          "nrimark"
         ]
       }
     },
