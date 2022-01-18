@@ -44,21 +44,14 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-# Produktivitet per time index 2015 N1JHC
-oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+G-7+OECD+BRA+RUS+ZAF.T_GDPHRS_V.2015Y/all?startTime=2015'
+# Produktivitet per time index 2000 N1JHC
+oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+OECD+USA.T_GDPHRS_V.2015Y/all?startTime=2000'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
-df_new.to_csv('data/OECD_produktivitet_time_utvikling.csv', index=True)
-#Update DW 
-url = "https://api.datawrapper.de/v3/charts/N1JHC/"
-payload = {"metadata": {"describe": {"intro": date_string}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+df_index = df_new.div(df_new.iloc[0]).mul(100)
+df_index.insert(8, 'Fastlands-Norge',[100,103,105.8,109.8,113.3,117.3,119.4,120.6,119.3,119,120.9,120.9,123.3,125.8,126.8,127.5,127.6,129.6,130.5,131.3,130.8], True)
+df_index.to_csv('data/OECD_produktivitet_time_utvikling.csv', index=True)
 
 # Produktivitet per time vekst per tiår LIOyE
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+FRA+DEU+ISL+IRL+ITA+JPN+KOR+NLD+NOR+PRT+ESP+SWE+GBR+USA+G7.T_GDPHRS_V.GRW/all?startTime=1970'
