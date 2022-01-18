@@ -16,7 +16,7 @@ df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='TIME', columns='Country', values='Value')
 df_new.to_csv('data/OECD_arbeidstid_aarligsnitt.csv', index=True)
 
-# Produktivitet per time indeks kCW5D (BNP) og k3zon (BNI)
+# Produktivitet per time sammenligning sist år kCW5D (BNP) og k3zon (BNI)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LTU+LVA+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+G-7+OECD+NMEC+BRA+CHN+CRI+IND+IDN+RUS+ZAF+BRIICS.T_GDPHRS+T_GNIHRS.CPC/all?startTime=2020'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
@@ -44,7 +44,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-# Produktivitet per time utvikling N1JHC
+# Produktivitet per time index 2015 N1JHC
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+G-7+OECD+BRA+RUS+ZAF.T_GDPHRS_V.2015Y/all?startTime=2015'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
@@ -59,6 +59,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+
+# Produktivitet per time vekst per tiår LIOyE
+oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+FRA+DEU+ISL+IRL+ITA+JPN+KOR+NLD+NOR+PRT+ESP+SWE+GBR+USA+G7.T_GDPHRS_V.GRW/all?startTime=1970'
+resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+df=pd.read_csv(io.StringIO(resultat.text))
+df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new.to_csv('data/OECD_produktivitet_time_sammenligning_tiår.csv', index=True)
 #END
 
 
