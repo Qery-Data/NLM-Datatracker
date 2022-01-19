@@ -24,7 +24,7 @@ df_new = df.pivot(index='Country', columns='Subject', values='Value')
 dato_oppdatert=(df.iloc[0,7])
 dato_oppdatert2=str(dato_oppdatert)
 df_new.to_csv('data/OECD_produktivitet_time.csv', index=True)
-date_string = 'BNP per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
+date_string = 'Bruttonasjonalprodukt (BNP) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
 date_string2 = 'Bruttonasjonalinntekt (BNI) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
 #Update DW 
 url = "https://api.datawrapper.de/v3/charts/kCW5D/"
@@ -58,8 +58,8 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_new.insert(8, 'Fastlands-Norge',[127.5,127.6,129.6,130.5,131.3,130.8], True)
 df_index = df_new.div(df_new.iloc[0]).mul(100)
-df_index.insert(8, 'Fastlands-Norge',[127.5,127.6,129.6,130.5,131.3,130.8], True)
 df_index.to_csv('data/OECD_produktivitet_time_utvikling.csv', index=True)
 
 # Produktivitet per time vekst per tiår LIOyE
