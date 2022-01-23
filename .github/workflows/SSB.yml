@@ -92,6 +92,3 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-      - name: 🍳 Update SSB arbeidsledige
-        env: 
-          DW_TOKEN: ${{ secrets.DW_TOKEN }}
