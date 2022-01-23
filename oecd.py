@@ -84,4 +84,18 @@ df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
 df_new.to_csv('data/OECD_organisasjonsgrad_rangering.csv', index=True)
 
+#Kollektiv forhandlingsrett
+oecd_url='https://stats.oecd.org/SDMX-JSON/data/CBC/AUT+BEL+CAN+DNK+EST+FIN+DEU+ISL+IRL+ITA+JPN+MEX+NLD+NOR+ESP+SWE+GBR+USA+OTO.A.PCT/all?startTime=2000'
+resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+df=pd.read_csv(io.StringIO(resultat.text))
+df_new = df.pivot(index='Country', columns='Year', values='Value')
+df_new['last_value'] = df_new.ffill(axis=1).iloc[:, -1] 
+df_new.to_csv('data/OECD_organisasjonsgrad_kollektiv_forhandlingsrett.csv', index=True)
+
+#Kollektiv forhandlingsrett Skandinavia
+oecd_url='https://stats.oecd.org/SDMX-JSON/data/CBC/DNK+NOR+SWE+OTO.A.PCT/all?startTime=2000'
+resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+df=pd.read_csv(io.StringIO(resultat.text))
+df_new = df.pivot(index='Country', columns='Year', values='Value')
+df_new.to_csv('data/OECD_organisasjonsgrad_kollektiv_forhandlingsrett_norden.csv', index=True)
 
