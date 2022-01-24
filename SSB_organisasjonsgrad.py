@@ -111,7 +111,55 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Endring i antall yrkesaktivemedlemmer i hovedsammenslutningene VuaM6
+#Medlemsutvikling i hovedsammenslutningene VuaM6
+#Medlemmer totalt
+ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
+query = {
+  "query": [
+    {
+      "code": "NHO",
+      "selection": {
+        "filter": "item",
+        "values":[
+          "00",
+          "01",
+          "12",
+          "20",
+          "25",
+          "35"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          5
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='Landsforening', columns='år', values='value')
+#Medlemsutvikling i hovedsammenslutningene VuaM6
+#Yrkesaktive totalt
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
 query = {
   "query": [
@@ -155,20 +203,26 @@ query = {
 resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='Landsforening', columns='år', values='value')
-df_new['Sist_aar'] = df_new.iloc[:,4]
-df_new['Endring sist år'] = (df_new.iloc[:,4]-df_new.iloc[:,3])/df_new.iloc[:,3]*100
-df_new['Endring siste fem år'] = (df_new.iloc[:,4]-df_new.iloc[:,0])/df_new.iloc[:,0]*100
-df_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_medlemmer_yrkesaktive_hoved.csv', index=True)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
+df2_new=df2_new.rename(columns={"2016": "2016Y", "2017": "2017Y", "2018": "2018Y","2019": "2019Y", "2020": "2020Y"})
+df3_new=pd.concat([df_new, df2_new], axis=1)
+df3_new['Sist_aar_m']=df3_new.iloc[:,4]
+df3_new['Sist_aar_y']=df3_new.iloc[:,9]
+df3_new['Endring_m']=df3_new.iloc[:,4]-df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,9]-df3_new.iloc[:,8]
+df3_new['Endring_m_pst']=(df3_new.iloc[:,4]-df3_new.iloc[:,3])/df3_new.iloc[:,3]*100
+df3_new['Endring_y_pst']=(df3_new.iloc[:,9]-df3_new.iloc[:,8])/df3_new.iloc[:,8]*100
+df3_new['Endring_m_pst_5']=(df3_new.iloc[:,4]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Endring_y_pst_5']=(df3_new.iloc[:,9]-df3_new.iloc[:,5])/df3_new.iloc[:,5]*100
+df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_medlemmer_yrkesaktive_hoved.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato_sist=df_new.columns[4]
-dato_nest_sist=df_new.columns[3]
-dato_fem_aar=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + '-' + dato_sist + ' og fra ' + dato_fem_aar + '-' + dato_sist + ' i prosent.'
+dato_sist=df_new.columns[1]
+dato_nest_sist=df_new.columns[0]
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/VuaM6/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -186,8 +240,8 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-#Utvikling LO 
-#Medlemsutvikling i LO
+
+#Medlemsutvikling i LO Zub1a
 #Medlemmer totalt
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
 query = {
@@ -229,10 +283,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -288,10 +341,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -375,9 +427,9 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -426,10 +478,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -512,10 +563,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -564,10 +614,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -651,10 +700,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -704,10 +752,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -796,10 +843,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
@@ -854,10 +900,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2019",
-          "2020"
+          2
         ]
       }
     }
