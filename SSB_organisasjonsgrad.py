@@ -111,7 +111,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Endring i antall yrkesaktivemedlemmer i arbeidstakerorganisasjoner VuaM6
+#Endring i antall yrkesaktivemedlemmer i hovedsammenslutningene VuaM6
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
 query = {
   "query": [
@@ -320,7 +320,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/Zub1a/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -458,7 +458,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/oDPyE/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -596,7 +596,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/mhydR/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -736,7 +736,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/fyMbm/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
@@ -886,7 +886,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
-date_string = 'Antall per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 url = "https://api.datawrapper.de/v3/charts/86GF4/"
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
