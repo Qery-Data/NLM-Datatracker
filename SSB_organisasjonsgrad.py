@@ -848,13 +848,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020"
+          5
         ]
       }
     }
@@ -928,13 +924,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020"
+          5
         ]
       }
     }
@@ -1056,6 +1048,317 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Medlemsutvikling tabell alle arbeidsgiverorganisasjoner 6lFAy (bedrifter) zbqaq (tilsatte)
+#Bedrifter 
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "02",
+          "08",
+          "42",
+          "03",
+          "04",
+          "06",
+          "09",
+          "73",
+          "05",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Bedrifter"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+#Tilsatte
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "02",
+          "08",
+          "42",
+          "03",
+          "04",
+          "06",
+          "09",
+          "73",
+          "05",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
+df3_new=pd.concat([df_new, df2_new], axis=1)
+df3_new['Sist_aar_b']=df3_new.iloc[:,1]
+df3_new['Sist_aar_t']=df3_new.iloc[:,3]
+df3_new['Endring_b']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
+df3_new['Endring_t']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
+df3_new['Endring_b_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Endring_t_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjonser_tabell_alle.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/6lFAy/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/zbqaq/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Medlemsutvikling tabell NHO S3VWa (bedrifter) 6m3dp (tilsatte)
+#Bedrifter 
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "18",
+          "19",
+          "20",
+          "21",
+          "62",
+          "69",
+          "32",
+          "63",
+          "27",
+          "58",
+          "22"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Bedrifter"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+#Tilsatte
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "18",
+          "19",
+          "20",
+          "21",
+          "62",
+          "69",
+          "32",
+          "63",
+          "27",
+          "58",
+          "22"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
+df3_new=pd.concat([df_new, df2_new], axis=1)
+df3_new['Sist_aar_b']=df3_new.iloc[:,1]
+df3_new['Sist_aar_t']=df3_new.iloc[:,3]
+df3_new['Endring_b']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
+df3_new['Endring_t']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
+df3_new['Endring_b_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Endring_t_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjonser_tabell_NHO.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/S3VWa/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/6m3dp/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
 #***
