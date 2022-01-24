@@ -197,6 +197,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
+          "01",
           "53",
           "07",
           "02",
@@ -255,6 +256,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
+          "01",
           "53",
           "07",
           "02",
