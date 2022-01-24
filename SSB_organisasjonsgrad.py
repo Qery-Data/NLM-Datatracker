@@ -111,6 +111,252 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Medlemsutvikling i alle hoved og forbund b2xCT
+#Medlemmer totalt
+ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
+query = {
+  "query": [
+    {
+      "code": "NHO",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00",
+          "01",
+          "53",
+          "07",
+          "02",
+          "04",
+          "51",
+          "56",
+          "05",
+          "50",
+          "58",
+          "09",
+          "62",
+          "64",
+          "40",
+          "06",
+          "08",
+          "69",
+          "12",
+          "18",
+          "13",
+          "14",
+          "41",
+          "42",
+          "46",
+          "68",
+          "19",
+          "44",
+          "20",
+          "52",
+          "55",
+          "45",
+          "59",
+          "24",
+          "77",
+          "22",
+          "23",
+          "21",
+          "25",
+          "27",
+          "31",
+          "54",
+          "29",
+          "34",
+          "28",
+          "63",
+          "33",
+          "32",
+          "26",
+          "35",
+          "72",
+          "74",
+          "38",
+          "70",
+          "57",
+          "37",
+          "60",
+          "76",
+          "61",
+          "75",
+          "39",
+          "73",
+          "65",
+          "67"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='Landsforening', columns='år', values='value')
+#Medlemsutvikling i alle hoved og forbund b2xCT
+#Yrkesaktive totalt
+ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
+query = {
+  "query": [
+    {
+      "code": "NHO",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00",
+          "01",
+          "53",
+          "07",
+          "02",
+          "04",
+          "51",
+          "56",
+          "05",
+          "50",
+          "58",
+          "09",
+          "62",
+          "64",
+          "40",
+          "06",
+          "08",
+          "69",
+          "12",
+          "18",
+          "13",
+          "14",
+          "41",
+          "42",
+          "46",
+          "68",
+          "19",
+          "44",
+          "20",
+          "52",
+          "55",
+          "45",
+          "59",
+          "24",
+          "77",
+          "22",
+          "23",
+          "21",
+          "25",
+          "27",
+          "31",
+          "54",
+          "29",
+          "34",
+          "28",
+          "63",
+          "33",
+          "32",
+          "26",
+          "35",
+          "72",
+          "74",
+          "38",
+          "70",
+          "57",
+          "37",
+          "60",
+          "76",
+          "61",
+          "75",
+          "39",
+          "73",
+          "65",
+          "67"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "YrkesaktivMedl"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [
+          2
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
+df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
+df3_new=pd.concat([df_new, df2_new], axis=1)
+df3_new['Sist_aar_m']=df3_new.iloc[:,1]
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
+df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.to_csv('data/SSB_organisasjonsgrad_medlemmer_alle_hoved_og_forbund.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+dato_nest_sist=df_new.columns[0]
+date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/b2xCT/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/b2xCT/"
+payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+
+# ***
 #Medlemsutvikling i hovedsammenslutningene VuaM6
 #Medlemmer totalt
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
@@ -158,6 +404,7 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
+
 #Medlemsutvikling i hovedsammenslutningene VuaM6
 #Yrkesaktive totalt
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
@@ -950,7 +1197,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-# ***
+
 #Utvikling i antall medlemmer i arbeidstakerorganisasjoner l44VI
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
 query = {
