@@ -355,6 +355,365 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
+#Medlemsutvikling i alle arbeidsgiverorganisasjoner totalt s7168
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "08",
+          "42",
+          "12",
+          "03",
+          "04",
+          "44",
+          "06",
+          "07",
+          "09",
+          "73",
+          "05",
+          "10",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "16",
+          "46",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new.loc['Totalt']= df_new.sum(skipna=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new2=df_new.loc[['Totalt'],:]
+
+#Medlemsutvikling i alle arbeidsgiverorganisasjoner tilsatte s7168
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "08",
+          "42",
+          "12",
+          "03",
+          "04",
+          "44",
+          "06",
+          "07",
+          "09",
+          "73",
+          "05",
+          "10",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "16",
+          "46",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new.loc['Totalt']= df_new.sum(skipna=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new_totalt=df_new.loc[['Totalt'],:]
+
+#Medlemsutvikling i alle arbeidsgiverorganisasjoner bedrifter s7168
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "08",
+          "42",
+          "12",
+          "03",
+          "04",
+          "44",
+          "06",
+          "07",
+          "09",
+          "73",
+          "05",
+          "10",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "16",
+          "46",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Bedrifter"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df2_new.loc['Totalt']= df2_new.sum(skipna=True)
+df2_new.loc['Andre'] = df2_new.loc[['Totalt']].sum(skipna=True)-df2_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df2_new_totalt=df2_new.loc[['Totalt'],:]
+df_new_final=pd.concat([df_new_totalt, df2_new_totalt], axis=0)
+df_new_final.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_totalt.csv', index=True)
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/s7168/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Medlemsutvikling i alle arbeidsgiverorganisasjoner tilsatte cvRck
+ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+query = {
+  "query": [
+    {
+      "code": "ArbGivere",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "08",
+          "42",
+          "12",
+          "03",
+          "04",
+          "44",
+          "06",
+          "07",
+          "09",
+          "73",
+          "05",
+          "10",
+          "11",
+          "59",
+          "13",
+          "14",
+          "15",
+          "16",
+          "46",
+          "18"
+        ]
+      }
+    },
+    {
+      "code": "ArbForhold",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ansatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new.loc['Totalt']= df_new.sum(skipna=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','Finans Norge','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
+df_new2.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW
+url = "https://api.datawrapper.de/v3/charts/cvRck/"
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ***
 #Medlemsutvikling i hovedsammenslutningene VuaM6
