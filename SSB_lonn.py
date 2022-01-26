@@ -90,6 +90,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år',columns='statistikkvariabel',values='value')
 df_new['Reallønn']=df_new['Årslønn']-df_new['Konsumprisindeksen (KPI)']
+df_new = df_new.iloc[:-4 , :]
 df_new.to_csv('data/SSB_lonn_aar_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
