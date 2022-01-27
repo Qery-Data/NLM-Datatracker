@@ -107,6 +107,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
+
+
+
+
+
+
 #Gjennomsnittlig kontantlønn utvikling totalt Eq2Ke
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
 query = {
