@@ -51,7 +51,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/lDM1n/"
+chartid = 'lDM1n'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -59,6 +60,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Utvikling i antall yrkesaktivemedlemmer i arbeidstakerorganisasjoner sM8OE
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
@@ -102,7 +110,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/sM8OE/"
+chartid = 'sM8OE'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -110,7 +119,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i LO Zub1a og Første side på hovedtabell FwTac (første side)
 
@@ -246,7 +261,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/Zub1a/"
+chartid = 'Zub1a'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -254,7 +270,16 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/FwTac/"
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+
+chartid = 'FwTac'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -262,6 +287,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i YS oDPyE
 #Medlemmer totalt
@@ -383,7 +415,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/oDPyE/"
+chartid = 'oDPyE'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -391,7 +424,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i Unio mhydR
 #Medlemmer totalt
@@ -512,7 +551,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/mhydR/"
+chartid = 'mhydR'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -520,7 +560,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i Akademikerne fyMbm
 #Medlemmer totalt
@@ -643,7 +689,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/fyMbm/"
+chartid = 'fyMbm'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -651,6 +698,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i andre arbeidstakerorganisasjoner 86GF4
 #Medlemmer totalt
@@ -783,7 +837,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/86GF4/"
+chartid = '86GF4'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -791,6 +846,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i alle arbeidsgiverorganisasjoner s7168
 #Tilsatte
@@ -946,7 +1008,8 @@ df2_new_totalt=df2_new.loc[['Totalt'],:]
 df_new_final=pd.concat([df_new_totalt, df2_new_totalt], axis=0)
 df_new_final.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_totalt.csv', index=True)
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/s7168/"
+chartid = 's7168'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -954,7 +1017,16 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/te3SI/"
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+
+chartid = 'te3SI'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -962,6 +1034,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i alle arbeidsgiverorganisasjoner tilsatte cvRck
 ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
@@ -1043,7 +1122,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/cvRck/"
+chartid = 'cvRck'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1051,6 +1131,14 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+
 
 #Medlemsutvikling i alle arbeidsgiverorganisasjoner bedrifter 4Wu2r
 ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
@@ -1132,7 +1220,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/4Wu2r/"
+chartid = '4Wu2r'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1140,7 +1229,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 
 #Medlemsutvikling tabell alle arbeidsgiverorganisasjoner 6lFAy (bedrifter) zbqaq (tilsatte)
@@ -1286,7 +1381,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/6lFAy/"
+chartid = '6lFAy'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1294,7 +1390,16 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/zbqaq/"
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+
+chartid = 'zbqaq'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1302,6 +1407,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling tabell NHO S3VWa (bedrifter) 6m3dp (tilsatte)
 #Bedrifter 
@@ -1438,7 +1550,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/S3VWa/"
+chartid = 'S3VWa'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1446,15 +1559,30 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/6m3dp/"
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
 headers = {
     "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
+    "Accept": "*/*"
     }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 
+response = requests.request("POST", url, headers=headers)
+
+chartid = '6m3dp'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 #***
 #Medlemsutvikling i hovedsammenslutningene VuaM6
@@ -1571,7 +1699,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/VuaM6/"
+chartid = 'VuaM6'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1579,7 +1708,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 #Utvikling i antall medlemmer i arbeidstakerorganisasjoner l44VI
 ssburl = 'https://data.ssb.no/api/v0/no/table/03546/'
@@ -1624,7 +1759,8 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/l44VI/"
+chartid = 'l44VI'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1632,7 +1768,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
 
 
 #Medlemsutvikling i alle hoved og forbund b2xCT
@@ -1862,7 +2004,8 @@ dato_sist=df_new.columns[1]
 dato_nest_sist=df_new.columns[0]
 date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
-url = "https://api.datawrapper.de/v3/charts/b2xCT/"
+chartid = 'b2xCT'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1870,4 +2013,10 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
+response = requests.request("POST", url, headers=headers)
