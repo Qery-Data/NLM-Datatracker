@@ -44,7 +44,9 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "all",
-        "values": ["*"]
+        "values": [
+          "*"
+        ]
       }
     }
   ],
