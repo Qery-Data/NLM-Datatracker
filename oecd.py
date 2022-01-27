@@ -26,8 +26,9 @@ dato_oppdatert2=str(dato_oppdatert)
 df_new.to_csv('data/OECD_produktivitet_time.csv', index=True)
 date_string = 'Bruttonasjonalprodukt (BNP) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
 date_string2 = 'Bruttonasjonalinntekt (BNI) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
-#Update DW 
-url = "https://api.datawrapper.de/v3/charts/kCW5D/"
+#Update DW
+chartid = 'kCW5D'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"describe": {"intro": date_string}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -35,7 +36,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/k3zon/"
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"describe": {"intro": date_string2}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -43,6 +44,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
 
 # Produktivitet per time index 2000 N1JHC
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+OECD+USA.T_GDPHRS_V.2015Y/all?startTime=2000'
