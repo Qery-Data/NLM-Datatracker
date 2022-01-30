@@ -1224,7 +1224,7 @@ df_new.to_csv('data/SSB_lonn_kvinner_menn_totalt.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '. Gjennomsnittlig månedslønn per heltidsekvivalent.'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'GDCRK'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
