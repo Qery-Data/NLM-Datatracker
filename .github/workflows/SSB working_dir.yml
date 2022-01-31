@@ -1,8 +1,6 @@
-name: SSB
+name: SSB_working dir
 on: 
   workflow_dispatch:
-  schedule:
-    - cron: "5 7 * * *"
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
