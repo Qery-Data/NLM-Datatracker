@@ -1,6 +1,8 @@
-name: SSB_working dir
+name: SSB Jobber
 on: 
   workflow_dispatch:
+  schedule:
+    - cron: "5 7 * * *"
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -18,10 +20,10 @@ jobs:
       - name: 🌍 SetLocale
         run: |
           sudo locale-gen nb_NO
-      - name: 🍳 Update SSB Lønn
+      - name: 🍳 Update SSB jobber
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
-        run: python SSB_lonn.py
+        run: python SSB_jobber.py
       - name: 🚀 Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
