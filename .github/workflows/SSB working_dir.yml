@@ -18,7 +18,6 @@ jobs:
       - name: 🌍 SetLocale
         run: |
           sudo locale-gen nb_NO
-
       - name: 🍳 Update SSB Lønn
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}

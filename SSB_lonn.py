@@ -122,7 +122,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 #Update DW
 chartid = '1R4EQ'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '<br>*Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men ekslusiv overtidstillegg. '
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '*Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men ekslusiv overtidstillegg. '
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -140,7 +140,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 chartid = 'k0DNV'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '<br>*Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '*Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -631,7 +631,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df_new.columns[4])
-date_string = 'Tall for ' + dato +'.'
+date_string = 'Gjennomsnittlig månedslønn. Tall for ' + dato +'.'
 #Update DW
 chartid = 'CTQph'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1151,7 +1151,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig for enkelte sektorer og yrkesgrupper på grunn av at tall ikke er mulig å oppgi eller det ikke kan vises på grunn av konfidensialitetshensyn.'
 dato=str(df.iloc[0,6])
-date_string = 'Tall for ' + dato +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
+date_string = 'Gjennomsnittlig månedslønn etter sektor. Tall for ' + dato +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
 #Update DW
 chartid = 'Gfff7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1470,7 +1470,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df.iloc[4,6])
-date_string = 'Tall for ' + dato +'.' + ' Etter ulike beregningsmåter:'
+date_string = 'Tall for ' + dato +'.' + ' Kvinners lønn som andel av menns lønn etter ulike beregningsmåter:'
 #Update DW 1
 chartid = 'Fn94r'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2572,5 +2572,148 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)   
+
+
+#Lønnsforskjeller etter utdanningsnivå og næring 55TV7
+ssburl = 'https://data.ssb.no/api/v0/no/table/11420/'
+query = {
+  "query": [
+    {
+      "code": "MaaleMetode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "02"
+        ]
+      }
+    },
+    {
+      "code": "Sektor",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "ALLE"
+        ]
+      }
+    },
+    {
+      "code": "UtdanNivaa",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Ialt",
+          "1-2",
+          "3-5",
+          "6",
+          "7-8"
+        ]
+      }
+    },
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "vs:NACELonnalle03",
+        "values": [
+          "01-03",
+          "05-09",
+          "10-33",
+          "35-39",
+          "41-43",
+          "45-47",
+          "49-53",
+          "55-56",
+          "58-63",
+          "64-66",
+          "68-75",
+          "77-82",
+          "84",
+          "85",
+          "86-88",
+          "90-99",
+          "00.0"
+        ]
+      }
+    },
+    {
+      "code": "Kjonn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "ArbeidsTid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Manedslonn"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2020"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='næring (SN2007)', columns='utdanningsnivå', values='value')
+df_new = df_new.reindex(columns=['I alt', 'Grunnskoleutdanning', 'Videregående utdanning', 'Universitets- og høgskoleutdanning, lavere nivå', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning'])
+df_new.rename(columns={'Grunnskoleutdanning':'Grunnskole','Videregående utdanning': 'Videregående skole','Universitets- og høgskoleutdanning, lavere nivå':'Universitet eller høyskole til og med 4 år', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning':'Universitet eller høyskole, lengre enn 4 år'}, inplace=True)
+df_new.to_csv('data/SSB_lonn_kjonn_utdanning_naring.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato=str(df.iloc[0,7])
+date_string = 'Gjennomsnittlig månedslønn i ulike næringer fordelt etter utdanningsnivå.' + ' Tall for ' + dato +'.'
+#Update DW
+chartid = '55TV7'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)   
+
+
 
 #***
