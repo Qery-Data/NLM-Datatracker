@@ -2574,7 +2574,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)   
 
 
-#Lønnsforskjeller etter utdanningsnivå og næring 55TV7
+#Lønnsforskjeller etter utdanningsnivå og næring 55TV7 (næring) og cu52g (nivå)
 ssburl = 'https://data.ssb.no/api/v0/no/table/11420/'
 query = {
   "query": [
@@ -2713,7 +2713,30 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)   
-
+#Update DW
+chartid = 'cu52g'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)   
 
 
 #***
