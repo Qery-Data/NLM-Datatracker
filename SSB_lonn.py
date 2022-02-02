@@ -122,7 +122,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 #Update DW
 chartid = '1R4EQ'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '*Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men ekslusiv overtidstillegg. '
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men ekslusiv overtidstillegg. '
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -140,7 +140,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 chartid = 'k0DNV'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '*Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -3598,7 +3598,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df.iloc[0,7])
-date_string = 'Median månedslønn etter bostedskommune. Tall for ' + dato +'.'
+date_string = 'Median månedslønn. Tall for ' + dato +'.'
 #Update DW
 chartid = 'hls1I'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
