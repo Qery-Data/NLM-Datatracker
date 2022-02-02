@@ -3597,7 +3597,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato=str(df.iloc[0,8])
+dato=str(df.iloc[0,7])
 date_string = 'Median månedslønn etter bostedskommune. Tall for ' + dato +'.'
 #Update DW
 chartid = 'hls1I'
@@ -4544,7 +4544,7 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato=str(df.iloc[0,8])
+dato=str(df.iloc[0,7])
 date_string = 'Median månedslønn etter bostedskommune. Tall for ' + dato +'.'
 #Update DW
 chartid = 'f4DFw'
