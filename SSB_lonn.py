@@ -122,7 +122,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 #Update DW
 chartid = '1R4EQ'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men ekslusiv overtidstillegg. '
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg. '
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
