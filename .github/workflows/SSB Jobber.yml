@@ -1,8 +1,10 @@
 name: SSB Jobber
 on: 
   workflow_dispatch:
-  schedule:
-    - cron: "5 7 * * *"
+  workflow_run:
+    workflows: [SSB Arbeidstid]
+    types:
+      - completed
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

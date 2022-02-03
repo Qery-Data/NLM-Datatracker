@@ -1,8 +1,10 @@
 name: SSB Ledige stillinger
 on: 
   workflow_dispatch:
-  schedule:
-    - cron: "5 7 * * *"
+  workflow_run:
+    workflows: [SSB Jobber]
+    types:
+      - completed
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
