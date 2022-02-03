@@ -631,7 +631,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df_new.columns[4])
-date_string = 'Gjennomsnittlig månedslønn. Tall for ' + dato +'.'
+date_string = 'Gjennomsnittlig månedslønn. Tall for ' + dato +'.' + ' Tabellen kan sorteres ved å klikke på overskriftene.'
 #Update DW
 chartid = 'CTQph'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
