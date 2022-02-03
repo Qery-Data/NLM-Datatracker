@@ -482,9 +482,8 @@ query = {
     {
       "code": "Region",
       "selection": {
-        "filter": "vs:KommunerFastIkkeFast",
+        "filter": "agg_single:KommSummerSa",
         "values": [
-          "0301",
           "3001",
           "3002",
           "3003",
@@ -536,6 +535,7 @@ query = {
           "3052",
           "3053",
           "3054",
+          "0301",
           "3401",
           "3403",
           "3405",
@@ -839,8 +839,7 @@ query = {
           "5441",
           "5442",
           "5443",
-          "5444",
-          "9999g"
+          "5444"
         ]
       }
     },
@@ -866,7 +865,9 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "top",
-        "values": [5]
+        "values": [
+        5
+        ]
       }
     }
   ],
