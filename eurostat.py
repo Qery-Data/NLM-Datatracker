@@ -22,7 +22,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Sist oppdatert med tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Sist oppdatert med tall for ' + date_string2 + '.kvartal ' + date_string3 + '.'
 #Update DW QeY5e
 chartid = 'QeY5e'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -143,7 +143,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'UG10W'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -182,7 +182,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'YpL1m'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -221,7 +221,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'ZERuL'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -260,7 +260,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'ohRTM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -297,7 +297,7 @@ df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + dato
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + dato + '.'
 #Update DW
 chartid = 'lmKlf'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -336,7 +336,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + '.kvartal ' + aar +'.'
+date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'NUF70'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
