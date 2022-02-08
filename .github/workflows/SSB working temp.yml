@@ -1,4 +1,4 @@
-name: SSB
+name: SSB working dir
 on: 
   workflow_dispatch:
   schedule:
