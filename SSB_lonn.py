@@ -2680,6 +2680,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='utdanningsnivå', values='value')
 df_new = df_new.reindex(columns=['I alt', 'Grunnskoleutdanning', 'Videregående utdanning', 'Universitets- og høgskoleutdanning, lavere nivå', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning'])
 df_new.rename(columns={'Grunnskoleutdanning':'Grunnskole','Videregående utdanning': 'Videregående skole','Universitets- og høgskoleutdanning, lavere nivå':'Universitet eller høyskole til og med 4 år', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning':'Universitet eller høyskole, lengre enn 4 år'}, inplace=True)
+df_new.drop(('Uoppgitt'), inplace=True)
 df_new.to_csv('data/SSB_lonn_utdanning_naring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
