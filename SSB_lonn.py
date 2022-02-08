@@ -625,7 +625,9 @@ df_new = df.pivot(index='yrke',columns='år',values='value')
 df_new['Endring sist år'] = (df_new.iloc[:,4]-df_new.iloc[:,3])/df_new.iloc[:,3]*100
 df_new['Endring siste 5 år'] = (df_new.iloc[:,4]-df_new.iloc[:,0])/df_new.iloc[:,0]*100
 df_new.dropna(inplace=True)
-df_new.to_csv('data/SSB_lonn_yrke.csv', index=True)
+df_new['Sist år'] = (df_new.iloc[:,4])
+df_new2 = df_new[['Sist år', 'Endring sist år', 'Endring siste 5 år']].copy()
+df_new2.to_csv('data/SSB_lonn_yrke.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')

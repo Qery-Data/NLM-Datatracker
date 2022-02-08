@@ -232,7 +232,7 @@ df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, E
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
+date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
 date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med:'
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -448,7 +448,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = 'vuoG4'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -896,7 +896,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = 'mJgIS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -999,7 +999,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = 'wWRNG'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1102,7 +1102,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = 'zIE1z'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1205,7 +1205,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = 'uRrvM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1389,7 +1389,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
 #Update DW
 chartid = '3UutT'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1661,10 +1661,10 @@ df_new3 = pd.concat([antall, Endring_12, Endring_3, Endring_5], axis=1, keys=['A
 df_new3.to_csv('data/SSB_jobber_naring_detaljert.csv', index=True)
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3 + '.'
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3 + '.'
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
@@ -1760,7 +1760,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste seks årene'
+date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste seks årene' + '.'
 #Update DW OWk86
 chartid = 'OWk86'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1883,7 +1883,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '.'
 #Update DW
 chartid = 'XW1f9'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
