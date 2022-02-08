@@ -1466,7 +1466,7 @@ df4_new.to_csv('data/SSB_lonn_kjonn_andel_utvikling.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg. Merk at y-aksen er avkortet.'
 dato=str(df.iloc[4,6])
 date_string = 'Tall for ' + dato +'.' + ' Kvinners lønn som andel av menns lønn etter ulike beregningsmåter:'
 #Update DW 1
@@ -2662,9 +2662,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2020"
+          1
         ]
       }
     }
@@ -4497,9 +4497,9 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
+        "filter": "top",
         "values": [
-          "2020"
+          1
         ]
       }
     }
