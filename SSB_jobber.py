@@ -66,6 +66,13 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+verdi_tittel = df_new.iloc[-2,0] /1000000
+verdi_tittel_oppdatert = ("{:.2f}".format(verdi_tittel))
+mnd = df_new.index.values[-2]
+oppdatert_mnd = datetime.strptime(mnd, '%YM%m')
+riktig_mnd = 'Tall for ' + oppdatert_mnd.strftime ('%B %Y')  + '. Sesongjusterte tall, alle næringer.'
+tittel = '<b style="background:#5A7EE0; color:white; padding:1px 4px">' + verdi_tittel_oppdatert + ' millioner jobber' + '</b>'
+
 #Update DW
 chartid = 'nzFUM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -83,6 +90,32 @@ headers = {
     }
 
 response = requests.request("POST", url, headers=headers)
+
+#Update DW
+chartid = 'rZH2u'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {
+    "metadata": {"describe": {"title": tittel}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+chartid = 'rZH2u'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {
+    "metadata": {"describe": {"intro": riktig_mnd}}
+    }
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
 
 #Jobber mnd endring i antall t8TNy
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
