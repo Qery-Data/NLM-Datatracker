@@ -70,7 +70,6 @@ verdi_tittel = df_new.iloc[-2,0] /1000000
 verdi_tittel_oppdatert = ("{:.2f}".format(verdi_tittel))
 mnd = df_new.index.values[-2]
 oppdatert_mnd = datetime.strptime(mnd, '%YM%m')
-riktig_mnd = 'Tall for ' + oppdatert_mnd.strftime ('%B %Y')  + '. Sesongjusterte tall, alle næringer.'
 tittel = '<b style="background:#5A7EE0; color:white; padding:1px 4px">' + verdi_tittel_oppdatert + ' millioner jobber' + '</b>'
 
 #Update DW
@@ -96,18 +95,6 @@ chartid = 'rZH2u'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
     "metadata": {"describe": {"title": tittel}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
-chartid = 'rZH2u'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": riktig_mnd}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -166,7 +153,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df["value"].diff()
 df["endring i pst"] = df["value"].pct_change()*100
-df = df[1:62]
+df = df[37:62]
 df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
