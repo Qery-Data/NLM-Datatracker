@@ -10,7 +10,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Lønnsutviklingen, nominelt og reallønn, 1R4EQ og k0DNV
-ssburl = 'https://data.ssb.no/api/v0/no/table/09786/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/09785/'
 query = {
   "query": [
     {
@@ -33,37 +33,6 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel',values='value')
-ssburl = 'https://data.ssb.no/api/v0/no/table/11449/'
-query = {
-  "query": [
-    {
-      "code": "Maaned",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "90"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "all",
-        "values": [
-          "*"
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='år', columns='statistikkvariabel',values='value')
 ssburl = 'https://data.ssb.no/api/v0/no/table/03014/'
 query = {
   "query": [
@@ -102,21 +71,15 @@ query = {
 resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
-df3 = dataset.write('dataframe')
-df3_new = df3.pivot(index='år', columns='statistikkvariabel', values='value')
-df4_new = pd.concat([df_new,df2_new.reindex(df_new.index),df3_new.reindex(df_new.index)], axis=1)
-df4_new['Lønn*KPI']= df4_new['Årslønn, påløpt (1 000 kr)'] / (df4_new['Konsumprisindeks (1998=100)']/100)
-df4_new['Lønn*KPI>2016']= df4_new['Årslønn, påløpt (1 000 kr)'] / (df4_new['Konsumprisindeks (2015=100)']/100)
-df4_new['Real=<16'] = df4_new['Lønn*KPI'].pct_change(periods=1)*100
-df4_new['Real>16'] = df4_new['Lønn*KPI>2016'].pct_change(periods=1)*100
-df4_new.iat[47,6] = df4_new.iat[47,7]
-df4_new.iat[48,6] = df4_new.iat[48,7]
-df4_new.iat[49,6] = df4_new.iat[49,7]
-df4_new.iat[50,6] = df4_new.iat[50,7]
-df5_new = df4_new.iloc[:,[0,1,6]]
-df5_new.rename(columns = {'Real=<16':'Reallønn. Endring fra året før i prosent'}, inplace=True)
-df6_new = df5_new.iloc[30:]
-df6_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
+df2 = dataset.write('dataframe')
+df2_new = df2.pivot(index='år', columns='statistikkvariabel', values='value')
+df3_new = pd.concat([df_new,df2_new.reindex(df_new.index)], axis=1)
+df3_new['Lønn*KPI>2016']= df3_new['Årslønn, påløpt (1 000 kr)'] / (df3_new['Konsumprisindeks (2015=100)']/100)
+df3_new['Real>16'] = df3_new['Lønn*KPI>2016'].pct_change(periods=1)*100
+df3_new.rename(columns = {'Real>16':'Reallønn. Endring fra året før i prosent'}, inplace=True)
+df4_new = df3_new.iloc[:,[0,1,4]]
+df5_new = df4_new.iloc[2:]
+df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
