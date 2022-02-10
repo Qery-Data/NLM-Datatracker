@@ -33,6 +33,9 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel',values='value')
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 ssburl = 'https://data.ssb.no/api/v0/no/table/03014/'
 query = {
   "query": [
@@ -80,9 +83,6 @@ df3_new.rename(columns = {'Real>16':'Reallønn. Endring fra året før i prosent
 df4_new = df3_new.iloc[:,[0,1,4]]
 df5_new = df4_new.iloc[2:]
 df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 #Update DW
 chartid = '1R4EQ'
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg. '
