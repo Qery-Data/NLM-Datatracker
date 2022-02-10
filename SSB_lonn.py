@@ -84,6 +84,24 @@ df4_new = df3_new.iloc[:,[0,1,4]]
 df5_new = df4_new.iloc[2:]
 df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
 #Update DW
+chartid = 'EPHjU'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Gjennomsnittlig årlig nominell lønn fra Nasjonalregnskapet. Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg.'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+
 chartid = '1R4EQ'
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg. '
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
