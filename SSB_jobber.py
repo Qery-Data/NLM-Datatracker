@@ -59,6 +59,9 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
+mnd = df_new.index.values[-1]
+oppdatert_mnd = datetime.strptime(mnd, '%YM%m')
+riktig_mnd = 'Det var xxx jobber i ' + oppdatert_mnd.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
