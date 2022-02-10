@@ -81,7 +81,7 @@ df3_new['Lønn*KPI>2016']= df3_new['Årslønn, påløpt (1 000 kr)'] / (df3_new[
 df3_new['Real>16'] = df3_new['Lønn*KPI>2016'].pct_change(periods=1)*100
 df3_new.rename(columns = {'Real>16':'Reallønn. Endring fra året før i prosent'}, inplace=True)
 df4_new = df3_new.iloc[:,[0,1,4]]
-df5_new = df4_new.iloc[2:]
+df5_new = df4_new.iloc[3:]
 df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
 #Update DW
 chartid = 'EPHjU'
