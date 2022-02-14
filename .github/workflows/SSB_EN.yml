@@ -1,4 +1,4 @@
-name: SSB
+name: SSB_EN
 on: 
   workflow_dispatch:
   schedule:
