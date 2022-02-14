@@ -58,12 +58,12 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
-df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
+df_new = df.pivot(index='month', columns='contents', values='value')
+df_new.to_csv('data_EN/SSB_jobs_total.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'Hs2JG'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
