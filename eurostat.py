@@ -334,13 +334,11 @@ df_new = df.pivot(index='geo', columns='time', values = 'value')
 EU_snitt = str(df_new.at['European Union - 27 countries (from 2020)', '2021Q3'])
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + '.kvartal ' + aar + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
-df_new = df.pivot(index='geo', columns='time', values = 'value')
-EU_snitt = df_new.at['European Union - 27 countries (from 2020)', '2021Q3']
+date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'NUF70'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -376,11 +374,11 @@ df_new = df.pivot(index='geo', columns='time', values = 'value')
 EU_snitt = str(df_new.at['European Union - 27 countries (from 2020)', '2021Q3'])
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 dato = df.iloc[0,6]
 kvartal = dato[5]
 aar = dato[0:4]
-date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte. Tall for ' + kvartal + '.kvartal ' + aar + '.' + aar + '.' + ' Gjennomsnitt for EU: ' + 'EU_snitt' + '.'
+date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte. Tall for ' + kvartal + '.kvartal ' + aar + '.'
 #Update DW
 chartid = 'Av2Nk'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
