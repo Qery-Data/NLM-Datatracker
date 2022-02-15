@@ -59,18 +59,10 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
-mnd = df_new.index.values[-1]
-oppdatert_mnd = datetime.strptime(mnd, '%YM%m')
-riktig_mnd = 'Det var xxx jobber i ' + oppdatert_mnd.strftime ('%B %Y')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-verdi_tittel = df_new.iloc[-2,0] /1000000
-verdi_tittel_oppdatert = ("{:.2f}".format(verdi_tittel))
-mnd = df_new.index.values[-2]
-oppdatert_mnd = datetime.strptime(mnd, '%YM%m')
-tittel = '<b style="background:#5A7EE0; color:white; padding:1px 4px">' + verdi_tittel_oppdatert + ' millioner jobber' + '</b>'
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y' + 'Y-aksen er avkortet.')
 
 #Update DW
 chartid = 'nzFUM'
@@ -89,20 +81,6 @@ headers = {
     }
 
 response = requests.request("POST", url, headers=headers)
-
-#Update DW
-chartid = 'rZH2u'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"title": tittel}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
 
 #Jobber mnd endring i antall t8TNy
 ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
@@ -139,7 +117,9 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "Top",
-        "values": [63]
+        "values": [
+          63
+          ]
       }
     }
   ],
@@ -151,10 +131,10 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df["endring"] = df["value"].diff()
-df["endring i pst"] = df["value"].pct_change()*100
-df = df[37:62]
-df.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
+df["endring"] = df.loc[:,"value"].diff()
+df["endring i pst"] = df.loc[:,"value"].pct_change()*100
+df_new = df[37:62]
+df_new.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
@@ -228,7 +208,7 @@ query = {
       "selection": {
         "filter": "top",
         "values": [
-          "62"
+          62
         ]
       }
     }
@@ -255,7 +235,7 @@ df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, E
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
+date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') 
 date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med:'
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
