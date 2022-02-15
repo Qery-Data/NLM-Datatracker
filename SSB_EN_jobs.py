@@ -374,3 +374,105 @@ headers = {
     }
 
 response = requests.request("POST", url, headers=headers)
+
+# Jobs by county Tr5SU
+ssburl = 'https://data.ssb.no/api/v0/en/table/11657/'
+query = {
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "vs:FylkerFastIkkeFast",
+        "values": [
+          "30",
+          "03",
+          "34",
+          "38",
+          "42",
+          "11",
+          "46",
+          "15",
+          "50",
+          "18",
+          "54"
+        ]
+      }
+    },
+    {
+      "code": "NACE2007",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00-99"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AntArbForhold"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [5]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new0 = df.pivot(index='region', columns='quarter', values='value')
+df_new = df_new0.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
+df_new2 = df_new.iloc[:,[0,4]]
+Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change in persons', 'Change in percent'])
+antall = df_new2.iloc[:,1]
+tittel_dato = (antall.name)
+df_new3.to_csv('data_EN/SSB_jobs_county_quarter.csv', index=True)
+json_object = json.loads(resultat.text)
+oppdatert = json_object["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+date_string2 = tittel_dato[-1:]
+date_string3 = tittel_dato[0:4]
+date_int5 = int(date_string3)
+date_int6 = date_int5 - 1
+date_string7 = str(date_int6)
+date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' ' + 'compared with Q' + date_string2 + ' ' + date_string7 + '.'
+#Update DW
+chartid = 'Tr5SU'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string4}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
