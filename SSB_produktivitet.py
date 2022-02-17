@@ -134,7 +134,7 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df.iloc[0,2])
-date_string = 'Bruttoprodukt per utførte timeverk. Tall for ' + dato +'.' 
+date_string = 'Bruttoprodukt i kroner per utførte timeverk. Tall for ' + dato +'.' 
 #Update DW
 chartid = 'gV6yJ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
