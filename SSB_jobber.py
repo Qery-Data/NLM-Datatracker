@@ -62,7 +62,7 @@ df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y' + 'Y-aksen er avkortet.')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y' + ' Y-aksen er avkortet.')
 
 #Update DW
 chartid = 'nzFUM'
