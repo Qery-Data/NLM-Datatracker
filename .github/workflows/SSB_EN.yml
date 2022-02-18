@@ -1,6 +1,10 @@
 name: SSB_EN
 on: 
   workflow_dispatch:
+  workflow_run:
+    workflows: [SSB]
+    types:
+      - completed
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
