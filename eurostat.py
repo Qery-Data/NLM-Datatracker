@@ -9,7 +9,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Andel ledige stillinger QeY5e
+#Andel ledige stillinger QeY5e (NO) and ZwZQs (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/jvs_q_nace2?s_adj=SA&lastTimePeriod=21&nace_r2=B-S&sizeclas=TOTAL&indic_em=JOBRATE&geo=FI&geo=NO&geo=SE&geo=NL&geo=DE')
 type(dataset)
 df = dataset.write('dataframe')
@@ -20,13 +20,32 @@ tittel_dato = (antall.name)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
 date_string3 = tittel_dato[0:4]
 date_string4 = 'Sist oppdatert med tall for ' + date_string2 + '.kvartal ' + date_string3 + '.'
+date_string5 = 'Last updated with data for Q' + date_string2 + ' ' + date_string3 + '.'
 #Update DW QeY5e
 chartid = 'QeY5e'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+
+response = requests.request("POST", url, headers=headers)
+#Update DW ZwZQs
+chartid = 'ZwZQs'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
