@@ -21,6 +21,7 @@ jobs:
         run: |
           sudo locale-gen nb_NO
       - name: 🍳 Update SSB ledige stillinger
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_ledige_stillinger.py
@@ -33,6 +34,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB jobber
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_jobber.py
@@ -45,6 +47,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB sysselsatte
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_sysselsatte.py
@@ -57,6 +60,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB produktivitet
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_produktivitet.py
@@ -69,6 +73,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB organisasjonsgrad
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_organisasjonsgrad.py
@@ -81,6 +86,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB arbeidsledige
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_arbeidsledige.py
@@ -93,6 +99,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB Lønn
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_lonn.py
@@ -105,6 +112,7 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
       - name: 🍳 Update SSB Arbeidstid
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_arbeidstid.py
