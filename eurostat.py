@@ -60,7 +60,7 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Andel arbeidsledige wNXU5
+#Andel arbeidsledige wNXU5 (NO) and 0R3hu (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T')
 type(dataset)
 df = dataset.write('dataframe')
@@ -69,6 +69,8 @@ df_new.to_csv('data/Eurostat_arbeidsledighet.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+
 #Update DW
 chartid = 'wNXU5'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -86,8 +88,25 @@ headers = {
     }
 
 response = requests.request("POST", url, headers=headers)
+#Update DW
+chartid = '0R3hu'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 
-#Andel ungdomsarbeidsledige 5pqI6
+response = requests.request("POST", url, headers=headers)
+
+#Andel ungdomsarbeidsledige 5pqI6 (NO) and jjdYo (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T')
 type(dataset)
 df = dataset.write('dataframe')
@@ -96,6 +115,8 @@ df_new.to_csv('data/Eurostat_arbeidsledighet_unge.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+
 #Update DW
 chartid = '5pqI6'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -111,7 +132,22 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
+response = requests.request("POST", url, headers=headers)
+#Update DW
+chartid = 'jjdYo'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 response = requests.request("POST", url, headers=headers)
 
 #Andel sysselsatte CS8Rb
