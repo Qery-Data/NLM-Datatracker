@@ -277,7 +277,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'qGKlW'
-url = "https://api.datawrapper.de/v3/charts/qGKlW/"
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
