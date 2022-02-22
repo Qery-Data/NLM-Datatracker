@@ -19,14 +19,26 @@ jobs:
           python-version: '3.10'
       - name: 💿 Install Requirements
         run: pip install -r requirements.txt
-      - name: 🍳 Update SSB_EN_jobs
+      - name: 🍳 Update SSB Jobs
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_EN_jobs.py
-      - name: 🍳 Update SSB_EN_vacancies
+      - name: 🍳 Update SSB Vacancies
+        if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_EN_vacancies.py
+      - name: 🍳 Update SSB Unemployment
+        if: always()
+        env: 
+          DW_TOKEN: ${{ secrets.DW_TOKEN }}
+        run: python SSB_EN_unemployment.py
+      - name: 🍳 Update SSB Employment
+        if: always()
+        env: 
+          DW_TOKEN: ${{ secrets.DW_TOKEN }}
+        run: python SSB_EN_employment.py
       - name: 🚀 Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
