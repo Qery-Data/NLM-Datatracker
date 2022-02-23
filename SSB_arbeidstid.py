@@ -297,7 +297,7 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Andel yrke heltid deltid nVuzM
+#Andel yrke heltid kvinner og menn nVuzM
 ssburl = 'https://data.ssb.no/api/v0/no/table/09790/'
 query = {
   "query": [

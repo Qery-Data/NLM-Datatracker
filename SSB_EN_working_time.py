@@ -200,8 +200,8 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Andel yrke heltid deltid 2lEAx
-ssburl = 'https://data.ssb.no/api/v0/no/table/09790/'
+#Share working full-time and part-time industry sDD1A
+ssburl = 'https://data.ssb.no/api/v0/en/table/09790/'
 query = {
   "query": [
     {
@@ -259,16 +259,16 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='yrke', columns='statistikkvariabel', values='value')
-df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_yrker.csv', index=True)
+df_new = df.pivot(index='occupation', columns='contents', values='value')
+df_new.to_csv('data_EN/SSB_working_time_industry_full_part.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=df.iloc[0,3]
-date_string = 'Tall for ' + dato + '. Prosent av sysselsatte (15-74 år) som jobber:' 
+date_string = 'Data for ' + dato + '. Share of employed persons working:' 
 #Update DW
-chartid = '2lEAx'
+chartid = 'sDD1A'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -290,11 +290,10 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
-#Andel yrke heltid deltid nVuzM
-ssburl = 'https://data.ssb.no/api/v0/no/table/09790/'
+#Share full-time industry women and men elsZ5
+ssburl = 'https://data.ssb.no/api/v0/en/table/09790/'
 query = {
   "query": [
     {
@@ -352,16 +351,16 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='yrke', columns='kjønn', values='value')
-df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_yrker_kjonn.csv', index=True)
+df_new = df.pivot(index='occupation', columns='sex', values='value')
+df_new.to_csv('data_EN/SSB_working_time_industry_women_men_full.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=df.iloc[0,3]
-date_string = 'Tall for ' + dato + '. Prosent av sysselsatte (15-74 år) som jobber heltid etter kjønn.' 
+date_string = 'Data for ' + dato + '. Share of employed persons working:' 
 #Update DW
-chartid = 'nVuzM'
+chartid = 'elsZ5'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -383,11 +382,10 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
-#Gjennomsnittlig arbeidstid QFijl
-ssburl = 'https://data.ssb.no/api/v0/no/table/09790/'
+#Average working-time by industry 2Ca6C
+ssburl = 'https://data.ssb.no/api/v0/en/table/09790/'
 query = {
   "query": [
     {
@@ -443,14 +441,14 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='yrke', columns='år', values='value')
-df_new.to_csv('data/SSB_arbeidstid_snitt_yrker.csv', index=True)
+df_new = df.pivot(index='occupation', columns='year', values='value')
+df_new.to_csv('data_EN/SSB_working_time_industry_average_weekly.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')+ ' *Prosess- og maskinoperatører, transportarbeidere mv. '
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')+ '.'
 #Update DW
-chartid = 'QFijl'
+chartid = '2Ca6C'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -464,8 +462,8 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
+
 #END#
 
 #Andel heltid deltid kjønn OIl6d
