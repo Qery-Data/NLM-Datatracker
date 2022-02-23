@@ -474,7 +474,7 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Andel deltid sist år Eurostat lmKlf
+#Andel deltid sist år Eurostat lmKlf (NO) and cR3Tp (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
 type(dataset)
 df = dataset.write('dataframe')
@@ -484,7 +484,9 @@ df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + dato + '.'
+date_string_EN = 'As share of employed persons 15-74 years. Data for ' + dato + '.'
 #Update DW
 chartid = 'lmKlf'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -508,10 +510,33 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
+response = requests.request("POST", url, headers=headers)
+#Update DW
+chartid = 'cR3Tp'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
 response = requests.request("POST", url, headers=headers)
 
-#Arbeidstid per uke avtalt/vanlig NUF70
+#Arbeidstid per uke avtalt/vanlig NUF70 (NO) and xn9f1 (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?lastTimePeriod=1&sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL')
 type(dataset)
 df = dataset.write('dataframe')
@@ -522,10 +547,12 @@ EU_snitt = str(df_new.at['European Union - 27 countries (from 2020)', '2021Q3'])
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
 dato = df.iloc[0,7]
 kvartal = dato[5]
 aar = dato[0:4]
 date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + kvartal + '.kvartal ' + aar + '.'
+date_string_EN = 'Average number of actual weekly hours of work. Data for Q' + kvartal + ' ' + aar + '.'
 #Update DW
 chartid = 'NUF70'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -550,8 +577,32 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
+#Update DW
+chartid = 'xn9f1'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
 
-#Arbeidstid per uke avtalt/vanlig heltid Av2Nk
+#Arbeidstid per uke avtalt/vanlig heltid Av2Nk (NO) and WD0Uz (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?lastTimePeriod=1&sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL')
 type(dataset)
 df = dataset.write('dataframe')
@@ -562,10 +613,12 @@ EU_snitt = str(df_new.at['European Union - 27 countries (from 2020)', '2021Q3'])
 oppdatert = dataset["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
 dato = df.iloc[0,7]
 kvartal = dato[5]
 aar = dato[0:4]
 date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte. Tall for ' + kvartal + '.kvartal ' + aar + '.'
+date_string_EN = 'Average number of actual weekly hours of work. Data for Q' + kvartal + ' ' + aar + '.'
 #Update DW
 chartid = 'Av2Nk'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -578,6 +631,30 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"describe": {"intro": date_string}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+#Update DW
+chartid = 'WD0Uz'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": date_string_EN}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
