@@ -235,8 +235,9 @@ df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, E
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = tittel_dato.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') 
+date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med:'
+date_string5 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
@@ -246,7 +247,7 @@ riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 chartid = 'Wf007'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
-    "metadata": {"describe": {"intro": date_string3}}
+    "metadata": {"describe": {"intro": date_string5}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
