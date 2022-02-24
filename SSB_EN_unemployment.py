@@ -147,7 +147,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Unemployment by age 2AQaL
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
 query = {
   "query": [
     {
