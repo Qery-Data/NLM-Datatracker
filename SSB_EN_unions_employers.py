@@ -293,6 +293,13 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -888,7 +895,7 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Employer orgainzations members IvQAO (employees) and YWqlt (companies)
+#Employer organizations members IvQAO (employees) and YWqlt (companies)
 #Employees
 ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
@@ -1080,8 +1087,8 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Medlemsutvikling i alle arbeidsgiverorganisasjoner tilsatte cvRck
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+#Members by employer organization employees 00ZIX
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1150,17 +1157,17 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
-df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','Finans Norge','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
-df_new2.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling.csv', index=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
+df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total','Andre'],:]
+df_new2.to_csv('data_EN/SSB_unioemp_employers_organization_employees.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-chartid = 'cvRck'
+chartid = '00ZIX'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1174,12 +1181,10 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
-
-#Medlemsutvikling i alle arbeidsgiverorganisasjoner bedrifter 4Wu2r
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+#Members by employer organization companies AviZG
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1248,17 +1253,17 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
-df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','Finans Norge','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
-df_new2.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_bedrifter.csv', index=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
+df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total','Andre'],:]
+df_new2.to_csv('data_EN/SSB_unioemp_employers_organization_companies.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 #Update DW
-chartid = '4Wu2r'
+chartid = 'AviZG'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1272,13 +1277,12 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 
-#Medlemsutvikling tabell alle arbeidsgiverorganisasjoner 6lFAy (bedrifter) zbqaq (tilsatte)
-#Bedrifter 
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+#Employer organizations all Sw0Qm (companies) xdXUi (employees)
+#Companies 
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1340,9 +1344,9 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df_new = df.pivot(index="employers' associations", columns='year', values='value')
 #Tilsatte
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1404,7 +1408,7 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_b']=df3_new.iloc[:,1]
@@ -1413,13 +1417,25 @@ df3_new['Endring_b']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
 df3_new['Endring_t']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_b_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
 df3_new['Endring_t_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
-df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_tabell_alle.csv', index=True)
+df3_new.to_csv('data_EN/SSB_unionemp_unioemp_employers_table_all.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+dato_nest_sist=df_new.columns[0]
+date_string = 'Employer organizations: Number of employees in member companies in ' + dato_sist
+date_string2 = 'Employer organizations: Number of member companies in ' + dato_sist
 #Update DW
-chartid = '6lFAy'
+chartid = 'Sw0Qm'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": date_string2}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1436,7 +1452,15 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-chartid = 'zbqaq'
+chartid = 'xdXUi'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": date_string}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1453,9 +1477,9 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Medlemsutvikling tabell NHO S3VWa (bedrifter) 6m3dp (tilsatte)
-#Bedrifter 
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+#NHO 78wDf (companies) daeM5 (employees)
+#Companies 
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1513,9 +1537,9 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
-#Tilsatte
-ssburl = 'https://data.ssb.no/api/v0/no/table/03532/'
+df_new = df.pivot(index="employers' associations", columns='year', values='value')
+#Employees
+ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
     {
@@ -1573,7 +1597,7 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
+df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_b']=df3_new.iloc[:,1]
@@ -1582,13 +1606,26 @@ df3_new['Endring_b']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
 df3_new['Endring_t']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_b_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
 df3_new['Endring_t_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
-df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_tabell_NHO.csv', index=True)
+df3_new.to_csv('data_EN/SSB_unionemp_unioemp_employers_table_NHO.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Numbers not avaliable for all sectoral federations.'
+dato_sist=df_new.columns[1]
+dato_nest_sist=df_new.columns[0]
+date_string = 'NHO: Number of employees in member companies by sectoral federation in ' + dato_sist
+date_string2 = 'NHO: Number of member companies by sectoral federation in ' + dato_sist
+
 #Update DW
-chartid = 'S3VWa'
+chartid = '78wDf'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": date_string2}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1605,7 +1642,15 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-chartid = '6m3dp'
+chartid = 'daeM5'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": date_string}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
