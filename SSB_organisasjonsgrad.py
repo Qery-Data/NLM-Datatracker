@@ -1009,14 +1009,6 @@ df_new_final=pd.concat([df_new_totalt, df2_new_totalt], axis=0)
 df_new_final.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_totalt.csv', index=True)
 #Update DW
 chartid = 's7168'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -1026,20 +1018,11 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 chartid = 'te3SI'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Medlemsutvikling i alle arbeidsgiverorganisasjoner tilsatte cvRck
