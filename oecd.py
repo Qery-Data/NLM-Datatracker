@@ -133,21 +133,24 @@ resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
 df_new.to_csv('data/OECD_produktivitet_time_sammenligning_tiår.csv', index=True)
-#END
 
-#Organisasjonsgrad i Norge og Norden bNB6q og hZL09
+
+#Organisasjonsgrad i Norge og Norden bNB6q og hZL09 (NO) yfCjc og oRZAl (NO)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/TUD/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LTU+LVA+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OTO.A.PCT/all?startTime=2000'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
 df_new.to_csv('data/OECD_organisasjonsgrad_utvikling.csv', index=True)
 
-#Organisasjonsgrad rangering og sammenligning Wv6d0 og lxzk1
+#Organisasjonsgrad rangering og sammenligning Wv6d0 og lxzk1 (NO) and eJb1j og 2RX2a (EN)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/TUD/AUT+BEL+CAN+DNK+EST+FIN+DEU+ISL+IRL+ITA+JPN+MEX+NLD+NOR+ESP+SWE+GBR+USA+OTO.A.PCT/all?startTime=2000'
 resultat = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(resultat.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
 df_new.to_csv('data/OECD_organisasjonsgrad_rangering.csv', index=True)
+
+
+#End
 
 #Kollektiv forhandlingsrett
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/CBC/AUT+BEL+CAN+DNK+EST+FIN+DEU+ISL+IRL+ITA+JPN+MEX+NLD+NOR+ESP+SWE+GBR+USA+OTO.A.PCT/all?startTime=2000'
