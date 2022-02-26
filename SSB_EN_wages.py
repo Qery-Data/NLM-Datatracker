@@ -2163,8 +2163,8 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Lønnsforskjeller etter kommune hls1I (bosted) og mB28V (arbeidssted) og ZX71R (tabell)
-ssburl = 'https://data.ssb.no/api/v0/no/table/12852/'
+#Earnings differences municipalities maps LVMUL (living) and A7rRr (work) + table fU8iJ
+ssburl = 'https://data.ssb.no/api/v0/en/table/12852/'
 query = {
   "query": [
     {
@@ -2994,19 +2994,19 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='region', columns='arbeidssted/bosted', values='value')
+df_new = df.pivot(index='region', columns='place of work and place of residence', values='value')
 df_new.dropna(inplace=True)
 df_new.rename(index={'Bø (Nordland)':'Bø'},inplace=True)
 df_new.rename(index={'Deatnu - Tana':'Tana'},inplace=True)
 df_new.rename(index={'Evenes - Evenássi':'Evenes'},inplace=True)
-df_new.rename(index={'Fauske - Fuossko':'Fauske'},inplace=True)
+df_new.rename(index={'Fauske - Fuosko':'Fauske'},inplace=True)
 df_new.rename(index={'Guovdageaidnu - Kautokeino':'Kautokeino'},inplace=True)
 df_new.rename(index={'Gáivuotna - Kåfjord - Kaivuono':'Kåfjord'},inplace=True)
 df_new.rename(index={'Herøy (Møre og Romsdal)':'Herøy – Møre og Romsdal'},inplace=True)
 df_new.rename(index={'Herøy (Nordland)':'Herøy – Nordland'},inplace=True)
 df_new.rename(index={'Kárásjohka - Karasjok':'Karasjok'},inplace=True)
 df_new.rename(index={'Loabák - Lavangen':'Lavangen'},inplace=True)
-df_new.rename(index={'Oslo kommune':'Oslo'},inplace=True)
+df_new.rename(index={'Oslo municipality':'Oslo'},inplace=True)
 df_new.rename(index={'Porsanger - Porsángu - Porsanki ':'Porsanger'},inplace=True)
 df_new.rename(index={'Raarvihke - Røyrvik':'Røyrvik'},inplace=True)
 df_new.rename(index={'Sande (Møre og Romsdal)':'Sande'},inplace=True)
@@ -3016,17 +3016,17 @@ df_new.rename(index={'Storfjord - Omasvuotna - Omasvuono':'Storfjord'},inplace=T
 df_new.rename(index={'Unjárga - Nesseby':'Nesseby'},inplace=True)
 df_new.rename(index={'Våler (Innlandet)':'Våler – Innlandet'},inplace=True)
 df_new.rename(index={'Våler (Viken)':'Våler – Viken'},inplace=True)
-df_new.drop(index={'Ikke Fastlands-Norge'}, inplace=True)
-df_new.drop(('Uoppgitt kommune'), inplace=True)
-df_new.to_csv('data/SSB_lonn_kommune_median_sistaar.csv', index=True)
+df_new.drop(index={'Not mainland Norway'}, inplace=True)
+df_new.drop(('Unknown municipality'), inplace=True)
+df_new.to_csv('data_EN/SSB_earningswages_municipalities_median.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data last updated: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[0,7])
-date_string = 'Median månedslønn*. Tall for ' + dato +'.'
+date_string = 'Median average earnings (in NOK)*. Data for ' + dato +'.'
 #Update DW
-chartid = 'hls1I'
+chartid = 'fU8iJ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -3051,7 +3051,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Update DW
-chartid = 'mB28V'
+chartid = 'A7rRr'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -3075,7 +3075,7 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 #Update DW
-chartid = 'ZX71R'
+chartid = 'LVMUL'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
