@@ -1998,8 +1998,8 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Lønnsforskjeller etter utdanningsnivå og næring 55TV7 (næring) og cu52g (nivå)
-ssburl = 'https://data.ssb.no/api/v0/no/table/11420/'
+#Earnings differences by level of education and industry 
+ssburl = 'https://data.ssb.no/api/v0/en/table/11420/'
 query = {
   "query": [
     {
@@ -2103,19 +2103,19 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='næring (SN2007)', columns='utdanningsnivå', values='value')
-df_new = df_new.reindex(columns=['I alt', 'Grunnskoleutdanning', 'Videregående utdanning', 'Universitets- og høgskoleutdanning, lavere nivå', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning'])
-df_new.rename(columns={'Grunnskoleutdanning':'Grunnskole','Videregående utdanning': 'Videregående skole','Universitets- og høgskoleutdanning, lavere nivå':'Universitet eller høyskole til og med 4 år', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning':'Universitet eller høyskole, lengre enn 4 år'}, inplace=True)
-df_new.drop(('Uoppgitt'), inplace=True)
-df_new.to_csv('data/SSB_lonn_utdanning_naring.csv', index=True)
+df_new = df.pivot(index='industry (SIC2007)', columns='level of education', values='value')
+df_new = df_new.reindex(columns=['Total', 'Primary and lower secondary education', 'Upper secondary education', 'First stage of tertiary education, undergraduate level', 'First and second stage of tertiary education, graduate and postgraduate level'])
+df_new.rename(columns={'Primary and lower secondary education':'Primary and lower secondary','Upper secondary education': 'Upper secondary education','First stage of tertiary education, undergraduate level':'Undergraduate', 'First and second stage of tertiary education, graduate and postgraduate level':'Postgraduate'}, inplace=True)
+df_new.drop(('Unspecified'), inplace=True)
+df_new.to_csv('data_EN/SSB_earningswages_education_industry.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[0,7])
-date_string = 'Gjennomsnittlig månedslønn* i ulike næringer fordelt etter utdanningsnivå.' + ' Tall for ' + dato +'.'
+date_string = 'Average monthly earnings (in NOK)* in different industries by educational level.' + ' Data for ' + dato +'.'
 #Update DW
-chartid = '55TV7'
+chartid = '9Kuoo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -2139,7 +2139,7 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)   
 #Update DW
-chartid = 'cu52g'
+chartid = 'TDVPk'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -2161,7 +2161,7 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-response = requests.request("POST", url, headers=headers)   
+response = requests.request("POST", url, headers=headers)
 
 #Lønnsforskjeller etter kommune hls1I (bosted) og mB28V (arbeidssted) og ZX71R (tabell)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12852/'
