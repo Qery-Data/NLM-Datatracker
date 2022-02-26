@@ -84,7 +84,7 @@ df5_new = df4_new.iloc[3:]
 df5_new.to_csv('data_EN/SSB_earningswages_annual_real_nominal.csv', index=True)
 #Update DW
 chartid = 'xJSYI'
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Annual wage comprises the regular wage, including bonus and irregular supplements, but excluding over-time pay.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Annual earnings comprises the regular wage, including bonus and irregular supplements, but excluding over-time pay.'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
