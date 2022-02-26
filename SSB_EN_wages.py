@@ -3102,8 +3102,8 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Lønnsforskjeller etter kjønn og kommune f4DFw
-ssburl = 'https://data.ssb.no/api/v0/no/table/12852/'
+#Earnings differences women and men by municipality 1Bl4h
+ssburl = 'https://data.ssb.no/api/v0/en/table/12852/'
 query = {
   "query": [
     {
@@ -3943,19 +3943,19 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='region', columns='kjønn', values='value')
+df_new = df.pivot(index='region', columns='sex', values='value')
 df_new.dropna(inplace=True)
 df_new.rename(index={'Bø (Nordland)':'Bø'},inplace=True)
 df_new.rename(index={'Deatnu - Tana':'Tana'},inplace=True)
 df_new.rename(index={'Evenes - Evenássi':'Evenes'},inplace=True)
-df_new.rename(index={'Fauske - Fuossko':'Fauske'},inplace=True)
+df_new.rename(index={'Fauske - Fuosko':'Fauske'},inplace=True)
 df_new.rename(index={'Guovdageaidnu - Kautokeino':'Kautokeino'},inplace=True)
 df_new.rename(index={'Gáivuotna - Kåfjord - Kaivuono':'Kåfjord'},inplace=True)
 df_new.rename(index={'Herøy (Møre og Romsdal)':'Herøy – Møre og Romsdal'},inplace=True)
 df_new.rename(index={'Herøy (Nordland)':'Herøy – Nordland'},inplace=True)
 df_new.rename(index={'Kárásjohka - Karasjok':'Karasjok'},inplace=True)
 df_new.rename(index={'Loabák - Lavangen':'Lavangen'},inplace=True)
-df_new.rename(index={'Oslo kommune':'Oslo'},inplace=True)
+df_new.rename(index={'Oslo municipality':'Oslo'},inplace=True)
 df_new.rename(index={'Porsanger - Porsángu - Porsanki ':'Porsanger'},inplace=True)
 df_new.rename(index={'Raarvihke - Røyrvik':'Røyrvik'},inplace=True)
 df_new.rename(index={'Sande (Møre og Romsdal)':'Sande'},inplace=True)
@@ -3965,18 +3965,18 @@ df_new.rename(index={'Storfjord - Omasvuotna - Omasvuono':'Storfjord'},inplace=T
 df_new.rename(index={'Unjárga - Nesseby':'Nesseby'},inplace=True)
 df_new.rename(index={'Våler (Innlandet)':'Våler – Innlandet'},inplace=True)
 df_new.rename(index={'Våler (Viken)':'Våler – Viken'},inplace=True)
-df_new['Forskjell i lønn nominelt'] = df_new['Kvinner']-df_new['Menn']
-df_new['Forskjell i lønn andel'] = df_new['Kvinner']/df_new['Menn']*100
-df_new.drop(index={'Ikke Fastlands-Norge'}, inplace=True)
-df_new.to_csv('data/SSB_lonn_kommune_median_sistaar_kjonn.csv', index=True)
+df_new['Difference nominally'] = df_new['Females']-df_new['Males']
+df_new['Difference share'] = df_new['Females']/df_new['Males']*100
+df_new.drop(index={'Not mainland Norway'}, inplace=True)
+df_new.to_csv('data_EN/SSB_earningswages_municipality_median_women_men.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + '. Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[0,7])
-date_string = 'Median månedslønn* etter bostedskommune. Tall for ' + dato +'.'
+date_string = 'Median montly earnings* of those who live in the region. Data for ' + dato +'.'
 #Update DW
-chartid = 'f4DFw'
+chartid = '1Bl4h'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -3999,6 +3999,4 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
-
-
 #***
