@@ -3017,7 +3017,7 @@ df_new.rename(index={'Unjárga - Nesseby':'Nesseby'},inplace=True)
 df_new.rename(index={'Våler (Innlandet)':'Våler – Innlandet'},inplace=True)
 df_new.rename(index={'Våler (Viken)':'Våler – Viken'},inplace=True)
 df_new.drop(index={'Not mainland Norway'}, inplace=True)
-df_new.drop(('Unknown municipality'), inplace=True)
+df_new.drop(index={'Unknown municipality'}, inplace=True)
 df_new.to_csv('data_EN/SSB_earningswages_municipalities_median.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
