@@ -895,7 +895,7 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Employer organizations members IvQAO (employees) and YWqlt (companies)
+#Employer organizations members IORXb (employees) and YWqlt (companies)
 #Employees
 ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
@@ -971,7 +971,7 @@ df_new.loc['Totalt']= df_new.sum(skipna=True)
 df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
 df_new_totalt=df_new.loc[['Totalt'],:]
 
-#Bedrifter
+#Companies
 ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
 query = {
   "query": [
@@ -1053,7 +1053,7 @@ oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 
 #Update DW
-chartid = 'IvQAO'
+chartid = 'IORXb'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
