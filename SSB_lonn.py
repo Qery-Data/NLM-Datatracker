@@ -9,7 +9,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Lønnsutviklingen, nominelt og reallønn, 1R4EQ og k0DNV
+#Lønnsutviklingen, nominelt EPHjU, årlig vekst 1R4EQ og reallønnsvekst k0DNV
 ssburl = 'https://data.ssb.no/api/v0/no/table/09785/'
 query = {
   "query": [

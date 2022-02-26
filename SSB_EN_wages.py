@@ -8,8 +8,8 @@ import pandas as pd
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Lønnsutviklingen, nominelt og reallønn, 1R4EQ og k0DNV
-ssburl = 'https://data.ssb.no/api/v0/no/table/09785/'
+#Wages, nominal xJSYI, annual and real growth
+ssburl = 'https://data.ssb.no/api/v0/en/table/09785/'
 query = {
   "query": [
     {
@@ -31,11 +31,11 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='år', columns='statistikkvariabel',values='value')
+df_new = df.pivot(index='year', columns='contents',values='value')
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-ssburl = 'https://data.ssb.no/api/v0/no/table/03014/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/03014/'
 query = {
   "query": [
     {
@@ -74,17 +74,17 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='år', columns='statistikkvariabel', values='value')
+df2_new = df2.pivot(index='year', columns='contents', values='value')
 df3_new = pd.concat([df_new,df2_new.reindex(df_new.index)], axis=1)
-df3_new['Lønn*KPI>2016']= df3_new['Årslønn, påløpt (1 000 kr)'] / (df3_new['Konsumprisindeks (2015=100)']/100)
-df3_new['Real>16'] = df3_new['Lønn*KPI>2016'].pct_change(periods=1)*100
-df3_new.rename(columns = {'Real>16':'Reallønn. Endring fra året før i prosent'}, inplace=True)
+df3_new['Earnings*CPI>2016']= df3_new['Annual earnings (NOK 1 000)'] / (df3_new['Consumer Price Index (2015=100)']/100)
+df3_new['Real>16'] = df3_new['Earnings*CPI>2016'].pct_change(periods=1)*100
+df3_new.rename(columns = {'Real>16':'Real wage growth'}, inplace=True)
 df4_new = df3_new.iloc[:,[0,1,4]]
 df5_new = df4_new.iloc[3:]
-df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
+df5_new.to_csv('data_EN/SSB_earningswages_annual_real_nominal.csv', index=True)
 #Update DW
-chartid = 'EPHjU'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Gjennomsnittlig årlig nominell lønn fra Nasjonalregnskapet. Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg.'
+chartid = 'xJSYI'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Annual wage comprises the regular wage, including bonus and irregular supplements, but excluding over-time pay.'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -101,8 +101,8 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-chartid = '1R4EQ'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg. '
+chartid = 'JCzze'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -119,8 +119,8 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-chartid = 'k0DNV'
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' *Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
+chartid = 'HhExj'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -137,8 +137,8 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Gjennomsnittlig lønn måned yrker nivå 4
-ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
+#Average monthly earnings by occupation level 4 qiHCS
+ssburl = 'https://data.ssb.no/api/v0/en/table/11418/'
 query = {
   "query": [
     {
@@ -601,21 +601,21 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='yrke',columns='år',values='value')
+df_new = df.pivot(index='occupation',columns='year',values='value')
 df_new['Endring sist år'] = (df_new.iloc[:,4]-df_new.iloc[:,3])/df_new.iloc[:,3]*100
 df_new['Endring siste 5 år'] = (df_new.iloc[:,4]-df_new.iloc[:,0])/df_new.iloc[:,0]*100
 df_new.dropna(inplace=True)
 df_new['Sist år'] = (df_new.iloc[:,4])
 df_new2 = df_new[['Sist år', 'Endring sist år', 'Endring siste 5 år']]
-df_new2.to_csv('data/SSB_lonn_yrke.csv', index=True)
+df_new2.to_csv('data_EN/SSB_earningswages_occupation_monthly.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df_new.columns[4])
-date_string = 'Gjennomsnittlig månedslønn*. Tall for ' + dato +'.' + ' Tabellen kan sorteres ved å klikke på overskriftene.'
+date_string = 'Average monthly earnings in NOK*. Data for ' + dato +'.' + ' The table can be sorted by clicking on the headers.'
 #Update DW
-chartid = 'CTQph'
+chartid = 'qiHCS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -639,8 +639,8 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
-#Gjennomsnittlig lønn måned yrker nivå 4 sektor Gfff7
-ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
+#Average monthly earnings by sector level 4
+ssburl = 'https://data.ssb.no/api/v0/en/table/11418/'
 query = {
   "query": [
     {
@@ -1124,18 +1124,18 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='yrke',columns='sektor',values='value')
+df_new = df.pivot(index='occupation',columns='sector',values='value')
 df_new.dropna(thresh=3, inplace=True)
-df_new = df_new[['Sum alle sektorer','Privat sektor og offentlige eide foretak','Statsforvaltningen','Kommuneforvaltningen']]
-df_new.to_csv('data/SSB_lonn_yrke_sektor.csv', index=True)
+df_new = df_new[['Sum all sectors','Private sector and public enterprises','Central government','Local government']]
+df_new.to_csv('data_EN/SSB_earningswages_occupation_sector.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig for enkelte sektorer og yrkesgrupper på grunn av at tall ikke er mulig å oppgi eller det ikke kan vises på grunn av konfidensialitetshensyn.' + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Data not avaliable for all sectors and occupations. Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[0,6])
-date_string = 'Gjennomsnittlig månedslønn* etter sektor. Tall for ' + dato +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
+date_string = 'Average monthly earnings* by sector. Data for ' + dato
 #Update DW
-chartid = 'Gfff7'
+chartid = 'fEPHK'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1160,8 +1160,8 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Lønnsforskjeller kjønn sist år gjennomsnitt og median RFHWE
-ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
+#Earnings differences women and men average and median jGRUZ  
+ssburl = 'https://data.ssb.no/api/v0/en/table/11418/'
 query = {
   "query": [
     {
@@ -1239,18 +1239,18 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df['målarbeidstid']=df['statistikkmål']+df['avtalt/vanlig arbeidstid per uke']
-df_new=df.pivot(index='målarbeidstid', columns='kjønn', values='value')
-df_new = df_new.reindex(['GjennomsnittI alt','GjennomsnittHeltidsansatte','MedianI alt','MedianHeltidsansatte'])
-df_new.to_csv('data/SSB_lonn_kjonn_sistaar.csv', index=True)
+df['målarbeidstid']=df['measuring method']+df['contractual/usual working hours per week']
+df_new=df.pivot(index='målarbeidstid', columns='sex', values='value')
+df_new = df_new.reindex(['AverageAll employees','AverageFull-time employees','MedianAll employees','MedianFull-time employees'])
+df_new.to_csv('data_EN/SSB_earningswages_women_men.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
 dato=str(df.iloc[0,6])
-date_string = 'Tall for ' + dato +'.' + ' Etter ulike beregningsmåter:'
+date_string = 'Data for ' + dato +'.' + ' By different measurements (in NOK):'
 #Update DW
-chartid = 'RFHWE'
+chartid = 'jGRUZ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
@@ -1272,10 +1272,10 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-response = requests.request("POST", url, headers=headers)   
+response = requests.request("POST", url, headers=headers)
 
-#Lønnsutviklingen kvinner og menn gjennomsnitt og median GDCRK (graf) og Fn94r (tabell)
-ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
+#Earnings change women and men average and median VlBm7
+ssburl = 'https://data.ssb.no/api/v0/en/table/11418/'
 query = {
   "query": [
     {
@@ -1352,11 +1352,11 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df['målkjønn'] = df['statistikkmål']+df['kjønn']
-df_new = df.pivot(index='år', columns='målkjønn',values='value')
+df['measuresex'] = df['measuring method']+df['sex']
+df_new = df.pivot(index='year', columns='measuresex',values='value')
 
-#heltidsansatte 
-ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
+#full-time 
+ssburl = 'https://data.ssb.no/api/v0/en/table/11418/'
 query = {
   "query": [
     {
@@ -1433,54 +1433,24 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
-df2['målkjønn'] = df['statistikkmål']+df['kjønn']
-df2_new = df2.pivot(index='år', columns='målkjønn',values='value')
-df2_new.rename(columns={"GjennomsnittKvinner": "GjennomsnittKvinnerHeltid", "GjennomsnittMenn": "GjennomsnittMennHeltid", 'MedianKvinner': 'MedianKvinnerHeltid', 'MedianMenn': 'MedianMennHeltid'}, inplace=True)
+df2['measuresex'] = df['measuring method']+df['sex']
+df2_new = df2.pivot(index='year', columns='measuresex',values='value')
+df2_new.rename(columns={"AverageFemales": "AverageFemalesFullTime", "AverageMales": "AverageMalesFullTime", 'MedianFemales': 'MedianFemalesFullTime', 'MedianMales': 'MedianMalesFullTime'}, inplace=True)
 df3_new = pd.concat([df_new, df2_new],axis=1)
-df3_new['Forskjell gjennomsnitt'] = (df3_new['GjennomsnittKvinner']/df3_new['GjennomsnittMenn'])*100
-df3_new['Forskjell median'] = (df3_new['MedianKvinner']/df3_new['MedianMenn'])*100
-df3_new['Forskjell gjennomsnittHeltid'] = (df3_new['GjennomsnittKvinnerHeltid']/df3_new['GjennomsnittMennHeltid']*100)
-df3_new['Forskjell medianHeltid'] = (df3_new['MedianKvinnerHeltid']/df3_new['MedianMennHeltid']*100)
-df4_new = df3_new.filter(['Forskjell gjennomsnitt', 'Forskjell gjennomsnittHeltid', 'Forskjell median', 'Forskjell medianHeltid'], axis=1)
-df4_new.to_csv('data/SSB_lonn_kjonn_andel_utvikling.csv', index=True)
+df3_new['Difference average'] = (df3_new['AverageFemales']/df3_new['AverageMales'])*100
+df3_new['Difference median'] = (df3_new['MedianFemales']/df3_new['MedianMales'])*100
+df3_new['Difference average fulltime'] = (df3_new['AverageFemalesFullTime']/df3_new['AverageMalesFullTime']*100)
+df3_new['Difference median fulltime'] = (df3_new['MedianFemalesFullTime']/df3_new['MedianMalesFullTime']*100)
+df4_new = df3_new.filter(['Difference average', 'Difference average fulltime', 'Difference median', 'Difference median fulltime'], axis=1)
+df4_new.to_csv('data_EN/SSB_earningswages_women_men_gap_change.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg. Merk at y-aksen er avkortet.'
+riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[4,6])
-date_string = 'Tall for ' + dato +'.' + ' Kvinners lønn som andel av menns lønn etter ulike beregningsmåter:'
-#Update DW 1
-chartid = 'Fn94r'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-#Endring 
-df5_new = df4_new.transpose()
-df5_new['Sist år'] = df5_new.iloc[:,4]
-df5_new['Endring sist år'] = df5_new.iloc[:,4]-df5_new.iloc[:,3]
-df5_new['Endring siste fem år'] = df5_new.iloc[:,4]-df5_new.iloc[:,0]
-df5_new.to_csv('data/SSB_lonn_kjonn_andel_sistaar_endring.csv', index=True)
+date_string = 'Data for ' + dato +'.' + ' Womens earnings as share of mens earnings by different measurements:'
 #Update DW
-chartid = 'GDCRK'
+chartid = 'VlBm7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
 headers = {
