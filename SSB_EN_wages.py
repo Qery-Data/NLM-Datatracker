@@ -3024,7 +3024,10 @@ oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data last updated: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
 dato=str(df.iloc[0,7])
-date_string = 'Median average earnings (in NOK)*. Data for ' + dato +'.'
+date_string= 'Median average earnings* (in NOK). Data for ' + dato + '.'
+date_string2= 'Median average earnings* (in NOK) of those who work in the region. Data for ' + dato + '.'
+date_string3= 'Median average earnings* (in NOK) of those who live in the region. Data for ' + dato +'.'
+
 #Update DW
 chartid = 'fU8iJ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -3061,7 +3064,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string}}}
+payload = {"metadata": {"describe": {"intro": date_string2}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -3085,7 +3088,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string}}}
+payload = {"metadata": {"describe": {"intro": date_string3}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
