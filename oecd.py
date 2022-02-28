@@ -42,8 +42,8 @@ dato_oppdatert2=str(dato_oppdatert)
 df_new.to_csv('data/OECD_produktivitet_time.csv', index=True)
 date_string = 'Bruttonasjonalprodukt (BNP) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
 date_string2 = 'Bruttonasjonalinntekt (BNI) per utførte timeverk i USD*. Tall for ' + dato_oppdatert2 + '.'
-date_string_EN = 'GDP per hour worked in USD*. Tall for ' + dato_oppdatert2 + '.'
-date_string2_EN = 'GNI per hour worked in USD*. Tall for ' + dato_oppdatert2 + '.'
+date_string_EN = 'GDP per hour worked in USD*. Data for ' + dato_oppdatert2 + '.'
+date_string2_EN = 'GNI per hour worked in USD*. Data for ' + dato_oppdatert2 + '.'
 #Update DW
 chartid = 'kCW5D'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
