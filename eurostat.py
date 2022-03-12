@@ -537,7 +537,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig NUF70 (NO) and xn9f1 (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?lastTimePeriod=1&sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?time=2021Q3&sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany'})
@@ -603,7 +603,7 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig heltid Av2Nk (NO) and WD0Uz (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?lastTimePeriod=1&sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?time=2021Q3&sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany'})
