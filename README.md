@@ -1,2 +1,1 @@
-# Datatracker
-Scripts for live updating DW visualizations. 
+# Datatracker on the Norwegian Labour Market
