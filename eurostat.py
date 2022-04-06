@@ -61,12 +61,16 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Andel arbeidsledige wNXU5 (NO) and 0R3hu (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T')
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+dataset_sa = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DK&geo=EU27_2020&geo=NO')
+type(dataset_sa)
+df_sa = dataset_sa.write('dataframe')
+df_new_sa = df_sa.pivot(index='time', columns='geo', values='value')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=SE')
+type(dataset_tn)
+df_tn = dataset_tn.write('dataframe')
+df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
 df_new.to_csv('data/Eurostat_arbeidsledighet.csv', index=True)
-oppdatert = dataset["updated"]
+oppdatert = dataset_sa["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
