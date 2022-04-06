@@ -69,6 +69,7 @@ dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/
 type(dataset_tn)
 df_tn = dataset_tn.write('dataframe')
 df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
+df_new=pd.concat([df_new_sa, df_new_tn], axis=1)
 df_new.to_csv('data/Eurostat_arbeidsledighet.csv', index=True)
 oppdatert = dataset_sa["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
