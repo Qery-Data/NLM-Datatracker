@@ -797,3 +797,47 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
+
+#Andel deltatt i læring siste 12 AES Alder a5821 (NO) and IuO7H (EN)
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/trng_aes_101?age=Y25-34&age=Y35-44&age=Y45-54&age=Y55-64&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+type(dataset)
+df = dataset.write('dataframe')
+df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
+df_new = df.pivot(index='geo', columns='age', values='value')
+df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
+oppdatert = dataset["updated"]
+oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+#Update DW (NO)
+chartid = 'a5821'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+#Update DW (EN)
+chartid = 'IuO7H'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
