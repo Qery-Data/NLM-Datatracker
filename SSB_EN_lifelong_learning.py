@@ -82,7 +82,7 @@ resultat = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='utdanning/opplæring', columns='næring (SN2007)', values='value')
+df_new = df.pivot(index='formal and non-formal education', columns='industry (SIC2007)', values='value')
 df_new.to_csv('data_EN/SSB_learning_industry.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
