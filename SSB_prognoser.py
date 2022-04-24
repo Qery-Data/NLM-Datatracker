@@ -1,0 +1,230 @@
+from pyjstat import pyjstat
+import requests
+import os
+import json
+from datetime import datetime
+import locale
+import pandas as pd
+locale.setlocale(locale.LC_TIME, 'nb_NO')
+os.makedirs('data', exist_ok=True)
+access_token = os.getenv('DW_TOKEN')
+
+#Prognoser Arbeidsledighet (AKU) ELpUm (NO)
+ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
+query = {
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "ArbLedighet"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",          
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
+df_new = df_new.rename(columns={'Arbeidsledighetsrate (nivå)': 'Faktisk utvikling'})
+df_new ['SSB'] = df_new['Faktisk utvikling']
+df_new.to_csv('data/SSB_prognoser_arbeidsledighet.csv', index=True)
+
+#Update DW
+chartid = 'ELpUm'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+
+#Prognoser Sysselatte personer smBL7 (no)
+ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
+query = {
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Sysselsatte"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",          
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
+df_new = df_new.rename(columns={'Sysselsatte personer': 'Faktisk utvikling'})
+df_new ['SSB'] = df_new['Faktisk utvikling']
+df_new.to_csv('data/SSB_prognoser_sysselsattepersoner.csv', index=True)
+
+#Update DW
+chartid = 'smBL7'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+
+#Prognoser Arbeidsstyrken aFpl4 (no)
+ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
+query = {
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "ArbStyrke"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",          
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
+df_new = df_new.rename(columns={'Arbeidsstyrke': 'Faktisk utvikling'})
+df_new ['SSB'] = df_new['Faktisk utvikling']
+df_new.to_csv('data/SSB_prognoser_arbeidsstyrke.csv', index=True)
+
+#Update DW
+chartid = 'aFpl4'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+
+#Prognoser Yrkesandel 2OAZc (no)
+ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
+query = {
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Yrkesandel"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",          
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
+df_new = df_new.rename(columns={'Yrkesandel (nivå)': 'Faktisk utvikling'})
+df_new ['SSB'] = df_new['Faktisk utvikling']
+df_new.to_csv('data/SSB_prognoser_yrkesandel.csv', index=True)
+
+#Update DW
+chartid = '2OAZc'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
