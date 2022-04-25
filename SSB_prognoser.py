@@ -338,3 +338,59 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
+
+
+#Prognoser Konsumprisindeksen sNzun (no)
+ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
+query = {
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "KPI"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",          
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+resultat = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(resultat.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
+df_new = df_new.rename(columns={'Konsumprisindeksen (KPI)': 'Faktisk utvikling'})
+df_new ['SSB'] = df_new['Faktisk utvikling']
+df_new.to_csv('data/SSB_prognoser_kpi.csv', index=True)
+
+#Update DW
+chartid = 'sNzun'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
