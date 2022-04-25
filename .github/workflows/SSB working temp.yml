@@ -18,10 +18,10 @@ jobs:
       - name: 🌍 SetLocale
         run: |
           sudo locale-gen nb_NO
-      - name: 🍳 Update SSB Livslang Laering
+      - name: 🍳 Update Prognoser
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
-        run: python SSB_EN_lifelong_learning.py
+        run: python SSB_prognoser.py
       - name: 🚀 Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
