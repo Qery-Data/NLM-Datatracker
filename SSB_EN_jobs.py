@@ -1001,7 +1001,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.'
+date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = '6mzit'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1104,7 +1104,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.'
+date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;' 
 #Update DW
 chartid = 'uDHve'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1206,7 +1206,7 @@ date_string3 = tittel_dato[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
-date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.'
+date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style="color:#000000;font-weight:400;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style="border-bottom: 2px solid; #555; color:#000000; font-weight:600; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'Ccuaf'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
