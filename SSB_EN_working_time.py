@@ -55,10 +55,19 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+description_text = 'As % of all employed persons 15-74 years.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'ilOme'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": description_text}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -119,10 +128,19 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+description_text = 'As % of all employed persons 15-74 years.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'uqYxa'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": description_text}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -183,10 +201,19 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+description_text = 'As % of all employed persons 15-74 years.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style="color:#000000;font-weight:400;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style="border-bottom: 2px solid; #555; color:#000000; font-weight:600; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'IaDJs'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": description_text}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
