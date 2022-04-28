@@ -146,7 +146,7 @@ response = requests.request("POST", url, headers=headers)
 #Update DW
 chartid = 'jjdYo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": riktig_dato_EN}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
