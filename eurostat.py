@@ -122,7 +122,7 @@ df_tn = dataset_tn.write('dataframe')
 df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
 df_new=pd.concat([df_new_sa, df_new_tn], axis=1)
 df_new.to_csv('data/Eurostat_arbeidsledighet_unge.csv', index=True)
-oppdatert = dataset["updated"]
+oppdatert = dataset_sa["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%d')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
 riktig_dato_EN = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
