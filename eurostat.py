@@ -881,12 +881,38 @@ headers = {
     }
 response = requests.request("POST", url, headers=headers)
 
+#Update DW
+chartid = 'uDh6D'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": note_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": description_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+
+
 #Lenght of working life EU average gender NvW5H (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_dwl_a?sex=F&sex=M&sex=T&lastTimePeriod=22&geo=EU27_2020')
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sex', columns='time', values='value')
-df_new.to_csv('data/Eurostat_working_life_lenght_EU_sex.csv', index=True)
+df_new.to_csv('data/Eurostat_working_life_lenght_EU.csv', index=True)
 updated = dataset["updated"]
 updated_date = datetime.strptime(updated, '%Y-%m-%d')
 note_EN = 'Data last published: ' + updated_date.strftime ('%d/%m/%y') + '.'
