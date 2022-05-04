@@ -841,3 +841,68 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
+
+#Lenght of working life 1sRO7 (EN)
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_dwl_a?sex=T&lastTimePeriod=20&geo=AT&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EA19&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=EU28&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IS&geo=IT&geo=LT&geo=LU&geo=LV&geo=ME&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+type(dataset)
+df = dataset.write('dataframe')
+df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
+df_new = df.pivot(index='geo', columns='time', values='value')
+df_new = df_new.drop(index={"Montenegro","United Kingdom", "Turkey", "North Macedonia","Euro area - 19 countries  (from 2015)","European Union - 28 countries (2013-2020)"})
+df_new.to_csv('data/Eurostat_working_life_lenght.csv', index=True)
+EU_avg = str(df_new.iloc[7,19])
+year = str(df_new.columns[19])
+updated = dataset["updated"]
+updated_date = datetime.strptime(updated, '%Y-%m-%d')
+note_EN = 'Data last published: ' + updated_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_avg + '.'
+description_EN = 'Estimated duration of working life in years for a person who is 15 years old in ' + year + '.'
+#Update DW
+chartid = '1sRO7'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": note_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"describe": {"intro": description_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
+
+#Lenght of working life EU average gender NvW5H (EN)
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_dwl_a?sex=F&sex=M&sex=T&lastTimePeriod=22&geo=EU27_2020')
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='sex', columns='time', values='value')
+df_new.to_csv('data/Eurostat_working_life_lenght_EU_sex.csv', index=True)
+updated = dataset["updated"]
+updated_date = datetime.strptime(updated, '%Y-%m-%d')
+note_EN = 'Data last published: ' + updated_date.strftime ('%d/%m/%y') + '.'
+#Update DW
+chartid = 'NvW5H'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": note_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.request("POST", url, headers=headers)
