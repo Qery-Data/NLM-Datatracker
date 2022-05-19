@@ -25,118 +25,46 @@ jobs:
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_ledige_stillinger.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB jobber
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_jobber.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB sysselsatte
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_sysselsatte.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB produktivitet
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_produktivitet.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB organisasjonsgrad
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_organisasjonsgrad.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB arbeidsledige
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_arbeidsledige.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB Lønn
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_lonn.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB Arbeidstid
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_arbeidstid.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB Livslang Laering
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_livslang_laring.py
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
       - name: 🍳 Update SSB Prognoser
         if: always()
         env: 
