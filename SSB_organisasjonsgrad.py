@@ -1,3 +1,4 @@
+from turtle import title
 from pyjstat import pyjstat
 import requests
 import os
@@ -252,10 +253,22 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+chart_title='Medlemsutvikling i LO i ' + dato_sist
+chart_title2='Medlemsutvikling i hovedsammenslutninger og forbund i ' + dato_sist
+
 #Update DW
 chartid = 'Zub1a'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -272,6 +285,14 @@ response = requests.request("POST", url, headers=headers)
 chartid = 'FwTac'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title2}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -401,10 +422,20 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+chart_title='Medlemsutvikling i YS i ' + dato_sist
 #Update DW
 chartid = 'oDPyE'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -533,10 +564,20 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+chart_title='Medlemsutvikling i Unio i ' + dato_sist
 #Update DW
 chartid = 'mhydR'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -667,10 +708,20 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist=df_new.columns[1]
+chart_title='Medlemsutvikling i Akademikerne i ' + dato_sist
 #Update DW
 chartid = 'fyMbm'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -811,10 +862,20 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+dato_sist = df_new.columns[1]
+chart_title = 'Medlemsutvikling i andre arbeidstakerorganisasjoner i ' + dato_sist
 #Update DW
 chartid = '86GF4'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"title": chart_title}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
