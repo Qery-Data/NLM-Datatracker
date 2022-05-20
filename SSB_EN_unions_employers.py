@@ -24,13 +24,8 @@ query = {
     {
       "code": "Tid",
       "selection": {
-        "filter": "item",
-        "values": [
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020"
+        "filter": "top",
+        "values": [5
         ]
       }
     }
