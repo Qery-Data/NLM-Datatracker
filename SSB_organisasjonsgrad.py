@@ -1582,7 +1582,7 @@ df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_tabell_NHO
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig fra SSB for alle landsforeningene.'
 dato_sist = df_new.columns[1]
 chart_title = 'Medlemsutvikling i NHO-området i ' + dato_sist
 #Update DW
