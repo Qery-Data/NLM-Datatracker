@@ -1648,9 +1648,6 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato_sist=df_new.columns[1]
-dato_nest_sist=df_new.columns[0]
-date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 chartid = 'VuaM6'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1953,9 +1950,6 @@ json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
 oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
 riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato_sist=df_new.columns[1]
-dato_nest_sist=df_new.columns[0]
-date_string = 'Antall yrkesaktive medlemmer per 31.desember ' + dato_sist +'. Endring fra ' + dato_nest_sist + ' i antall og prosent.'
 #Update DW
 chartid = 'b2xCT'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
