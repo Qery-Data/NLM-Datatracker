@@ -239,14 +239,14 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
-df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_m']=df3_new.iloc[:,1]
-df3_new['Sist_aar_y']=df3_new.iloc[:,3]
 df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
-df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.drop(columns=df3_new.columns[:4], axis=1,inplace=True)
 df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_LO.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -388,14 +388,14 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
-df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_m']=df3_new.iloc[:,1]
-df3_new['Sist_aar_y']=df3_new.iloc[:,3]
 df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
-df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.drop(columns=df3_new.columns[:4], axis=1,inplace=True)
 df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_YS.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -520,14 +520,14 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
-df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_m']=df3_new.iloc[:,1]
-df3_new['Sist_aar_y']=df3_new.iloc[:,3]
 df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
-df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.drop(columns=df3_new.columns[:4], axis=1,inplace=True)
 df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_Unio.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -654,14 +654,14 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
-df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_m']=df3_new.iloc[:,1]
-df3_new['Sist_aar_y']=df3_new.iloc[:,3]
 df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
-df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.drop(columns=df3_new.columns[:4], axis=1,inplace=True)
 df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_Akademikerne.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
@@ -798,14 +798,14 @@ dataset = pyjstat.Dataset.read(resultat.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
-df2_new=df2_new.rename(columns={"2019": "2019Y", "2020": "2020Y"})
 df3_new=pd.concat([df_new, df2_new], axis=1)
 df3_new['Sist_aar_m']=df3_new.iloc[:,1]
-df3_new['Sist_aar_y']=df3_new.iloc[:,3]
 df3_new['Endring_m']=df3_new.iloc[:,1]-df3_new.iloc[:,0]
-df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_m_pst']=(df3_new.iloc[:,1]-df3_new.iloc[:,0])/df3_new.iloc[:,0]*100
+df3_new['Sist_aar_y']=df3_new.iloc[:,3]
+df3_new['Endring_y']=df3_new.iloc[:,3]-df3_new.iloc[:,2]
 df3_new['Endring_y_pst']=(df3_new.iloc[:,3]-df3_new.iloc[:,2])/df3_new.iloc[:,2]*100
+df3_new.drop(columns=df3_new.columns[:4], axis=1,inplace=True)
 df3_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_Andre.csv', index=True)
 json_object = json.loads(resultat.text)
 oppdatert = json_object["updated"]
