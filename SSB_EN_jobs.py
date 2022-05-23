@@ -155,7 +155,7 @@ headers = {
 
 response = requests.request("POST", url, headers=headers)
 
-#Jobber antall per næring og endring per næring NPfNj/vnqke/SXwZ8
+#Jobs by industry and change by industry NPfNj/vnqke/SXwZ8
 ssburl = 'https://data.ssb.no/api/v0/en/table/13126/'
 query = {
   "query": [
@@ -221,17 +221,17 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='month', values='value')
 df_new2 = df_new.iloc[:,[0,24,48,59,60]]
-antall = df_new2.iloc[:,4]
-tittel_dato = (antall.name)
-antall.name = 'antall'
-Endring_mnd = df_new2.iloc[:,4] - df_new2.iloc[:,3]
-Endring_12 = df_new2.iloc[:,4] - df_new2.iloc[:,2]
-Endring_covid = df_new2.iloc[:,4] - df_new['2020M02']
-Endring_3 = df_new2.iloc[:,4] - df_new2.iloc[:,1]
-Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
-df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, Endring_5], axis=1, keys=['Total','Change last month','Change last year','Change from feb.20','Change last 3 years','Change last 5 years'])
+total = df_new2.iloc[:,4]
+title_date = (total.name)
+total.name = 'total'
+Change_month = df_new2.iloc[:,4] - df_new2.iloc[:,3]
+Change_12month = df_new2.iloc[:,4] - df_new2.iloc[:,2]
+Change_covid = df_new2.iloc[:,4] - df_new['2020M02']
+Change_3y = df_new2.iloc[:,4] - df_new2.iloc[:,1]
+Change_5y = df_new2.iloc[:,4] - df_new2.iloc[:,0]
+df_new3 = pd.concat([total, Change_month, Change_12month, Change_covid, Change_3y, Change_5y], axis=1, keys=['Total','Change last month','Change last year','Change from feb.20','Change last 3 years','Change last 5 years'])
 df_new3.to_csv('data_EN/SSB_jobs_industry.csv', index=True)
-date_string = tittel_dato.replace("M","")
+date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Seasonally adjusted numbers for ' + date_string2.strftime ('%B %Y') + '.'
 date_string4 = 'Seasonally adjusted numbers for ' + date_string2.strftime ('%B %Y') + ' compared with:'
@@ -330,14 +330,14 @@ headers = {
 response = requests.request("POST", url, headers=headers)
 
 #Jobs change per industry HIT0e
-Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
-Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
-Endring_covid = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02']*100)
-Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
-Endring_5_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
-df_new4 = pd.concat([antall, Endring_mnd_pst, Endring_12_pst, Endring_covid, Endring_3_pst, Endring_5_pst], axis=1, keys=['Total','Change last month','Change last year','Change from feb.20','Change last 3 years','Change last 5 years'])
+Change_month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
+Change_12month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
+Change_covid_pct = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02']*100)
+Change_3y_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
+Change_5y_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
+df_new4 = pd.concat([total, Change_month_pct, Change_12month_pct, Change_covid_pct, Change_3y_pct, Change_5y_pct], axis=1, keys=['Total','Change last month','Change last year','Change from feb.20','Change last 3 years','Change last 5 years'])
 df_new4.to_csv('data_EN/SSB_jobs_industry_change.csv', index=True)
-date_string = tittel_dato.replace("M","")
+date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Seasonally adjusted numbers for ' + date_string2.strftime ('%B %Y') + ' compared with:'
 json_object = json.loads(result.text)
@@ -433,18 +433,18 @@ df = dataset.write('dataframe')
 df_new0 = df.pivot(index='region', columns='quarter', values='value')
 df_new = df_new0.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change in persons', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change in persons', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_county_quarter.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -880,18 +880,18 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_municipality_quarter.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -982,18 +982,18 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_age_both.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -1084,18 +1084,18 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_age_men.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -1186,18 +1186,18 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_age_women.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -1278,15 +1278,15 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='immigration category', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[4,8,12,16,20]]
-antall = df_new2.iloc[:,4]
-tittel_dato = (antall.name)
+total = df_new2.iloc[:,4]
+title_date = (total.name)
 df_new2.to_csv('data_EN/SSB_jobs_immigration_quarters.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -1368,18 +1368,18 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='immigration category', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Total','Change', 'Change in percent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Total','Change', 'Change in percent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data_EN/SSB_jobs_immigration_change.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
