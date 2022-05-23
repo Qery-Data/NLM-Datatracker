@@ -53,21 +53,21 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y' + '.')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y' + '.')
 
 #Update DW
 chartid = 'nzFUM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -79,7 +79,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Jobber mnd endring i antall t8TNy
@@ -127,22 +126,22 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df.loc[:,"value"].diff()
 df["endring i pst"] = df.loc[:,"value"].pct_change()*100
 df_new = df[37:62]
 df_new.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid = 't8TNy'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -154,7 +153,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Jobber antall per næring og endring per næring Wf007/R5eLv/S6QM8
@@ -217,31 +215,31 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
 df_new2 = df_new.iloc[:,[0,24,48,59,60]]
-antall = df_new2.iloc[:,4]
-tittel_dato = (antall.name)
-antall.name = 'antall'
-Endring_mnd = df_new2.iloc[:,4] - df_new2.iloc[:,3]
-Endring_12 = df_new2.iloc[:,4] - df_new2.iloc[:,2]
-Endring_covid = df_new2.iloc[:,4] - df_new['2020M02']
-Endring_3 = df_new2.iloc[:,4] - df_new2.iloc[:,1]
-Endring_5 = df_new2.iloc[:,4] - df_new2.iloc[:,0]
-df_new3 = pd.concat([antall, Endring_mnd, Endring_12, Endring_covid,Endring_3, Endring_5], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
+total = df_new2.iloc[:,4]
+title_date = (total.name)
+total.name = 'total'
+Change_month = df_new2.iloc[:,4] - df_new2.iloc[:,3]
+Change_12month = df_new2.iloc[:,4] - df_new2.iloc[:,2]
+Change_covid = df_new2.iloc[:,4] - df_new['2020M02']
+Change_3y = df_new2.iloc[:,4] - df_new2.iloc[:,1]
+Change_5y = df_new2.iloc[:,4] - df_new2.iloc[:,0]
+df_new3 = pd.concat([total, Change_month, Change_12month, Change_covid, Change_3y, Change_5y], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
-date_string = tittel_dato.replace("M","")
+date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
 date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med:'
 date_string5 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 
 #Update DW Wf007 (Totalt antall sist mnd)
 chartid = 'Wf007'
@@ -257,7 +255,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
+    "metadata": {"annotate": {"notes": chart_date}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -270,7 +268,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Update DW R5eLv (Endring fra feb.20)
@@ -287,7 +284,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
+    "metadata": {"annotate": {"notes": chart_date}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -300,7 +297,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Update DW S6QM8 (Tabell endring i antall)
@@ -317,7 +313,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
+    "metadata": {"annotate": {"notes": chart_date}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -330,24 +326,23 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Jobber pst endring per næring 96bMF
-Endring_mnd_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
-Endring_12_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
-Endring_covid = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02']*100)
-Endring_3_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
-Endring_5_pst = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
-df_new4 = pd.concat([antall, Endring_mnd_pst, Endring_12_pst, Endring_covid, Endring_3_pst, Endring_5_pst], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
+Change_month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
+Change_12month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,2]) / df_new2.iloc[:,2]*100)
+Change_covid_pct = ((df_new2.iloc[:,4] - df_new['2020M02'])/ df_new['2020M02']*100)
+Change_3y_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,1]) / df_new2.iloc[:,1]*100)
+Change_5y_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,0]) / df_new2.iloc[:,0]*100)
+df_new4 = pd.concat([total, Change_month_pct, Change_12month_pct, Change_covid_pct, Change_3y_pct, Change_5y_pct], axis=1, keys=['Antall','Endring sist mnd','Endring sist år','Endring fra feb.20','Endring siste 3 år','Endring siste 5 år'])
 df_new4.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
-date_string = tittel_dato.replace("M","")
+date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med:'
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid = '96bMF'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -362,7 +357,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
+    "metadata": {"annotate": {"notes": chart_date}}
     }
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -375,8 +370,8 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
+
 # Antall jobber fylke vuoG4
 ssburl = 'https://data.ssb.no/api/v0/no/table/11657/'
 query = {
@@ -430,25 +425,25 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new0 = df.pivot(index='region', columns='kvartal', values='value')
 df_new = df_new0.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1],Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_fylke_kvartal.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -456,7 +451,7 @@ date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + '
 #Update DW
 chartid = 'vuoG4'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -476,7 +471,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber kommune mJgIS 
@@ -879,32 +873,33 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_kommune_kvartal.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
+
 #Update DW
 chartid = 'mJgIS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -924,7 +919,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber etter alder wWRNG
@@ -982,32 +976,33 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='alder', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_alder_beggekjonn.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
+
 #Update DW
 chartid = 'wWRNG'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -1027,7 +1022,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber etter alder,menn zIE1z
@@ -1085,32 +1079,33 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='alder', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_alder_menn.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
+
 #Update DW
 chartid = 'zIE1z'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -1130,7 +1125,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber etter alder,kvinner uRrvM
@@ -1188,32 +1182,33 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='alder', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_alder_kvinner.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
+
 #Update DW
 chartid = 'uRrvM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -1233,7 +1228,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber etter innvandringskategori PpYio
@@ -1281,21 +1275,21 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='innvandringskategori', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[4,8,12,16,20]]
-antall = df_new2.iloc[:,4]
-tittel_dato = (antall.name)
+total = df_new2.iloc[:,4]
+title_date = (total.name)
 df_new2.to_csv('data/SSB_jobber_innvandringskategori_kvartal.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
@@ -1303,7 +1297,7 @@ date_string4 = 'Tall for ' + date_string2 + '.kvartal de siste fem årene.'
 #Update DW
 chartid = 'PpYio'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -1323,7 +1317,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Antall jobber etter innvandringskategori endring 3UutT
@@ -1372,32 +1365,33 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='innvandringskategori', columns='kvartal', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
-Endring_antall = df_new2.iloc[:,1] - df_new2.iloc[:,0]
-Endring_prosent = Endring_antall / df_new2.iloc[:,0]*100
-df_new3 = pd.concat([df_new2.iloc[:,1],Endring_antall,Endring_prosent], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
-antall = df_new2.iloc[:,1]
-tittel_dato = (antall.name)
+Change_absolute = df_new2.iloc[:,1] - df_new2.iloc[:,0]
+Change_pct = Change_absolute / df_new2.iloc[:,0]*100
+df_new3 = pd.concat([df_new2.iloc[:,1], Change_absolute, Change_pct], axis=1, keys=['Antall','Endring i antall', 'Endring i prosent'])
+total = df_new2.iloc[:,1]
+title_date = (total.name)
 df_new3.to_csv('data/SSB_jobber_innvandringskategori_endring.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+date_string2 = title_date[-1:]
+date_string3 = title_date[0:4]
 date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + ' ' + 'sammenlignet med ' + date_string2 + '.kvartal ' + date_string7 + '.'
+
 #Update DW
 chartid = '3UutT'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -1417,499 +1411,4 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
-response = requests.request("POST", url, headers=headers)
-
-### Vizualisations not used
-
-#VIZ Utvikling i antall jobber [flere]
-ssburl = 'https://data.ssb.no/api/v0/no/table/13126/'
-query = {
-  "query": [
-    {
-      "code": "NACE2007",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "01-03",
-          "05-09",
-          "10-33",
-          "35-39",
-          "41-43",
-          "45-47",
-          "49-53",
-          "55-56",
-          "58-63",
-          "64-66",
-          "68-75",
-          "77-82",
-          "84",
-          "85",
-          "86-88",
-          "90-99"
-        ]
-      }
-    },
-    {
-      "code": "ForelopigEndelig",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "02"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "AntArbForholdSesong"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [
-          "62"
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='næring (SN2007)', columns='måned', values='value')
-df_new.to_csv('data/SSB_jobber_naring_utvikling.csv', index=True)
-#Update DW
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW
-chartid = 'J2g1N'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
-
-#VIZ Jobber detaljert næring (88) SrULZ
-ssburl = 'https://data.ssb.no/api/v0/no/table/11656/'
-query = {
-  "query": [
-    {
-      "code": "Kjonn",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "0"
-        ]
-      }
-    },
-    {
-      "code": "Alder",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "999A"
-        ]
-      }
-    },
-    {
-      "code": "NACE2007",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "01",
-          "02",
-          "03",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10",
-          "11",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "23",
-          "24",
-          "25",
-          "26",
-          "27",
-          "28",
-          "29",
-          "30",
-          "31",
-          "32",
-          "33",
-          "35",
-          "36",
-          "37",
-          "38",
-          "39",
-          "41",
-          "42",
-          "43",
-          "45",
-          "46",
-          "47",
-          "49",
-          "50",
-          "51",
-          "52",
-          "53",
-          "55",
-          "56",
-          "58",
-          "59",
-          "60",
-          "61",
-          "62",
-          "63",
-          "64",
-          "65",
-          "66",
-          "68",
-          "69",
-          "70",
-          "71",
-          "72",
-          "73",
-          "74",
-          "75",
-          "77",
-          "78",
-          "79",
-          "80",
-          "81",
-          "82",
-          "84",
-          "85",
-          "86",
-          "87",
-          "88",
-          "90",
-          "91",
-          "92",
-          "93",
-          "94",
-          "95",
-          "96",
-          "97"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "AntArbForhold"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [21]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='næring (SN2007)', columns='kvartal', values='value')
-df_new2 = df_new.iloc[:,[0,8,16,20]]
-antall = df_new2.iloc[:,3]
-tittel_dato = (antall.name)
-antall.name = 'antall'
-Endring_12 = df_new2.iloc[:,3] - df_new2.iloc[:,2]
-Endring_3 = df_new2.iloc[:,3] - df_new2.iloc[:,1]
-Endring_5 = df_new2.iloc[:,3] - df_new2.iloc[:,0]
-df_new3 = pd.concat([antall, Endring_12, Endring_3, Endring_5], axis=1, keys=['Antall','Endring sist år','Endring siste 3 år','Endring siste 5 år'])
-df_new3.to_csv('data/SSB_jobber_naring_detaljert.csv', index=True)
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3 + '.'
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal ' + date_string3 + '.'
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-#Update DW
-chartid = 'SrULZ'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": date_string4}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": riktig_dato}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
-
-#Jobber kvartal sektor OWk86 og u4F4z
-ssburl = 'https://data.ssb.no/api/v0/no/table/11653/'
-query = {
-  "query": [
-    {
-      "code": "Region",
-      "selection": {
-        "filter": "vs:Landet4",
-        "values": [
-          "Ialt"
-        ]
-      }
-    },
-    {
-      "code": "Sektor",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "ABDEFX",
-          "6500",
-          "6100"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "AntArbForhold"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [21]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='sektor', columns='kvartal', values='value')
-df_new2 = df_new.iloc[:,[0,4,8,12,16,20]]
-df_new3 = df_new2.sort_values(df_new2.columns[5])
-antall = df_new2.iloc[:,5]
-tittel_dato = (antall.name)
-df_new3.to_csv('data/SSB_jobber_sektor_kvartal.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '. kvartal de siste seks årene' + '.'
-#Update DW OWk86
-chartid = 'OWk86'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
-
-#Update DW u4F4z
-chartid = 'u4F4z'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
-
-#Andel jobber fylke XW1f9 [IKKE I BRUK]
-ssburl = 'https://data.ssb.no/api/v0/no/table/11653/'
-query = {
-  "query": [
-    {
-      "code": "Region",
-      "selection": {
-        "filter": "vs:FylkerFastIkkeFast",
-        "values": [
-          "30",
-          "03",
-          "34",
-          "38",
-          "42",
-          "11",
-          "46",
-          "15",
-          "50",
-          "18",
-          "54"
-        ]
-      }
-    },
-    {
-      "code": "Sektor",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "ABDEFX",
-          "6500",
-          "6100"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "AntArbForhold"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "top",
-        "values": [1
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
-type(dataset)
-df = dataset.write('dataframe')
-df_new = df.pivot(index='region', columns='sektor', values='value')
-antall = df.iloc[0,3]
-tittel_dato = (antall)
-df_new.to_csv('data/SSB_jobber_fylke_andel.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-date_string2 = tittel_dato[-1:]
-date_string3 = tittel_dato[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '.'
-#Update DW
-chartid = 'XW1f9'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
 response = requests.request("POST", url, headers=headers)
