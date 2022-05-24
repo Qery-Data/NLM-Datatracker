@@ -45,21 +45,21 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_full_part.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 description_text = 'As % of all employed persons 15-74 years.' + '<br><br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'ilOme'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -118,21 +118,21 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_women_full_part.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 description_text = 'As % of all employed persons 15-74 years.' + '<br><br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'uqYxa'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -191,21 +191,21 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_men_full_part.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 description_text = 'As % of all employed persons 15-74 years.' + '<br><br> <a target="_self" href="https://datawrapper.dwcdn.net/ilOme/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uqYxa/" style="color:#000000;font-weight:400;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/IaDJs/" style="border-bottom: 2px solid; #555; color:#000000; font-weight:600; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
 chartid = 'IaDJs'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -282,22 +282,22 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='contents', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_full_part.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato=df.iloc[0,3]
-date_string = 'Data for ' + dato + '. Share of employed persons working:' 
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+title_date=df.iloc[0,3]
+date_string = 'Data for ' + title_date + '. Share of employed persons working:' 
 #Update DW
 chartid = 'sDD1A'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -374,22 +374,22 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='sex', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_women_men_full.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato=df.iloc[0,3]
-date_string = 'Data for ' + dato + '. Share of employed persons working:' 
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+title_date = df.iloc[0,3]
+date_string = 'Data for ' + title_date + '. Share of employed persons working:' 
 #Update DW
 chartid = 'elsZ5'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -464,20 +464,20 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_average_weekly.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')+ '.'
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')+ '.'
 #Update DW
 chartid = '2Ca6C'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -490,4 +490,3 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
-
