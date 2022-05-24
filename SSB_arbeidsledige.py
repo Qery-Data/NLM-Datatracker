@@ -52,19 +52,19 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_arbeidsledige.csv', index=False)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid='oF7tM'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -76,7 +76,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Andel arbeidsledige bd63e
@@ -122,19 +121,19 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_arbeidsledige_pst.csv', index=False)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'bd63e'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -146,7 +145,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Andel arbeidsledige etter alder UE4Of
@@ -193,20 +191,20 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='alder', columns='måned', values='value')
 df_new.to_csv('data/SSB_arbeidsledige_alder_pst.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'UE4Of'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -218,7 +216,6 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
 
 #Andel arbeidsledige etter kjønn qGKlW
@@ -265,20 +262,20 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='kjønn', columns='måned', values='value')
 df_new.to_csv('data/SSB_arbeidsledige_kjønn_pst.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
 chartid = 'qGKlW'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -290,5 +287,4 @@ headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
     }
-
 response = requests.request("POST", url, headers=headers)
