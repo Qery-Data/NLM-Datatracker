@@ -132,8 +132,8 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-dato=str(df.iloc[0,2])
-date_string = 'Value added per hour worked. Data for ' + dato +'.' 
+title_date=str(df.iloc[0,2])
+date_string = 'Value added per hour worked. Data for ' + title_date +'.' 
 #Update DW
 chartid = '7ymZd'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
