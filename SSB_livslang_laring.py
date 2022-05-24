@@ -77,23 +77,23 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='utdanning/opplæring', columns='år', values='value')
 df_new = df_new.drop(['I alt', 'Med læringsintensivt arbeid', 'Hverken deltatt i formell eller ikke-formell opplæring'])
 df_new.to_csv('data/SSB_laring_totalt.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-tid = str(df.iloc[0,5])
-tittel_tid = 'Andel som har deltatt i formell utdanning og ikke-formell opplæring i ' + tid + ', etter type opplæring/utdanning.'
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+title_date = str(df.iloc[0,5])
+title_text = 'Andel som har deltatt i formell utdanning og ikke-formell opplæring i ' + title_date + ', etter type opplæring/utdanning.'
 #Update DW
 chartid = 'Li3vf'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -101,7 +101,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid}}}
+payload = {"metadata": {"describe": {"intro": title_text}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -185,26 +185,26 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='utdanning/opplæring', columns='næring (SN2007)', values='value')
 df_new.to_csv('data/SSB_laring_naring.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-tid = str(df.iloc[0,4])
-tittel_tid_form = 'Tall for ' + tid + '. Omfatter personer fra 15-59 år.'
-tittel_tid_form_vid = 'Tall for ' + tid + '. Omfatter personer fra 22-59 år.'
-tittel_tid_form_ikke_form = 'Tall for ' + tid + '. Omfatter personer fra 15-66 år.'
-tittel_tid_form_ikke_deltatt = 'Tall for ' + tid + '. Omfatter personer fra 15-66 år.'
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+title_time = str(df.iloc[0,4])
+title_time_form = 'Tall for ' + title_time + '. Omfatter personer fra 15-59 år.'
+title_time_form_vid = 'Tall for ' + title_time + '. Omfatter personer fra 22-59 år.'
+title_time_form_ikke_form = 'Tall for ' + title_time + '. Omfatter personer fra 15-66 år.'
+title_time_form_ikke_deltatt = 'Tall for ' + title_time + '. Omfatter personer fra 15-66 år.'
 
 #Update DW
 chartid = 'IeSMg'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -212,7 +212,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form}}}
+payload = {"metadata": {"describe": {"intro": title_time_form}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -228,7 +228,7 @@ response = requests.request("POST", url, headers=headers)
 
 chartid = '8QUFn'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -236,7 +236,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form_vid}}}
+payload = {"metadata": {"describe": {"intro": title_time_form_vid}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -252,7 +252,7 @@ response = requests.request("POST", url, headers=headers)
 
 chartid = 'OcGPl'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -260,7 +260,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form_ikke_form}}}
+payload = {"metadata": {"describe": {"intro": title_time_form_ikke_form}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -276,7 +276,7 @@ response = requests.request("POST", url, headers=headers)
 
 chartid = 'ZGY5B'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -284,7 +284,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form_ikke_deltatt}}}
+payload = {"metadata": {"describe": {"intro": title_time_form_ikke_deltatt}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
