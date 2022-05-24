@@ -60,8 +60,8 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 
@@ -116,28 +116,28 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 
 df_new=df.pivot(index='industry', columns='contents',values='value')
 df_new2=df2.pivot(index='industry', columns='contents',values='value')
 df_new3= pd.concat([df_new, df_new2], axis=1)
-BNP_per_timeverk = df_new3.iloc[:,1] / df_new3.iloc[:,0]
-df_new4 = pd.concat([df_new3, BNP_per_timeverk],axis=1)
+GDP_per_hour = df_new3.iloc[:,1] / df_new3.iloc[:,0]
+df_new4 = pd.concat([df_new3, GDP_per_hour],axis=1)
 df_new4.columns = ['Hours worked','Value added','Value added per hour worked']
 df_new4.to_csv('data_EN/SSB_productivity_lastyear.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 dato=str(df.iloc[0,2])
 date_string = 'Value added per hour worked. Data for ' + dato +'.' 
 #Update DW
 chartid = '7ymZd'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",

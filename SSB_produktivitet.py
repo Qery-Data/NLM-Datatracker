@@ -61,8 +61,8 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 
@@ -117,28 +117,28 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df2 = dataset.write('dataframe')
 
 df_new=df.pivot(index='næring', columns='statistikkvariabel',values='value')
 df_new2=df2.pivot(index='næring', columns='statistikkvariabel',values='value')
 df_new3= pd.concat([df_new, df_new2], axis=1)
-BNP_per_timeverk = df_new3.iloc[:,1] / df_new3.iloc[:,0]
-df_new4 = pd.concat([df_new3, BNP_per_timeverk],axis=1)
+GDP_per_hour = df_new3.iloc[:,1] / df_new3.iloc[:,0]
+df_new4 = pd.concat([df_new3, GDP_per_hour],axis=1)
 df_new4.columns = ['Utførte timeverk','BNP i basisverdi','BNP per timeverk']
 df_new4.to_csv('data/SSB_produktivitet_sistaar.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data sist publisert: ' + oppdatert_dato.strftime ('%d/%m/%y')
-dato=str(df.iloc[0,2])
-date_string = 'Bruttoprodukt i kroner per utførte timeverk. Tall for ' + dato +'.' 
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+title_date=str(df.iloc[0,2])
+date_string = 'Bruttoprodukt i kroner per utførte timeverk. Tall for ' + title_date +'.' 
 #Update DW
 chartid = 'gV6yJ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
