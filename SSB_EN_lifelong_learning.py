@@ -8,7 +8,7 @@ import pandas as pd
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Share participated in formal or non formal learning activity. CQlTs (formal) xxxx (non formal) xxx (not participated)
+#Share participated in formal or non formal learning activity. CQlTs (formal) pwXtu (non formal) p7BNo (not participated)
 ssburl = 'https://data.ssb.no/api/v0/en/table/12865/'
 query = {
   "query": [
@@ -77,26 +77,26 @@ query = {
     "format": "json-stat2"
   }
 }
-resultat = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(resultat.text)
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='formal and non-formal education', columns='industry (SIC2007)', values='value')
 df_new.to_csv('data_EN/SSB_learning_industry.csv', index=True)
-json_object = json.loads(resultat.text)
-oppdatert = json_object["updated"]
-oppdatert_dato = datetime.strptime(oppdatert, '%Y-%m-%dT%H:%M:%SZ')
-riktig_dato = 'Data last published: ' + oppdatert_dato.strftime ('%d/%m/%y')
-tid = str(df.iloc[0,4])
-tittel_tid_form = 'Data for ' + tid + '. Persons aged 15-59 years.'
-tittel_tid_form_vid = 'Data for ' + tid + '. Persons aged fra 22-59 years.'
-tittel_tid_form_ikke_form = 'Data for ' + tid + '. Persons aged fra 15-66 years.'
-tittel_tid_form_ikke_deltatt = 'Data for ' + tid + '. Persons aged fra 15-66 years.'
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+title_time = str(df.iloc[0,4])
+title_time_form = 'Data for ' + title_time + '. Persons aged 15-59 years.'
+title_time_form_vid = 'Data for ' + title_time + '. Persons aged fra 22-59 years.'
+title_time_form_ikke_form = 'Data for ' + title_time + '. Persons aged fra 15-66 years.'
+title_time_form_ikke_deltatt = 'Data for ' + title_time + '. Persons aged fra 15-66 years.'
 
 #Update DW
 chartid = 'CQlTs'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -104,7 +104,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form}}}
+payload = {"metadata": {"describe": {"intro": title_time_form}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -120,7 +120,7 @@ response = requests.request("POST", url, headers=headers)
 
 chartid = 'pwXtu'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -128,7 +128,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form_ikke_form}}}
+payload = {"metadata": {"describe": {"intro": title_time_form_ikke_form}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -144,7 +144,7 @@ response = requests.request("POST", url, headers=headers)
 
 chartid = 'p7BNo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": riktig_dato}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -152,7 +152,7 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": tittel_tid_form_ikke_deltatt}}}
+payload = {"metadata": {"describe": {"intro": title_time_form_ikke_deltatt}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
