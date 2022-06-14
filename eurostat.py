@@ -230,7 +230,7 @@ chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date = df.iloc[0,6]
 quarter = date[5]
 year = date[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.quarter ' + year + '.'
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.kvartal ' + year + '.'
 date_string_EN = 'As % of the population 15-74 years. Sesonally adjusted data for Q' + quarter + ' ' + year + '.'
 
 #Update DW
@@ -295,7 +295,7 @@ chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 date = df.iloc[0,6]
 quarter = date[5]
 year = date[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.quarter ' + year + '.'
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.kvartal ' + year + '.'
 date_string_EN = 'As % of the population 15-74 years. Sesonally adjusted data for Q' + quarter + ' ' + year + '.'
 
 #Update DW
@@ -360,7 +360,7 @@ chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date = df.iloc[0,6]
 quarter = date[5]
 year = date[0:4]
-date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.quarter ' + year + '.'
+date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall for ' + quarter + '.kvartal ' + year + '.'
 date_string_EN = 'As % of the population 15-74 years. Sesonally adjusted data for Q' + quarter + ' ' + year + '.'
 
 #Update DW
@@ -425,7 +425,7 @@ chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date = df.iloc[0,6]
 quarter = date[5]
 year = date[0:4]
-date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + quarter + '.quarter ' + year + '.'
+date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + quarter + '.kvartal ' + year + '.'
 date_string_EN = 'As % of the population 15-74 years. Sesonally adjusted data for Q' + quarter + ' ' + year + '.'
 
 #Update DW
