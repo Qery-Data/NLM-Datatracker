@@ -1,40 +1,79 @@
 ,isco08,wstatus,worktime,age,sex,unit,geo,time,value
-0,Total,Employed persons,Full-time,15 years or over,Total,Hour,Austria,2022Q1,
-1,Total,Employed persons,Full-time,15 years or over,Total,Hour,Belgium,2022Q1,
-2,Total,Employed persons,Full-time,15 years or over,Total,Hour,Bulgaria,2022Q1,
-3,Total,Employed persons,Full-time,15 years or over,Total,Hour,Switzerland,2022Q1,
-4,Total,Employed persons,Full-time,15 years or over,Total,Hour,Cyprus,2022Q1,
-5,Total,Employed persons,Full-time,15 years or over,Total,Hour,Czech Rep.,2022Q1,
-6,Total,Employed persons,Full-time,15 years or over,Total,Hour,Germany,2022Q1,
-7,Total,Employed persons,Full-time,15 years or over,Total,Hour,Denmark,2022Q1,
-8,Total,Employed persons,Full-time,15 years or over,Total,Hour,Euro area - 19 countries  (from 2015),2022Q1,
-9,Total,Employed persons,Full-time,15 years or over,Total,Hour,Estonia,2022Q1,38.8
-10,Total,Employed persons,Full-time,15 years or over,Total,Hour,Greece,2022Q1,
-11,Total,Employed persons,Full-time,15 years or over,Total,Hour,Spain,2022Q1,39.6
-12,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 15 countries (1995-2004),2022Q1,
-13,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 27 countries (from 2020),2022Q1,
-14,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 28 countries (2013-2020),2022Q1,
-15,Total,Employed persons,Full-time,15 years or over,Total,Hour,Finland,2022Q1,
-16,Total,Employed persons,Full-time,15 years or over,Total,Hour,France,2022Q1,39.4
-17,Total,Employed persons,Full-time,15 years or over,Total,Hour,Croatia,2022Q1,
-18,Total,Employed persons,Full-time,15 years or over,Total,Hour,Hungary,2022Q1,
-19,Total,Employed persons,Full-time,15 years or over,Total,Hour,Ireland,2022Q1,
-20,Total,Employed persons,Full-time,15 years or over,Total,Hour,Iceland,2022Q1,
-21,Total,Employed persons,Full-time,15 years or over,Total,Hour,Italy,2022Q1,
-22,Total,Employed persons,Full-time,15 years or over,Total,Hour,Lithuania,2022Q1,
-23,Total,Employed persons,Full-time,15 years or over,Total,Hour,Luxembourg,2022Q1,
-24,Total,Employed persons,Full-time,15 years or over,Total,Hour,Latvia,2022Q1,39.8
-25,Total,Employed persons,Full-time,15 years or over,Total,Hour,Montenegro,2022Q1,
-26,Total,Employed persons,Full-time,15 years or over,Total,Hour,North Macedonia,2022Q1,
-27,Total,Employed persons,Full-time,15 years or over,Total,Hour,Malta,2022Q1,
-28,Total,Employed persons,Full-time,15 years or over,Total,Hour,Netherlands,2022Q1,
-29,Total,Employed persons,Full-time,15 years or over,Total,Hour,Norway,2022Q1,
-30,Total,Employed persons,Full-time,15 years or over,Total,Hour,Poland,2022Q1,
-31,Total,Employed persons,Full-time,15 years or over,Total,Hour,Portugal,2022Q1,40.0
-32,Total,Employed persons,Full-time,15 years or over,Total,Hour,Romania,2022Q1,
-33,Total,Employed persons,Full-time,15 years or over,Total,Hour,Serbia,2022Q1,
-34,Total,Employed persons,Full-time,15 years or over,Total,Hour,Sweden,2022Q1,
-35,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovenia,2022Q1,
-36,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovakia,2022Q1,
-37,Total,Employed persons,Full-time,15 years or over,Total,Hour,Turkey,2022Q1,
-38,Total,Employed persons,Full-time,15 years or over,Total,Hour,United Kingdom,2022Q1,
+0,Total,Employed persons,Full-time,15 years or over,Total,Hour,Austria,2021Q4,37.9
+1,Total,Employed persons,Full-time,15 years or over,Total,Hour,Austria,2022Q1,
+2,Total,Employed persons,Full-time,15 years or over,Total,Hour,Belgium,2021Q4,37.5
+3,Total,Employed persons,Full-time,15 years or over,Total,Hour,Belgium,2022Q1,
+4,Total,Employed persons,Full-time,15 years or over,Total,Hour,Bulgaria,2021Q4,39.5
+5,Total,Employed persons,Full-time,15 years or over,Total,Hour,Bulgaria,2022Q1,
+6,Total,Employed persons,Full-time,15 years or over,Total,Hour,Switzerland,2021Q4,43.5
+7,Total,Employed persons,Full-time,15 years or over,Total,Hour,Switzerland,2022Q1,
+8,Total,Employed persons,Full-time,15 years or over,Total,Hour,Cyprus,2021Q4,39.7
+9,Total,Employed persons,Full-time,15 years or over,Total,Hour,Cyprus,2022Q1,
+10,Total,Employed persons,Full-time,15 years or over,Total,Hour,Czech Rep.,2021Q4,38.2
+11,Total,Employed persons,Full-time,15 years or over,Total,Hour,Czech Rep.,2022Q1,
+12,Total,Employed persons,Full-time,15 years or over,Total,Hour,Germany,2021Q4,39.3
+13,Total,Employed persons,Full-time,15 years or over,Total,Hour,Germany,2022Q1,
+14,Total,Employed persons,Full-time,15 years or over,Total,Hour,Denmark,2021Q4,38.3
+15,Total,Employed persons,Full-time,15 years or over,Total,Hour,Denmark,2022Q1,
+16,Total,Employed persons,Full-time,15 years or over,Total,Hour,Euro area - 19 countries  (from 2015),2021Q4,38.6
+17,Total,Employed persons,Full-time,15 years or over,Total,Hour,Euro area - 19 countries  (from 2015),2022Q1,
+18,Total,Employed persons,Full-time,15 years or over,Total,Hour,Estonia,2021Q4,39.1
+19,Total,Employed persons,Full-time,15 years or over,Total,Hour,Estonia,2022Q1,38.8
+20,Total,Employed persons,Full-time,15 years or over,Total,Hour,Greece,2021Q4,41.2
+21,Total,Employed persons,Full-time,15 years or over,Total,Hour,Greece,2022Q1,
+22,Total,Employed persons,Full-time,15 years or over,Total,Hour,Spain,2021Q4,38.0
+23,Total,Employed persons,Full-time,15 years or over,Total,Hour,Spain,2022Q1,39.6
+24,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 15 countries (1995-2004),2021Q4,
+25,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 15 countries (1995-2004),2022Q1,
+26,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 27 countries (from 2020),2021Q4,38.8
+27,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 27 countries (from 2020),2022Q1,
+28,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 28 countries (2013-2020),2021Q4,
+29,Total,Employed persons,Full-time,15 years or over,Total,Hour,European Union - 28 countries (2013-2020),2022Q1,
+30,Total,Employed persons,Full-time,15 years or over,Total,Hour,Finland,2021Q4,37.2
+31,Total,Employed persons,Full-time,15 years or over,Total,Hour,Finland,2022Q1,
+32,Total,Employed persons,Full-time,15 years or over,Total,Hour,France,2021Q4,38.3
+33,Total,Employed persons,Full-time,15 years or over,Total,Hour,France,2022Q1,39.4
+34,Total,Employed persons,Full-time,15 years or over,Total,Hour,Croatia,2021Q4,38.7
+35,Total,Employed persons,Full-time,15 years or over,Total,Hour,Croatia,2022Q1,
+36,Total,Employed persons,Full-time,15 years or over,Total,Hour,Hungary,2021Q4,38.7
+37,Total,Employed persons,Full-time,15 years or over,Total,Hour,Hungary,2022Q1,
+38,Total,Employed persons,Full-time,15 years or over,Total,Hour,Ireland,2021Q4,39.2
+39,Total,Employed persons,Full-time,15 years or over,Total,Hour,Ireland,2022Q1,
+40,Total,Employed persons,Full-time,15 years or over,Total,Hour,Iceland,2021Q4,39.8
+41,Total,Employed persons,Full-time,15 years or over,Total,Hour,Iceland,2022Q1,
+42,Total,Employed persons,Full-time,15 years or over,Total,Hour,Italy,2021Q4,38.6
+43,Total,Employed persons,Full-time,15 years or over,Total,Hour,Italy,2022Q1,
+44,Total,Employed persons,Full-time,15 years or over,Total,Hour,Lithuania,2021Q4,39.2
+45,Total,Employed persons,Full-time,15 years or over,Total,Hour,Lithuania,2022Q1,
+46,Total,Employed persons,Full-time,15 years or over,Total,Hour,Luxembourg,2021Q4,38.7
+47,Total,Employed persons,Full-time,15 years or over,Total,Hour,Luxembourg,2022Q1,
+48,Total,Employed persons,Full-time,15 years or over,Total,Hour,Latvia,2021Q4,39.3
+49,Total,Employed persons,Full-time,15 years or over,Total,Hour,Latvia,2022Q1,39.8
+50,Total,Employed persons,Full-time,15 years or over,Total,Hour,Montenegro,2021Q4,
+51,Total,Employed persons,Full-time,15 years or over,Total,Hour,Montenegro,2022Q1,
+52,Total,Employed persons,Full-time,15 years or over,Total,Hour,North Macedonia,2021Q4,
+53,Total,Employed persons,Full-time,15 years or over,Total,Hour,North Macedonia,2022Q1,
+54,Total,Employed persons,Full-time,15 years or over,Total,Hour,Malta,2021Q4,39.1
+55,Total,Employed persons,Full-time,15 years or over,Total,Hour,Malta,2022Q1,
+56,Total,Employed persons,Full-time,15 years or over,Total,Hour,Netherlands,2021Q4,38.0
+57,Total,Employed persons,Full-time,15 years or over,Total,Hour,Netherlands,2022Q1,
+58,Total,Employed persons,Full-time,15 years or over,Total,Hour,Norway,2021Q4,36.9
+59,Total,Employed persons,Full-time,15 years or over,Total,Hour,Norway,2022Q1,
+60,Total,Employed persons,Full-time,15 years or over,Total,Hour,Poland,2021Q4,40.0
+61,Total,Employed persons,Full-time,15 years or over,Total,Hour,Poland,2022Q1,
+62,Total,Employed persons,Full-time,15 years or over,Total,Hour,Portugal,2021Q4,38.1
+63,Total,Employed persons,Full-time,15 years or over,Total,Hour,Portugal,2022Q1,40.0
+64,Total,Employed persons,Full-time,15 years or over,Total,Hour,Romania,2021Q4,39.9
+65,Total,Employed persons,Full-time,15 years or over,Total,Hour,Romania,2022Q1,
+66,Total,Employed persons,Full-time,15 years or over,Total,Hour,Serbia,2021Q4,43.5
+67,Total,Employed persons,Full-time,15 years or over,Total,Hour,Serbia,2022Q1,
+68,Total,Employed persons,Full-time,15 years or over,Total,Hour,Sweden,2021Q4,38.2
+69,Total,Employed persons,Full-time,15 years or over,Total,Hour,Sweden,2022Q1,
+70,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovenia,2021Q4,40.6
+71,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovenia,2022Q1,
+72,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovakia,2021Q4,37.8
+73,Total,Employed persons,Full-time,15 years or over,Total,Hour,Slovakia,2022Q1,
+74,Total,Employed persons,Full-time,15 years or over,Total,Hour,Turkey,2021Q4,
+75,Total,Employed persons,Full-time,15 years or over,Total,Hour,Turkey,2022Q1,
+76,Total,Employed persons,Full-time,15 years or over,Total,Hour,United Kingdom,2021Q4,
+77,Total,Employed persons,Full-time,15 years or over,Total,Hour,United Kingdom,2022Q1,
