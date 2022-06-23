@@ -1,11 +1,10 @@
 name: DW_Publish
 on: 
-  workflow_dispatch:
   push:
-    branches:
-    - main
     paths:
-    - data
+    - 'data/**'
+  workflow_dispatch:
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
