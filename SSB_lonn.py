@@ -94,12 +94,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = '1R4EQ'
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' *Årlig vekst i nominell lønn (fra Nasjonalregnskapet). Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg. '
@@ -111,13 +105,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'k0DNV'
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' *Reallønnsvekst er lønnsvekst fratrukket prisvekst. Positivt reallønnsvekst betyr at kjøpekraften økes.'
@@ -129,12 +116,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Gjennomsnittlig lønn måned yrker nivå 4
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -631,12 +612,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Gjennomsnittlig lønn måned yrker nivå 4 sektor Gfff7
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -1151,12 +1126,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Lønnsforskjeller kjønn sist år gjennomsnitt og median RFHWE
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -1264,13 +1233,7 @@ headers = {
     "Accept": "*/*",
     "Content-Type": "application/json"
     }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)   
+response = requests.request("PATCH", url, json=payload, headers=headers)  
 
 #Lønnsutviklingen kvinner og menn gjennomsnitt og median GDCRK (graf) og Fn94r (tabell)
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -1465,12 +1428,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
+
 #Endring 
 df5_new = df4_new.transpose()
 df5_new['Sist år'] = df5_new.iloc[:,4]
@@ -1495,13 +1453,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 
 #Median månedslønn kvinner og menn yrker 4 sifret liYSg
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -2019,12 +1970,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)   
 
 #Median månedslønn heltid kvinner og menn yrker 4 sifret Z2gjw
 ssburl = 'https://data.ssb.no/api/v0/no/table/11418/'
@@ -2542,13 +2487,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)   
-
 
 #Lønnsforskjeller etter utdanningsnivå og næring 55TV7 (næring) og cu52g (nivå)
 ssburl = 'https://data.ssb.no/api/v0/no/table/11420/'
@@ -2684,12 +2622,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)   
+ 
 #Update DW
 chartid = 'cu52g'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2708,12 +2641,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)   
 
 #Lønnsforskjeller etter kommune hls1I (bosted) og mB28V (arbeidssted) og ZX71R (tabell)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12852/'
@@ -3595,12 +3522,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Update DW
 chartid = 'mB28V'
@@ -3620,12 +3541,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
+
 #Update DW
 chartid = 'ZX71R'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -3644,12 +3560,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Lønnsforskjeller etter kjønn og kommune f4DFw
 ssburl = 'https://data.ssb.no/api/v0/no/table/12852/'
@@ -4542,12 +4452,5 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 
 #***

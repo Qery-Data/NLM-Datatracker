@@ -54,12 +54,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Trade unions working members by organization NuRRZ
 ssburl = 'https://data.ssb.no/api/v0/en/table/03546/'
@@ -112,12 +106,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members in LO XU7zR and first page on main table FRuq3
 
@@ -272,12 +260,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'XU7zR'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -295,12 +277,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members in YS TmM5a
 #Members in YS total
@@ -440,12 +416,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members of Unio Eo880
 #Members in total
@@ -583,12 +553,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members in Akademikerne iOf2c
 #Members in total
@@ -727,12 +691,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members of other associations zWoFj
 #Medmbers in total
@@ -882,12 +840,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Employer organizations members IORXb (employees) and YWqlt (companies)
 #Employees
@@ -1056,13 +1008,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'YWqlt'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1073,12 +1018,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members by employer organization employees 00ZIX
 ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
@@ -1169,12 +1108,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Members by employer organization companies AviZG
 ssburl = 'https://data.ssb.no/api/v0/en/table/03532/'
@@ -1265,13 +1198,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 
 #Employer organizations all Sw0Qm (companies) xdXUi (employees)
 #Companies 
@@ -1437,12 +1363,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'xdXUi'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1461,12 +1381,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #NHO 78wDf (companies) daeM5 (employees)
 #Companies 
@@ -1625,12 +1539,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'daeM5'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1649,9 +1557,3 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)

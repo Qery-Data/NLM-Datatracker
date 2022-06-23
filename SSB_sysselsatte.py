@@ -73,13 +73,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Andel sysselsatte etter kjønn AE6ZC
 ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
@@ -145,13 +138,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Andel sysselsatte etter alder nFRTH
 ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
@@ -217,13 +203,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Andel midlertidig ansatte BOz7R
 ssburl = 'https://data.ssb.no/api/v0/no/table/05611/'
@@ -305,13 +284,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Andel midlertidig ansatte etter kjønn smYJ7
 ssburl = 'https://data.ssb.no/api/v0/no/table/05611/'
@@ -394,13 +366,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Andel midlertidig ansatte etter alder EYDM9
 ssburl = 'https://data.ssb.no/api/v0/no/table/05611/'
@@ -486,10 +451,3 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)

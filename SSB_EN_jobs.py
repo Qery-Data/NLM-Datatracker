@@ -74,13 +74,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Jobs monthly change ibFMZ
 ssburl = 'https://data.ssb.no/api/v0/en/table/13126/'
@@ -147,13 +140,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by industry and change by industry NPfNj/vnqke/SXwZ8
 ssburl = 'https://data.ssb.no/api/v0/en/table/13126/'
@@ -263,13 +249,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-
-response = requests.request("POST", url, headers=headers)
 
 #Update DW vnqke (Change from feb.20)
 chartid = 'vnqke'
@@ -293,12 +272,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Update DW SXwZ8 (Table change in numbers)
 chartid = 'SXwZ8'
@@ -322,12 +295,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs change per industry HIT0e
 Change_month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
@@ -366,12 +333,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 # Jobs by county Tr5SU
 ssburl = 'https://data.ssb.no/api/v0/en/table/11657/'
@@ -467,12 +428,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 # Jobs by municipality QDsDL
 ssburl = 'https://data.ssb.no/api/v0/en/table/11657/'
@@ -914,12 +869,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by age 6mzit
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -1016,12 +965,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by age,men uDHve
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -1118,12 +1061,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by age, women Ccuaf
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -1220,12 +1157,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by immigration category, last five quarters etFYD
 ssburl = 'https://data.ssb.no/api/v0/en/table/12315/'
@@ -1309,12 +1240,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Jobs by immigration category, change AQjLG
 ssburl = 'https://data.ssb.no/api/v0/en/table/12315/'
@@ -1402,9 +1327,3 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)

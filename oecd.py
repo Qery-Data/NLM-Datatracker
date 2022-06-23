@@ -23,14 +23,6 @@ headers = {
     "Accept": "*/*"
     }
 response = requests.request("POST", url, headers=headers)
-#Update DW
-chartid = '2BNuF'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 # Produktivitet per time sammenligning sist år kCW5D (BNP) k3zon (BNI) (NO) + fszx7 (GDP) J4cFQ (GNI)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LTU+LVA+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+G-7+OECD+NMEC+BRA+CHN+CRI+IND+IDN+RUS+ZAF+BRIICS.T_GDPHRS+T_GNIHRS.CPC/all?startTime=2020&endTime=2020'
@@ -54,12 +46,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'k3zon'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -70,12 +56,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
+
 #Update DW
 chartid = 'fszx7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -86,12 +67,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 chartid = 'J4cFQ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -102,12 +77,6 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 # Produktivitet per time index 2000 N1JHC (NO) 8jVXu (EN)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+OECD+USA.T_GDPHRS_V.2015Y/all?startTime=2000'
@@ -149,7 +118,6 @@ df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
 df_new.to_csv('data/OECD_organisasjonsgrad_rangering.csv', index=True)
 
-
 #End
 
 #Kollektiv forhandlingsrett
@@ -166,4 +134,3 @@ result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Country', columns='Year', values='Value')
 df_new.to_csv('data/OECD_organisasjonsgrad_kollektiv_forhandlingsrett_norden.csv', index=True)
-

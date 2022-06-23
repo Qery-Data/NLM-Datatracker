@@ -55,15 +55,6 @@ df_new = df_new.rename(columns={'Arbeidsledighetsrate (nivå)': 'Faktisk utvikli
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_arbeidsledighet.csv', index=True)
 
-#Update DW
-chartid = 'ELpUm'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 #Prognoser Sysselatte personer smBL7 (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
@@ -109,15 +100,6 @@ df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Sysselsatte personer': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_sysselsattepersoner.csv', index=True)
-
-#Update DW
-chartid = 'smBL7'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Prognoser Arbeidsstyrken aFpl4 (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
@@ -165,15 +147,6 @@ df_new = df_new.rename(columns={'Arbeidsstyrke': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_arbeidsstyrke.csv', index=True)
 
-#Update DW
-chartid = 'aFpl4'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 #Prognoser Yrkesandel 2OAZc (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
@@ -219,15 +192,6 @@ df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Yrkesandel (nivå)': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_yrkesandel.csv', index=True)
-
-#Update DW
-chartid = '2OAZc'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
 
 #Prognoser Utførte timeverk agoxS (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
@@ -275,15 +239,6 @@ df_new = df_new.rename(columns={'Utførte timeverk i Fastlands-Norge': 'Faktisk 
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_timeverk.csv', index=True)
 
-#Update DW
-chartid = 'agoxS'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
 #Prognoser Årslønn TZZSL (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
@@ -330,16 +285,6 @@ df_new = df_new.rename(columns={'Årslønn': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_aarslonn.csv', index=True)
 
-#Update DW
-chartid = 'TZZSL'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
-
-
 #Prognoser Konsumprisindeksen sNzun (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
@@ -385,12 +330,3 @@ df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Konsumprisindeksen (KPI)': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.to_csv('data/SSB_prognoser_kpi.csv', index=True)
-
-#Update DW
-chartid = 'sNzun'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/publish/'
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*"
-    }
-response = requests.request("POST", url, headers=headers)
