@@ -3,6 +3,7 @@ on:
   push:
     paths:
     - 'data/**'
+    - 'data_EN/**'
   workflow_dispatch:
 
 jobs:
