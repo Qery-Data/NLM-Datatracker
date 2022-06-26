@@ -1,9 +1,11 @@
 name: DW_Publish
 on: 
   push:
+    branches:
+      - master
     paths:
-    - 'data/**'
-    - 'data_EN/**'
+    - data/**
+    - data_EN/**
   workflow_dispatch:
 
 jobs:
