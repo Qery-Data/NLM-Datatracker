@@ -2,7 +2,7 @@ name: DW_Publish
 on: 
   push:
     paths:
-    - data/**
+    - 'data/**'
     - data_EN/**
   workflow_dispatch:
 
