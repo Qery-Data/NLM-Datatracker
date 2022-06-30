@@ -4,8 +4,8 @@ on:
     branches:
     - 'main'
     paths:
-    - 'data/**'
-    - 'data_EN/**'
+    - data/**
+    - data_EN/**
   workflow_dispatch:
 
 jobs:
