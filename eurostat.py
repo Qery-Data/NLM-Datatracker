@@ -49,11 +49,11 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
 #Andel arbeidsledige wNXU5 (NO) + Unemployment rate 0R3hu (EN)
-dataset_sa = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DK&geo=EU27_2020&geo=NO')
+dataset_sa = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=SA&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DK&geo=EU27_2020')
 type(dataset_sa)
 df_sa = dataset_sa.write('dataframe')
 df_new_sa = df_sa.pivot(index='time', columns='geo', values='value')
-dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=SE')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=NO&geo=SE')
 type(dataset_tn)
 df_tn = dataset_tn.write('dataframe')
 df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
