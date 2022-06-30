@@ -3,9 +3,6 @@ on:
   push:
     branches:
     - 'main'
-    paths:
-    - data/**
-    - data_EN/**
   workflow_dispatch:
 
 jobs:
