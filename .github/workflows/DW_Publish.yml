@@ -2,7 +2,7 @@ name: DW_Publish
 on: 
   push:
     branches:
-    - main
+    - 'main'
     paths:
     - 'data/**'
     - 'data_EN/**'
