@@ -251,6 +251,7 @@ dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='quarter', values='value')
+df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)
 df_new2 = df_new.iloc[:,[0,4,8,12,16,20,24,28,32,36,40]]
 total = df_new2.iloc[:,10]
 title_date = (total.name)
@@ -333,6 +334,7 @@ dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sex', columns='quarter', values='value')
+df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)
 df_new2 = df_new.iloc[:,[0,4,8,12,16,20,24,28,32,36,40]]
 total = df_new2.iloc[:,10]
 title_date = (total.name)
@@ -418,6 +420,7 @@ dataset = pyjstat.Dataset.read(result.text)
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
+df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)
 df_new2 = df_new.iloc[:,[0,4,8,12,16,20,24,28,32,36,40]]
 total = df_new2.iloc[:,10]
 title_date = (total.name)
