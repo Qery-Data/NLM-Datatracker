@@ -5,7 +5,7 @@ on:
     - 'main'
     paths:
     - 'data/**.csv'
-    - 'data/**.csv'
+    - 'data_EN/**.csv'
   workflow_dispatch:
 
 jobs:
