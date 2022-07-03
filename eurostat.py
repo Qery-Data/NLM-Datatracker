@@ -678,7 +678,6 @@ dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='geo', columns='time', values='value')
-df_new = df_new.drop(index={"Montenegro","United Kingdom", "Turkey", "North Macedonia","Euro area - 19 countries  (from 2015)","European Union - 28 countries (2013-2020)"})
 df_new.to_csv('data/Eurostat_working_life_lenght.csv', index=True)
 EU_avg = str(df_new.iloc[7,19])
 year = str(df_new.columns[19])
