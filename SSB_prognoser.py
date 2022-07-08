@@ -119,7 +119,7 @@ df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
 df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
-df_new3.to_csv('data/Prognoser_registrert__tabell.csv', index=True)
+df_new3.to_csv('data/Prognoser_registrert_ledighet_tabell.csv', index=True)
 
 #Prognose Sysselsatte personer
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
@@ -361,7 +361,7 @@ df_new = df_new.rename(columns={'Utførte timeverk i Fastlands-Norge': 'Faktisk 
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:6],'SSB'] = pd.NA
-df_new.to_csv('data/Prognoser_timverk_konsensus_figur.csv', index=True)
+df_new.to_csv('data/Prognoser_timeverk_konsensus_figur.csv', index=True)
 df_new2 = df_new.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new2.drop(columns=['Faktisk utvikling'], inplace=True)
 df_new2 = df_new2.transpose()
