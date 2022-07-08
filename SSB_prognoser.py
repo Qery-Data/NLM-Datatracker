@@ -26,7 +26,7 @@ forecast_dates = {
     'Swedbank': '06.04.2022'
     }
 
-#Prognoser Arbeidsledighet (AKU)
+#Prognose Arbeidsledighet (AKU)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -121,7 +121,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_registrert__tabell.csv', index=True)
 
-#Prognoser Sysselsatte personer
+#Prognose Sysselsatte personer
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
