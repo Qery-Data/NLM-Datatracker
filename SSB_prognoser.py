@@ -15,8 +15,8 @@ forecast_dates = {
     'Norges Bank': '23.06.2022',
     'FIN': '12.05.2022',
     'NAV': '15.06.2022',
-    'OECD': '08.06.2022',
     'IMF': '19.04.2022',
+    'OECD': '08.06.2022',
     'NHO': '15.06.2022',
     'Danske Bank': '21.06.2022',
     'DNB': '28.04.2022',
@@ -75,8 +75,8 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'FIN': [3.3,3.2,pd.NA,pd.NA],
     'NAV': [3.2,3.3,pd.NA,pd.NA],
-    'OECD': [2.8,2.8,pd.NA,pd.NA],
     'IMF': [3.9,3.8,3.7,3.7],
+    'OECD': [2.8,2.8,pd.NA,pd.NA],
     'NHO': [3.1,3.1,3.4,pd.NA],
     'DNB': [2.9,3,3.3,3.8],
     'SEB': [3.1,3.2,pd.NA,pd.NA]
