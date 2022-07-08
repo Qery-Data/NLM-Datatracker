@@ -501,7 +501,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
-df_new2.to_csv('data/Prognoser_kpi_figur.csv', index=True)
+df_new2.to_csv('data/Prognoser_kpi_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
 df_new3 = df_new3.transpose()
