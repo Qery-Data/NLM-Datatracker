@@ -26,7 +26,7 @@ forecast_dates = {
     'Swedbank': '06.04.2022'
     }
 
-#Prognoser Arbeidsledighet
+#Prognoser Arbeidsledighet (AKU)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -93,6 +93,33 @@ df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
 df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_arbeidsledighet_tabell.csv', index=True)
+
+#Prognose Registrert ledighet (NAV)
+df = {'Faktisk utvikling': [3.0,3.0,2.7,2.4,2.3,5.0,3.1,pd.NA,pd.NA,pd.NA,pd.NA]}
+df_new = pd.DataFrame(df, index=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'])
+forecasts = {
+    'NAV': [1.9,2.0,pd.NA,pd.NA],
+    'Norges Bank': [1.8,1.8,2.0,2.1],
+    'FIN': [1.8,1.7,pd.NA,pd.NA],
+    'NHO': [1.9,1.7,2.0,pd.NA],
+    'DNB': [1.9,1.9,2.3,2.7],
+    'Nordea': [1.8,1.7,pd.NA,pd.NA],
+    'Danske Bank': [1.8,2.1,pd.NA,pd.NA],
+    'Swedbank': [1.9,2.1,pd.NA,pd.NA],
+    'Handelsbanken': [1.9,1.8,2.1,pd.NA],    
+    }
+df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
+df_new2 = pd.concat([df_new, df_forecast], axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1)
+years_na = ['2015','2016','2017','2018','2019','2020']
+insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
+df_new2.loc[years, 'Konsensus'] = insert_na
+df_new2.to_csv('data/Prognoser_registrert_ledighet_konsensus_figur.csv', index=True)
+df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
+df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
+df_new3 = df_new3.transpose()
+df_new3['Dato'] = df_new3.index.map(forecast_dates)
+df_new3.to_csv('data/Prognoser_registrert__tabell.csv', index=True)
 
 #Prognoser Sysselatte personer smBL7 (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
