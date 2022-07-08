@@ -252,7 +252,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_arbeidsstyrken_tabell.csv', index=True)
 
-#Prognoser Yrkesandel 2OAZc (no)
+#Prognose Yrkesandel
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -296,7 +296,24 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Yrkesandel (nivå)': 'Faktisk utvikling'})
 df_new ['SSB'] = df_new['Faktisk utvikling']
-df_new.to_csv('data/SSB_prognoser_yrkesandel.csv', index=True)
+df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
+df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
+forecasts = {
+    'NAV': [72.5,72.8,pd.NA,pd.NA],
+    'Swedbank': [72.4,73,pd.NA,pd.NA]
+    }
+df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
+df_new2 = pd.concat([df_new, df_forecast], axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1)
+years_na = ['2015','2016','2017','2018','2019','2020']
+insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
+df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.to_csv('data/Prognoser_yrkesandel_konsensus_figur.csv', index=True)
+df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
+df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
+df_new3 = df_new3.transpose()
+df_new3['Dato'] = df_new3.index.map(forecast_dates)
+df_new3.to_csv('data/Prognoser_yrkesandel_tabell.csv', index=True)
 
 #Prognoser Utførte timeverk agoxS (no)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
