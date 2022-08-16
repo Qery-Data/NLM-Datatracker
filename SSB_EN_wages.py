@@ -590,9 +590,9 @@ df_new2.to_csv('data_EN/SSB_earningswages_occupation_monthly.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df_new.columns[4])
-date_string = 'Average monthly earnings in NOK*. Data for ' + title_date +'.' + ' The table can be sorted by clicking on the headers.'
+date_string = 'Average monthly earnings in NOK*. Data for ' + title_date +'.'
 #Update DW
 chartid = 'qiHCS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1104,9 +1104,9 @@ df_new.to_csv('data_EN/SSB_earningswages_occupation_sector.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Data not avaliable for all sectors and occupations. Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Data not avaliable for all sectors and occupations.'
 title_date = str(df.iloc[0,6])
-date_string = 'Average monthly earnings* by sector. Data for ' + title_date + '.'
+date_string = 'Average monthly earnings by sector. Data for ' + title_date + '.'
 #Update DW
 chartid = 'fEPHK'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1214,7 +1214,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,6])
-date_string = 'Data for ' + title_date +'.' + ' By different measurements (in NOK):'
+date_string = ' By different measurements (in NOK):'+' Data for ' + title_date +'.'
 #Update DW
 chartid = 'jGRUZ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1406,9 +1406,9 @@ df4_new.to_csv('data_EN/SSB_earningswages_women_men_gap_change.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' FT: Full-time workers.'
 title_date=str(df.iloc[4,6])
-date_string = 'Data for ' + title_date +'.' + ' Womens earnings as share of mens earnings by different measurements:'
+date_string = ' Womens monthly earnings as share of mens earnings by different measurements.' + ' Data for ' + title_date +'.'
 #Update DW
 chartid = 'VlBm7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1923,9 +1923,9 @@ df_new.to_csv('data_EN/SSB_earningswages_women_men_occupation_median.csv', index
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,6])
-date_string = 'Measured by median monthly earnings.' + ' Data for ' + title_date +'.' + ' Table can be sorted by clicking on the column headings.'
+date_string = 'Measured by median monthly earnings.' + ' Data for ' + title_date +'.'
 #Update DW
 chartid = 'xaCxb'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2058,7 +2058,7 @@ df_new.to_csv('data_EN/SSB_earningswages_education_industry.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,7])
 date_string = 'Average monthly earnings (in NOK)* in different industries by educational level.' + ' Data for ' + title_date +'.'
 #Update DW
@@ -2958,11 +2958,11 @@ df_new.to_csv('data_EN/SSB_earningswages_municipalities_median.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last updated: ' + parsed_date.strftime ('%d/%m/%y') + ' Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last updated: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,7])
-date_string= 'Median average earnings* (in NOK). Data for ' + title_date + '.'
-date_string2= 'Median average earnings* (in NOK) of those who work in the region. Data for ' + title_date + '.'
-date_string3= 'Median average earnings* (in NOK) of those who live in the region. Data for ' + title_date +'.'
+date_string= 'Median average earnings (in NOK). Data for ' + title_date + '.'
+date_string2= 'Median average earnings (in NOK) of those who work in the region. Data for ' + title_date + '.'
+date_string3= 'Median average earnings (in NOK) of those who live in the region. Data for ' + title_date +'.'
 
 #Update DW
 chartid = 'fU8iJ'
@@ -3891,9 +3891,9 @@ df_new.to_csv('data_EN/SSB_earningswages_municipality_median_women_men.csv', ind
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '. Monthly earnings comprise agreed monthly earnings, includning bonuses and irregular supplements, but excluding over-time pay.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Median montly earnings* of those who live in the region. Data for ' + title_date +'.'
+date_string = 'Median montly earnings of those who live in the region. Data for ' + title_date +'.'
 #Update DW
 chartid = '1Bl4h'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
