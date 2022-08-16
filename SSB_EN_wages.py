@@ -1214,7 +1214,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,6])
-date_string = ' By different measurements (in NOK):'+' Data for ' + title_date +'.'
+date_string = ' By different measurements (in NOK).'+' Data for ' + title_date +'.'
 #Update DW
 chartid = 'jGRUZ'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1406,7 +1406,7 @@ df4_new.to_csv('data_EN/SSB_earningswages_women_men_gap_change.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' FT: Full-time workers.'
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '. FT: Full-time workers.'
 title_date=str(df.iloc[4,6])
 date_string = ' Womens monthly earnings as share of mens earnings by different measurements.' + ' Data for ' + title_date +'.'
 #Update DW

@@ -591,9 +591,9 @@ df_new2.to_csv('data/SSB_lonn_yrke.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date=str(df_new.columns[4])
-date_string = 'Gjennomsnittlig månedslønn*. Tall for ' + title_date +'.' + ' Tabellen kan sorteres ved å klikke på overskriftene.'
+date_string = 'Gjennomsnittlig månedslønn*. Tall for ' + title_date +'.'
 #Update DW
 chartid = 'CTQph'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1105,7 +1105,7 @@ df_new.to_csv('data/SSB_lonn_yrke_sektor.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig for enkelte sektorer og yrkesgrupper på grunn av at tall ikke er mulig å oppgi eller det ikke kan vises på grunn av konfidensialitetshensyn.' + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig for enkelte sektorer og yrkesgrupper på grunn av at tall ikke er mulig å oppgi eller det ikke kan vises på grunn av konfidensialitetshensyn.'
 title_date=str(df.iloc[0,6])
 date_string = 'Gjennomsnittlig månedslønn* etter sektor. Tall for ' + title_date +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
 #Update DW
@@ -1407,9 +1407,9 @@ df4_new.to_csv('data/SSB_lonn_kjonn_andel_utvikling.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg. Merk at y-aksen er avkortet.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[4,6])
-date_string = 'Tall for ' + title_date +'.' + ' Kvinners lønn som andel av menns lønn etter ulike beregningsmåter:'
+date_string = ' Kvinners lønn som andel av menns lønn etter ulike beregningsmåter.'+' Tall for ' + title_date +'.'
 #Update DW 1
 chartid = 'Fn94r'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1949,9 +1949,9 @@ df_new.to_csv('data/SSB_lonn_kjonn_yrke_median.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date=str(df.iloc[0,6])
-date_string = 'Målt ved median månedslønn.' + ' Tall for ' + title_date +'.' + ' Tabellen kan sorteres ved å klikke på overskriftene.'
+date_string = 'Målt ved median månedslønn.' + ' Tall for ' + title_date +'.'
 #Update DW
 chartid = 'liYSg'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2466,9 +2466,9 @@ df_new.to_csv('data/SSB_lonn_kjonn_yrke_heltid_median.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')+'.' 
 title_date=str(df.iloc[0,6])
-date_string = 'Målt ved median månedslønn* for heltidsansatte.' + ' Tall for ' + title_date +'.' + ' Tabellen kan sorteres ved å klikke på overskriftene.'
+date_string = 'Målt ved median månedslønn* for heltidsansatte.' + ' Tall for ' + title_date +'.' 
 #Update DW
 chartid = 'Z2gjw'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2601,7 +2601,7 @@ df_new.to_csv('data/SSB_lonn_utdanning_naring.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
 date_string = 'Gjennomsnittlig månedslønn* i ulike næringer fordelt etter utdanningsnivå.' + ' Tall for ' + title_date +'.'
 #Update DW
@@ -3501,7 +3501,7 @@ df_new.to_csv('data/SSB_lonn_kommune_median_sistaar.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
 date_string = 'Median månedslønn*. Tall for ' + title_date +'.'
 #Update DW
@@ -4431,7 +4431,7 @@ df_new.to_csv('data/SSB_lonn_kommune_median_sistaar_kjonn.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Månedslønn omfatter avtalt månedslønn, uregelmessige tillegg og bonuser, men omfatter ikke overtidstillegg.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
 date_string = 'Median månedslønn* etter bostedskommune. Tall for ' + title_date +'.'
 #Update DW
