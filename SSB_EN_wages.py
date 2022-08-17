@@ -592,7 +592,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df_new.columns[4])
-date_string = 'Average monthly earnings in NOK*. Data for ' + title_date +'.'
+date_string = 'Average monthly earnings in NOK. Data for ' + title_date +'.'
 #Update DW
 chartid = 'qiHCS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2060,7 +2060,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,7])
-date_string = 'Average monthly earnings (in NOK)* in different industries by educational level.' + ' Data for ' + title_date +'.'
+date_string = 'Average monthly earnings (in NOK) in different industries by educational level.' + ' Data for ' + title_date +'.'
 #Update DW
 chartid = '9Kuoo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
