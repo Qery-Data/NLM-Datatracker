@@ -83,7 +83,7 @@ chart_list_6_unem = []
 for i in json_object['list']:
         chart_list_6_unem.append(i['publicId'])
 
-#7_Unie
+#7_EmpOrg
 url = "https://api.datawrapper.de/v3/charts?folderId=93514&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -91,9 +91,9 @@ headers = {
     }
 response = requests.get(url, headers=headers)
 json_object = json.loads(response.text)
-chart_list_7_unie = []
+chart_list_7_emporg = []
 for i in json_object['list']:
-        chart_list_7_unie.append(i['publicId'])
+        chart_list_7_emporg.append(i['publicId'])
 
 #8_Vaca
 url = "https://api.datawrapper.de/v3/charts?folderId=92826&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
@@ -131,8 +131,20 @@ chart_list_10_work = []
 for i in json_object['list']:
         chart_list_10_work.append(i['publicId'])
 
+#11_Unions
+url = "https://api.datawrapper.de/v3/charts?folderId=114150&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.get(url, headers=headers)
+json_object = json.loads(response.text)
+chart_list_11_unions = []
+for i in json_object['list']:
+        chart_list_11_unions.append(i['publicId'])
+
 #Publish
-chart_list_EN_all = (chart_list_1_empl + chart_list_2_forc + chart_list_3_jobs + chart_list_4_lifl + chart_list_5_prod + chart_list_6_unem + chart_list_7_unie + chart_list_8_vaca + chart_list_9_wage + chart_list_10_work)
+chart_list_EN_all = (chart_list_1_empl + chart_list_2_forc + chart_list_3_jobs + chart_list_4_lifl + chart_list_5_prod + chart_list_6_unem + chart_list_7_emporg + chart_list_8_vaca + chart_list_9_wage + chart_list_10_work + chart_list_11_unions)
 for vars in chart_list_EN_all:
     url = "https://api.datawrapper.de/v3/charts/" + vars + '/publish/'
     headers = {
@@ -214,7 +226,7 @@ chart_list_6_lonn = []
 for i in json_object['list']:
         chart_list_6_lonn.append(i['publicId'])
 
-#7_Orga
+#7_Arbgivere
 url = "https://api.datawrapper.de/v3/charts?folderId=88925&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -222,9 +234,9 @@ headers = {
     }
 response = requests.get(url, headers=headers)
 json_object = json.loads(response.text)
-chart_list_7_orga = []
+chart_list_7_arbgiv = []
 for i in json_object['list']:
-        chart_list_7_orga.append(i['publicId'])
+        chart_list_7_arbgiv.append(i['publicId'])
 
 #8_Prod
 url = "https://api.datawrapper.de/v3/charts?folderId=88189&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
@@ -262,8 +274,20 @@ chart_list_10_syss = []
 for i in json_object['list']:
         chart_list_10_syss.append(i['publicId'])
 
+#11_Arbtak
+url = "https://api.datawrapper.de/v3/charts?folderId=88925&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*"
+    }
+response = requests.get(url, headers=headers)
+json_object = json.loads(response.text)
+chart_list_11_arbtak = []
+for i in json_object['list']:
+        chart_list_11_arbtak.append(i['publicId'])
+
 #Publish
-chart_list_NO_all = (chart_list_1_arbl + chart_list_2_arbt + chart_list_3_jobb + chart_list_4_ledi + chart_list_5_livl + chart_list_6_lonn + chart_list_7_orga + chart_list_8_prod + chart_list_9_prog + chart_list_10_syss)
+chart_list_NO_all = (chart_list_1_arbl + chart_list_2_arbt + chart_list_3_jobb + chart_list_4_ledi + chart_list_5_livl + chart_list_6_lonn + chart_list_7_arbgiv + chart_list_8_prod + chart_list_9_prog + chart_list_10_syss + chart_list_11_arbtak)
 for vars in chart_list_NO_all:
     url = "https://api.datawrapper.de/v3/charts/" + vars + '/publish/'
     headers = {
