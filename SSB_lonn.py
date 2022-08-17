@@ -591,7 +591,7 @@ df_new2.to_csv('data/SSB_lonn_yrke.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 title_date=str(df_new.columns[4])
 date_string = 'Gjennomsnittlig månedslønn. Tall for ' + title_date +'.'
 #Update DW
