@@ -61,7 +61,7 @@ df.to_csv('data_EN/SSB_employment_rate.csv', index=False)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Note that the y-axis is cut to better show trend.'
 #Update DW
 chartid = 'RCkOD'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -126,7 +126,7 @@ df_new.to_csv('data_EN/SSB_employment_gender_rate.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Note that the y-axis is cut to better show trend.'
 #Update DW
 chartid = 'ZLJrU'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -191,7 +191,7 @@ df_new.to_csv('data_EN/SSB_employment_age_rate.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Note that the y-axis is cut to better show trend.'
 #Update DW
 chartid = 'fu93B'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
