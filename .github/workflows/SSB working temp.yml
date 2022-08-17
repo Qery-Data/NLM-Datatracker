@@ -15,13 +15,10 @@ jobs:
           python-version: '3.10'
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: SetLocale
-        run: |
-          sudo locale-gen nb_NO
       - name: Update SSB
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
-        run: python SSB_lonn.py
+        run: python eurostat.py
       - name: Commit and push if it changed
         run: |
           git config user.name "${GITHUB_ACTOR}"
