@@ -187,7 +187,7 @@ parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 date_string2 = title_date[-1:]
 date_string3 = title_date[0:4]
-date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3
+date_string4 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '.'
 date_string5 = 'Tall for ' + date_string2 + '.kvartal ' + date_string3 + '. I pst. av totalt antall stillinger.'
 #Update DW IwkIc
 chartid = 'IwkIc'
