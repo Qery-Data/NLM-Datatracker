@@ -62,7 +62,7 @@ df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y' + '.')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 
 #Update DW
 chartid = 'nzFUM'
@@ -222,7 +222,7 @@ df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
 date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
-date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med samme måned året før.'
+date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
 date_string5 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
