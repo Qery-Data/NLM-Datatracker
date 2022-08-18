@@ -8,7 +8,7 @@ import pandas as pd
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Share participated in formal or non formal learning activity. CQlTs (formal) pwXtu (non formal) p7BNo (not participated)
+#Share participated in formal or non formal learning activity. pwXtu (by type) p7BNo (not participated)
 ssburl = 'https://data.ssb.no/api/v0/en/table/12865/'
 query = {
   "query": [
@@ -18,6 +18,7 @@ query = {
         "filter": "item",
         "values": [
           "01",
+          "02",
           "03",
           "04"
         ]
@@ -88,41 +89,11 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_time = str(df.iloc[0,4])
-title_time_form = 'Data for ' + title_time + '. Persons aged 15-59 years.'
-title_time_form_vid = 'Data for ' + title_time + '. Persons aged fra 22-59 years.'
-title_time_form_ikke_form = 'Data for ' + title_time + '. Persons aged fra 15-66 years.'
-title_time_form_ikke_deltatt = 'Data for ' + title_time + '. Persons aged fra 15-66 years.'
 
 #Update DW
-chartid = 'CQlTs'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": title_time_form}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
 chartid = 'pwXtu'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": title_time_form_ikke_form}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
@@ -133,14 +104,6 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 chartid = 'p7BNo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": title_time_form_ikke_deltatt}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
