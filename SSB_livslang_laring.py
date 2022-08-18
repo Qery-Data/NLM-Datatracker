@@ -89,6 +89,7 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') 
+chart_date_delt = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' *Definert som andelen sysselsatte som hverken deltok i formell eller ikke-formell opplæring.'
 title_time = str(df.iloc[0,4])
 
 #Update DW
@@ -104,7 +105,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 
 chartid = 'ZGY5B'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
+payload = {"metadata": {"annotate": {"notes": chart_date_delt}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
