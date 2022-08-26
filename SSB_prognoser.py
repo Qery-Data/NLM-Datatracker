@@ -24,7 +24,7 @@ forecast_dates = {
     'Handelsbanken': '18.05.2022',
     'Nordea': '11.05.2022',
     'SEB': '10.05.2022',
-    'Swedbank': '24.04.2022'
+    'Swedbank': '24.08.2022'
     }
 
 #Prognose Arbeidsledighet (AKU)
