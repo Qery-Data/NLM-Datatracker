@@ -497,7 +497,7 @@ forecasts = {
     'Handelsbanken': [4.0,2.0,1.9,pd.NA],
     'Nordea': [5.5,3.8,2.5,pd.NA],
     'SEB': [5.7,4.0,2.0,pd.NA],
-    'Swedbank': [5.1,3.1,pd.NA,pd.NA]
+    'Swedbank': [5.1,3.1,1.9,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
