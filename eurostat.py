@@ -10,7 +10,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Andel ledige stillinger QeY5e (NO) + Vacancy rate ZwZQs (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/jvs_q_nace2?s_adj=SA&lastTimePeriod=21&nace_r2=B-S&sizeclas=TOTAL&indic_em=JOBRATE&geo=FI&geo=NO&geo=SE&geo=NL&geo=DE')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/jvs_q_nace2?s_adj=SA&lastTimePeriod=21&nace_r2=B-S&sizeclas=TOTAL&indic_em=JOBRATE&geo=FI&geo=NO&geo=SE&geo=NL&geo=DE&geo=EU27_2020')
 type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='time', columns='geo', values='value')
