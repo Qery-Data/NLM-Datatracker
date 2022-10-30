@@ -120,7 +120,7 @@ for i in json_object['list']:
         chart_list_9_wage.append(i['publicId'])
 
 #10_Work
-url = "https://api.datawrapper.de/v3/charts?folderId=91886&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
+url = "https://api.datawrapper.de/v3/charts?folderId=93149&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
@@ -275,7 +275,7 @@ for i in json_object['list']:
         chart_list_10_syss.append(i['publicId'])
 
 #11_Arbtak
-url = "https://api.datawrapper.de/v3/charts?folderId=88925&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
+url = "https://api.datawrapper.de/v3/charts?folderId=114153&order=DESC&orderBy=createdAt&limit=100&offset=0&expand=false"
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*"
