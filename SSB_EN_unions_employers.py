@@ -237,21 +237,9 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date=df_new.columns[1]
-title_date_next_last=df_new.columns[0]
-date_string = 'Members by national confederation and associated unions in ' + title_date
-date_string2 = 'Members of associated unions in LO in ' + title_date
 
 #Update DW
 chartid = 'FRuq3'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -260,16 +248,7 @@ headers = {
     "Content-Type": "application/json"
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
-
 chartid = 'XU7zR'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string2}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
@@ -394,20 +373,9 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date = df_new.columns[1]
-title_date_next_last=df_new.columns[0]
-date_string = 'Members of associated unions in YS in ' + title_date
 
 #Update DW
 chartid = 'TmM5a'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -532,19 +500,8 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date = df_new.columns[1]
-title_date_next_last = df_new.columns[0]
-date_string = 'Members of associated unions in Unio in ' + title_date
 #Update DW
 chartid = 'Eo880'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -670,19 +627,9 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date = df_new.columns[1]
-title_date_next_last = df_new.columns[0]
-date_string = 'Members of associated unions in Akademikerne in ' + title_date
+
 #Update DW
 chartid = 'iOf2c'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -819,19 +766,9 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date=df_new.columns[1]
-title_date_next_last = df_new.columns[0]
-date_string = 'Members of other associations in ' + title_date
+
 #Update DW
 chartid = 'zWoFj'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -1341,20 +1278,8 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-title_date = df_new.columns[1]
-title_date_next_last = df_new.columns[0]
-date_string = 'Employer organizations: Number of employees in member companies in ' + title_date
-date_string2 = 'Employer organizations: Number of member companies in ' + title_date
 #Update DW
 chartid = 'Sw0Qm'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string2}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -1365,14 +1290,6 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 chartid = 'xdXUi'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -1516,21 +1433,9 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Numbers not avaliable for all sectoral federations.'
-title_date = df_new.columns[1]
-title_date_next_last = df_new.columns[0]
-date_string = 'NHO: Number of employees in member companies by sectoral federation in ' + title_date
-date_string2 = 'NHO: Number of member companies by sectoral federation in ' + title_date
 
 #Update DW
 chartid = '78wDf'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string2}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -1541,14 +1446,6 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 chartid = 'daeM5'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"title": date_string}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
