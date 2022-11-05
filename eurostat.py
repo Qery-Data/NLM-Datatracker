@@ -83,7 +83,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
 #Andel ungdomsarbeidsledige 5pqI6 (NO) + Youth unemployment rate jjdYo (EN)
-dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T&geo=DEgeo=DK&geo=EU27_2020&geo=SE&geo=NO')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T&geo=DE&geo=DK&geo=EU27_2020&geo=SE&geo=NO')
 type(dataset_tn)
 df_tn = dataset_tn.write('dataframe')
 df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
