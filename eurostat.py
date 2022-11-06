@@ -127,28 +127,6 @@ parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
-#Update DW
-chartid = 'ohRTM'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
-#Update DW
-chartid = 'vX91z'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-
 #Andel deltid sist år Eurostat lmKlf (NO) + Part time share last year cR3Tp (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
 type(dataset)
