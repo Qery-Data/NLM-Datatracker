@@ -71,7 +71,6 @@ parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
-
 #Andel sysselsatte CS8Rb (NO) + Employment rate VKfA9 (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=61&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP')
 type(dataset)
