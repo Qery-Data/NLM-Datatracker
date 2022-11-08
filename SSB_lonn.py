@@ -3973,7 +3973,6 @@ df_new.rename(index={'Unjárga - Nesseby':'Nesseby'},inplace=True)
 df_new.rename(index={'Våler (Innlandet)':'Våler – Innlandet'},inplace=True)
 df_new.rename(index={'Våler (Viken)':'Våler – Viken'},inplace=True)
 df_new.drop(index={'Ikke Fastlands-Norge'}, inplace=True)
-df_new.drop(('Uoppgitt kommune'), inplace=True)
 df_new.to_csv('data/SSB_lonn_kommune_median_sistaar.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
