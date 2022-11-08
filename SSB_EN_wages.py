@@ -592,7 +592,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df_new.columns[4])
-date_string = 'Average monthly earnings in NOK. Data for ' + title_date +'.'
+date_string = 'Average monthly earnings in NOK. Full-time employees. Data for ' + title_date +'.'
 #Update DW
 chartid = 'qiHCS'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1591,7 +1591,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' Data not avaliable for all sectors and occupations.'
 title_date = str(df.iloc[0,6])
-date_string = 'Average monthly earnings by sector. Data for ' + title_date + '.'
+date_string = 'Average monthly earnings by sector. Full-time employees. Data for ' + title_date + '.'
 #Update DW
 chartid = 'fEPHK'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2402,7 +2402,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,6])
-date_string = 'Measured by median monthly earnings.' + ' Data for ' + title_date +'.'
+date_string = 'Measured by median monthly earnings. Full-time employees.' + ' Data for ' + title_date +'.'
 #Update DW
 chartid = 'xaCxb'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2496,7 +2496,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -2537,7 +2537,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,7])
-date_string = 'Average monthly earnings (in NOK) in different industries by educational level.' + ' Data for ' + title_date +'.'
+date_string = 'Average monthly earnings (in NOK) for full-time employees in different industries by educational level.' + ' Data for ' + title_date +'.'
 #Update DW
 chartid = '9Kuoo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -3376,7 +3376,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -3437,9 +3437,9 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last updated: ' + parsed_date.strftime ('%d/%m/%y')
 title_date = str(df.iloc[0,7])
-date_string= 'Median average earnings (in NOK). Data for ' + title_date + '.'
-date_string2= 'Median average earnings (in NOK) of those who work in the region. Data for ' + title_date + '.'
-date_string3= 'Median average earnings (in NOK) of those who live in the region. Data for ' + title_date +'.'
+date_string= 'Median earnings (in NOK). Data for ' + title_date + '.' + ' Full-time employees.'
+date_string2= 'Median earnings (in NOK) of those who work in the region. Data for ' + title_date + '.' + ' Full-time employees.'
+date_string3= 'Median earnings (in NOK) of those who live in the region. Data for ' + title_date +'.'+ ' Full-time employees.'
 
 #Update DW
 chartid = 'fU8iJ'
@@ -4308,7 +4308,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -4370,7 +4370,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Median montly earnings of those who live in the region. Data for ' + title_date +'.'
+date_string = 'Median montly earnings of those who live in the region. Data for ' + title_date +'.' + 'Full-time employees.'
 #Update DW
 chartid = '1Bl4h'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'

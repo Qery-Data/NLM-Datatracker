@@ -593,7 +593,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 title_date=str(df_new.columns[4])
-date_string = 'Gjennomsnittlig månedslønn. Tall for ' + title_date +'.'
+date_string = 'Gjennomsnittlig månedslønn for heltidsansatte. Tall for ' + title_date +'.'
 #Update DW
 chartid = 'CTQph'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -1592,7 +1592,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' Tall ikke tilgjengelig for enkelte sektorer og yrkesgrupper på grunn av at tall ikke er mulig å oppgi eller det ikke kan vises på grunn av konfidensialitetshensyn.'
 title_date=str(df.iloc[0,6])
-date_string = 'Gjennomsnittlig månedslønn etter sektor. Tall for ' + title_date +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
+date_string = 'Gjennomsnittlig månedslønn etter sektor for heltidsansatte. Tall for ' + title_date +' fordelt på statsforvaltningen, kommuneforvaltningen og privat sektor (inklusive offentlig eide foretak.)'
 #Update DW
 chartid = 'Gfff7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -2428,7 +2428,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date=str(df.iloc[0,6])
-date_string = 'Målt ved median månedslønn.' + ' Tall for ' + title_date +'.'
+date_string = 'Målt ved median månedslønn for heltidsansatte.' + ' Tall for ' + title_date +'.'
 #Update DW
 chartid = 'liYSg'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -3039,7 +3039,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -3080,7 +3080,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Gjennomsnittlig månedslønn i ulike næringer fordelt etter utdanningsnivå.' + ' Tall for ' + title_date +'.'
+date_string = 'Gjennomsnittlig månedslønn for heltidsansatte i ulike næringer fordelt etter utdanningsnivå.' + ' Tall for ' + title_date +'.'
 #Update DW
 chartid = '55TV7'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -3919,7 +3919,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -3980,7 +3980,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Median månedslønn. Tall for ' + title_date +'.'
+date_string = 'Median månedslønn for heltidsansatte. Tall for ' + title_date +'.'
 #Update DW
 chartid = 'hls1I'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
@@ -4848,7 +4848,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -4910,7 +4910,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Median månedslønn etter bostedskommune. Tall for ' + title_date +'.'
+date_string = 'Median månedslønn etter bostedskommune for heltidsansatte. Tall for ' + title_date +'.'
 #Update DW
 chartid = 'f4DFw'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
