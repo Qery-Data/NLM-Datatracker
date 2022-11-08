@@ -4369,7 +4369,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[0,7])
-date_string = 'Median montly earnings of those who live in the region. Data for ' + title_date +'.' + 'Full-time employees.'
+date_string = 'Median montly earnings of those who live in the region. Data for ' + title_date +'.' + ' Full-time employees.'
 #Update DW
 chartid = '1Bl4h'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
