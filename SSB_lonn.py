@@ -550,7 +550,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -1047,7 +1047,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -1552,7 +1552,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
@@ -2384,7 +2384,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "0"
+          "5"
         ]
       }
     },
