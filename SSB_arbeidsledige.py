@@ -10,7 +10,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Antall arbeidsledige oF7tM
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -32,11 +32,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause2"
+          "Arbeidsledige"
         ]
       }
     },
@@ -73,7 +82,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel arbeidsledige bd63e
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -95,11 +104,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },
@@ -136,7 +154,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel arbeidsledige etter alder UE4Of
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -159,11 +177,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },
@@ -201,7 +228,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel arbeidsledige etter kjønn qGKlW
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -224,11 +251,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },

@@ -9,7 +9,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Emplyoment rate RCkOD
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -31,11 +31,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },
@@ -74,7 +83,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Employment rate women and men ZLJrU
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -97,11 +106,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },
@@ -139,7 +157,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Employment rate age fu93B
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -162,11 +180,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },

@@ -9,7 +9,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Number of unemployed 7A6DR
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -31,11 +31,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause2"
+          "Arbeidsledige"
         ]
       }
     },
@@ -72,7 +81,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Unemplyment rate XJ4kj
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -94,11 +103,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },
@@ -135,7 +153,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Unemployment by age 2AQaL
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -158,11 +176,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },
@@ -200,7 +227,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Unemployment women and men TTkJt
-ssburl = 'https://data.ssb.no/api/v0/en/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/13760/'
 query = {
   "query": [
     {
@@ -223,11 +250,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "Arbeidslause4"
+          "ArbledProsArbstyrk"
         ]
       }
     },

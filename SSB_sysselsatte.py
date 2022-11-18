@@ -10,7 +10,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Andel sysselsatte wo6kb
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -32,11 +32,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },
@@ -75,7 +84,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte etter kjønn AE6ZC
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -98,11 +107,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },
@@ -140,7 +158,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte etter alder nFRTH
-ssburl = 'https://data.ssb.no/api/v0/no/table/13332/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/13760/'
 query = {
   "query": [
     {
@@ -163,11 +181,20 @@ query = {
       }
     },
     {
+      "code": "Justering",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "3MGG"
+        ]
+      }
+    },
+    {
       "code": "ContentsCode",
       "selection": {
         "filter": "item",
         "values": [
-          "SysselsetteP1"
+          "SysselProsBefolkn"
         ]
       }
     },
