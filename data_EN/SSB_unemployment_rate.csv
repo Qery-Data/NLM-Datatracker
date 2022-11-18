@@ -1,62 +1,62 @@
-sex,age,contents,month,value
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2017M08,4.3
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2017M09,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2017M10,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2017M11,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2017M12,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M01,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M02,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M03,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M04,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M05,3.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M06,3.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M07,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M08,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M09,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M10,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M11,3.8
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2018M12,3.8
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M01,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M02,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M03,3.7
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M04,3.4
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M05,3.4
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M06,3.7
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M07,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M08,3.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M09,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M10,3.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M11,4.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2019M12,4.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M01,3.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M02,3.8
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M03,3.7
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M04,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M05,4.6
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M06,5.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M07,5.4
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M08,5.5
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M09,5.4
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M10,5.3
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M11,5.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2020M12,5.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M01,5.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M02,5.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M03,5.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M04,5.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M05,5.0
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M06,4.9
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M07,4.5
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M08,4.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M09,3.8
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M10,3.8
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M11,3.6
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2021M12,3.4
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M01,3.3
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M02,3.3
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M03,3.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M04,3.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M05,3.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M06,3.2
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M07,3.1
-Both sexes,15-74 years,"Unemployment rate (LFS), seasonally adjusted",2022M08,3.2
+sex,age,type of adjustment,contents,month,value
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2017M08,4.3
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2017M09,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2017M10,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2017M11,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2017M12,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M01,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M02,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M03,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M04,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M05,3.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M06,3.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M07,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M08,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M09,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M10,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M11,3.8
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2018M12,3.8
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M01,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M02,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M03,3.7
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M04,3.4
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M05,3.4
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M06,3.7
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M07,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M08,3.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M09,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M10,3.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M11,4.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2019M12,4.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M01,3.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M02,3.8
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M03,3.7
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M04,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M05,4.6
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M06,5.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M07,5.4
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M08,5.5
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M09,5.4
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M10,5.3
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M11,5.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2020M12,5.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M01,5.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M02,5.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M03,5.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M04,5.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M05,5.0
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M06,4.9
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M07,4.5
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M08,4.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M09,3.8
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M10,3.8
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M11,3.6
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2021M12,3.4
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M01,3.3
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M02,3.3
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M03,3.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M04,3.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M05,3.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M06,3.2
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M07,3.1
+Both sexes,15-74 years,"Seasonal adjusted, 3-months moving average",Unemployment rate (LFS),2022M08,3.2
