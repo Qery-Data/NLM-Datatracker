@@ -35,7 +35,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
@@ -52,7 +52,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "top",
-        "values": [60]
+        "values": [61]
       }
     }
   ],
@@ -107,7 +107,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
@@ -180,7 +180,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
@@ -254,7 +254,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
