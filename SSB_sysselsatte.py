@@ -36,7 +36,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
@@ -111,7 +111,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
@@ -185,7 +185,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "3MGG"
+          "T"
         ]
       }
     },
