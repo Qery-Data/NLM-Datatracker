@@ -59,6 +59,28 @@ parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
+#Update DW
+chartid = 'wNXU5'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Update DW
+chartid = '0R3hu'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
 #Andel ungdomsarbeidsledige 5pqI6 (NO) + Youth unemployment rate jjdYo (EN)
 dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T&geo=DE&geo=DK&geo=EU27_2020&geo=SE&geo=NO')
 type(dataset_tn)
@@ -70,6 +92,28 @@ raw_date = dataset_tn["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+
+#Update DW
+chartid = 'jjdYo'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
+
+#Update DW
+chartid = '5pqI6'
+url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
+headers = {
+    "Authorization": ("Bearer " + access_token),
+    "Accept": "*/*",
+    "Content-Type": "application/json"
+    }
+response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte CS8Rb (NO) + Employment rate VKfA9 (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=61&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP')
