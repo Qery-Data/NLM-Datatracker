@@ -12,12 +12,12 @@ access_token = os.getenv('DW_TOKEN')
 #Prognose datoer
 forecast_dates = {
     'SSB': '09.12.2022',
-    'Norges Bank': '22.09.2022',
+    'Norges Bank': '15.12.2022',
     'FIN': '06.10.2022',
     'NAV': '06.12.2022',
     'IMF': '12.10.2022',
     'OECD': '22.11.2022',
-    'NHO': '04.10.2022',
+    'NHO': '13.12.2022',
     'LO': '22.09.2022',
     'Danske Bank': '04.10.2022',
     'DNB': '25.08.2022',
@@ -78,7 +78,7 @@ forecasts = {
     'NAV': [3.3,3.7,3.9,pd.NA],
     'IMF': [3.9,3.8,3.7,pd.NA],
     'OECD': [3.3,3.6,3.7,pd.NA],
-    'NHO': [3.1,3.4,3.7,pd.NA],
+    'NHO': [3.2,3.8,3.8,3.7],
     'LO': [3.3,3.6,3.9,4.1],
     'DNB': [3.2,3.5,3.9,4.2],
     'SEB': [3.2,3.6,4.0,pd.NA]
@@ -101,9 +101,9 @@ df = {'Faktisk utvikling': [3.0,3.0,2.7,2.4,2.3,5.0,3.1,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new = pd.DataFrame(df, index=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'])
 forecasts = {
     'NAV': [1.8,1.9,2.1,pd.NA],
-    'Norges Bank': [1.8,2.0,2.3,2.3],
+    'Norges Bank': [1.8,2.0,2.4,2.4],
     'FIN': [1.7,1.7,1.9,pd.NA],
-    'NHO': [1.7,2.0,2.3,pd.NA],
+    'NHO': [1.8,2.2,2.2,2.1],
     'DNB': [1.8,2.1,2.6,3.0],
     'Danske Bank': [1.8,2.4,pd.NA,pd.NA],
     'Handelsbanken': [1.8,2.1,2.3,pd.NA],
@@ -170,10 +170,10 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [3.5,-0.4,-0.1,0.5],
+    'Norges Bank': [3.9,-0.4,-0.4,0.7],
     'FIN': [3.3,0.8,0.3,pd.NA],
     'NAV': [2.8,0.0,0.0,pd.NA],
-    'NHO': [3.6,0.5,0.5,pd.NA],
+    'NHO': [3.9,0.3,0.8,1.0],
     'LO':[3.3,0.0,0.0,-0.2],
     'DNB': [2.7,0.1,0.1,0.0],
     'Danske Bank': [3.6,0.3,pd.NA,pd.NA],
@@ -417,7 +417,7 @@ df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'FIN': [3.9,4.2,pd.NA,pd.NA],
-    'Norges Bank': [4.0,4.6,4.5,4.2],
+    'Norges Bank': [3.9,4.7,4.3,4.0],
     'Danske Bank': [4.1,4.2,pd.NA,pd.NA],
     'DNB': [4.0,4.8,4.5,4.0],
     'Handelsbanken': [4.0,4.5,3.8,pd.NA],
@@ -485,11 +485,11 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [5.4,4.5,3.1,2.5],
+    'Norges Bank': [5.8,4.8,2.8,2.6],
     'FIN': [4.8,2.8,2.4,pd.NA],
     'IMF': [4.7,3.8,2.7,pd.NA],
     'OECD': [5.7,4.5,3.2,pd.NA],
-    'NHO': [3.3,3.9,2.9,pd.NA],
+    'NHO': [5.6,4.3,2.8,2.1],
     'LO':[5.5,3.5,1.9,2.1],
     'Danske Bank': [5.5,3.4,pd.NA,pd.NA],
     'DNB': [5.3,4.0,2.7,2.7],
@@ -558,12 +558,12 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [2.8,-0.3,0.4,1.1],
+    'Norges Bank': [3.6,-0.2,0.2,1.4],
     'FIN': [2.9,1.7,2.0,pd.NA],
     'NAV': [3.1,1.2,1.5,pd.NA],
     'OECD': [2.9,0.7,1.3,pd.NA],
     'IMF': [3.6,2.6,2.2,pd.NA],
-    'NHO': [3.0,1.1,1.6,pd.NA],
+    'NHO': [3.6,0.9,1.7,1.8],
     'LO': [3.3,1.5,1.9,1.8],
     'Danske Bank': [2.8,0.9,pd.NA,pd.NA],
     'DNB': [3.3,0.8,1.2,1.1],
