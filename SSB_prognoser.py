@@ -85,7 +85,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -112,7 +112,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -182,7 +182,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -244,7 +244,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -306,7 +306,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -428,7 +428,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -501,7 +501,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -575,7 +575,7 @@ forecasts = {
     }
 df_forecast = pd.DataFrame(forecasts, index=['2022','2023','2024','2025'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1)
+df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
