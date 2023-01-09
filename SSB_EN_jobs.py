@@ -1211,6 +1211,7 @@ df_new = df.pivot(index='immigration category', columns='quarter', values='value
 df_new2 = df_new.iloc[:,[4,8,12,16,20]]
 total = df_new2.iloc[:,4]
 title_date = (total.name)
+df_new2.rename(columns=lambda x: x.replace('K', 'Q'), inplace=True)
 df_new2.to_csv('data_EN/SSB_jobs_immigration_quarters.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
