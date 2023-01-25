@@ -21,8 +21,8 @@ forecast_dates = {
     'LO': '22.09.2022',
     'Danske Bank': '05.01.2023',
     'DNB': '25.08.2022',
-    'Handelsbanken': '16.12.2022',
-    'Nordea': '07.09.2022',
+    'Handelsbanken': '25.01.2023',
+    'Nordea': '25.01.2023',
     'SEB': '24.01.2023',
     'Swedbank': '25.10.2022'
     }
@@ -106,7 +106,7 @@ forecasts = {
     'NHO': [1.8,2.2,2.2,2.1],
     'DNB': [1.8,2.1,2.6,3.0],
     'Danske Bank': [1.8,2.2,2.4,pd.NA],
-    'Handelsbanken': [1.8,2.1,2.3,pd.NA],
+    'Handelsbanken': [1.8,2.1,2.3,2.3],
     'Nordea': [1.8,1.8,2.1,pd.NA],
     'Swedbank': [1.8,2.4,2.2,pd.NA]    
     }
@@ -422,7 +422,7 @@ forecasts = {
     'Danske Bank': [3.9,4.3,3.8,pd.NA],
     'DNB': [4.0,4.8,4.5,4.0],
     'Handelsbanken': [3.9,4.6,4.0,pd.NA],
-    'Nordea': [4.5,5.0,4.0,pd.NA],
+    'Nordea': [4.2,5.0,4.5,pd.NA],
     'SEB': [3.9,4.7,3.8,pd.NA],
     'Swedbank': [4.1,3.8,3.0,pd.NA]
     }
@@ -494,8 +494,8 @@ forecasts = {
     'LO':[5.5,3.5,1.9,2.1],
     'Danske Bank': [5.8,4.8,2.1,pd.NA],
     'DNB': [5.3,4.0,2.7,2.7],
-    'Handelsbanken': [5.8,4.1,1.5,pd.NA],
-    'Nordea': [5.5,3.8,2.5,pd.NA],
+    'Handelsbanken': [5.8,4.0,1.5,1.9],
+    'Nordea': [5.8,4.3,3.0,pd.NA],
     'SEB': [5.8,5.4,3.0,pd.NA],
     'Swedbank': [5.5,4.6,1.7,pd.NA]
     }
@@ -568,8 +568,8 @@ forecasts = {
     'LO': [3.3,1.5,1.9,1.8],
     'Danske Bank': [3.7,0.6,1.5,pd.NA],
     'DNB': [3.3,0.8,1.2,1.1],
-    'Handelsbanken': [3.6,-0.3,0.3,pd.NA],
-    'Nordea': [3.2,1.0,1.3,pd.NA],
+    'Handelsbanken': [3.7,-0.1,0.3,1.5],
+    'Nordea': [3.8,1.0,1.0,pd.NA],
     'SEB': [3.5,-0.5,1.1,pd.NA],
     'Swedbank': [3.0,-0.5,1.4,pd.NA]
     }
