@@ -114,6 +114,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_MEI_Unemployment.csv', index=True)
 
 #Ungdomsledighet MEI OECD 5pqI6 (NO) + jjdYo (EN)
@@ -121,6 +122,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_MEI_Youth_Unemployment.csv', index=True)
 
 #Sysselsettingsandel OECD CS8Rb (NO) VKfA9 (EN)
