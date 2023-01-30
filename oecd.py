@@ -130,6 +130,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate.csv', index=True)
 
 #Sysselsettingsandel Kvinner OECD ZERuL (NO) SuY2u (EN)
@@ -137,6 +138,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate_Women.csv', index=True)
 
 #Sysselsettingsandel Menn OECD YpL1m (NO) Mqkeh (EN)
@@ -144,6 +146,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate_Men.csv', index=True)
 
 #Midlertidig ansatte OECD ohRTM (NO) vX91z (EN)
