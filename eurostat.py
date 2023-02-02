@@ -18,7 +18,7 @@ df_new.to_csv('data/Eurostat_ledige_stillinger_andel.csv', index=True)
 total = df_new.iloc[20,:]
 tittel_dato = (total.name)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date_string2 = tittel_dato[-1:]
@@ -54,7 +54,7 @@ df_new_tn = df_tn.pivot(index='Time', columns='Geopolitical entity (reporting)',
 df_new_tn.rename(columns={'Germany (until 1990 former territory of the FRG)': 'Germany', 'European Union - 27 countries (from 2020)': 'EU'},inplace=True)
 df_new_tn.to_csv('data/Eurostat_arbeidsledighet.csv', index=True)
 raw_date = dataset_tn["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
@@ -88,7 +88,7 @@ df_new_tn = df_tn.pivot(index='Time', columns='Geopolitical entity (reporting)',
 df_new_tn.rename(columns={'Germany (until 1990 former territory of the FRG)': 'Germany', 'European Union - 27 countries (from 2020)': 'EU'},inplace=True)
 df_new_tn.to_csv('data/Eurostat_arbeidsledighet_unge.csv', index=True)
 raw_date = dataset_tn["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
@@ -121,7 +121,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date_string = 'I prosent av befolkningen mellom 15-74 år. Sesongjusterte tall.'
@@ -156,7 +156,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
@@ -189,7 +189,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__menn_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 
 #Update DW
@@ -221,7 +221,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__kvinner_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
@@ -254,7 +254,7 @@ df = dataset.write('dataframe')
 df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__midlertidig_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
@@ -289,7 +289,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 date_string = 'I prosent av sysselsatte mellom 15-74 år. Tall for ' + date + '.'
@@ -342,7 +342,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', value
 df_new.index.name = 'geo'
 EU_snitt = str(df_new.iloc[10, 0])
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
 date = df.iloc[0,7]
@@ -398,7 +398,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', value
 df_new.index.name = 'geo'
 EU_snitt = str(df_new.iloc[10, 0])
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
 date = df.iloc[0,7]
@@ -453,7 +453,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', value
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW (NO_EU/NO)
@@ -509,7 +509,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_kjonn.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW (NO)
@@ -543,7 +543,7 @@ df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age', values
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
 raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW (NO)
@@ -579,7 +579,7 @@ df_new.to_csv('data/Eurostat_working_life_lenght.csv', index=True)
 EU_avg = str(df_new.iloc[7,19])
 year = str(df_new.columns[19])
 updated = dataset["updated"]
-updated_date = datetime.strptime(updated, '%Y-%m-%d')
+updated_date = datetime.strptime(updated, '%Y-%m-%dT%H:%M:%S%z')
 note_EN = 'Data last published: ' + updated_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_avg + '.'
 description_EN = 'Estimated duration of working life in years for a person who is 15 years old in ' + year + '.'
 #Update DW
@@ -628,7 +628,7 @@ df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of t
 df_new = df.pivot(index='Sex', columns='Time', values='value')
 df_new.to_csv('data/Eurostat_working_life_lenght_EU.csv', index=True)
 updated = dataset["updated"]
-updated_date = datetime.strptime(updated, '%Y-%m-%d')
+updated_date = datetime.strptime(updated, '%Y-%m-%dT%H:%M:%S%z')
 note_EN = 'Data last published: ' + updated_date.strftime ('%d/%m/%y') + '.'
 #Update DW
 chartid = 'NvW5H'
