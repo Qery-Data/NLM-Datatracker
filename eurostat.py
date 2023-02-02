@@ -284,7 +284,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
 type(dataset)
 df = dataset.write('dataframe')
-date = df.iloc[0,4]
+date = df.iloc[0,5]
 df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values='value')
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
@@ -333,7 +333,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig NUF70 (NO) + Wokrking time per week actual xn9f1 (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL&time=2021-Q4')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL&time=2022-Q3')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'Türkiye':'Turkey'})
@@ -345,8 +345,8 @@ raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
-date = df.iloc[0,7]
-quarter = date[5]
+date = df.iloc[0,8]
+quarter = date[6]
 year = date[0:4]
 date_string = 'Faktisk arbeidstid per uke i timer. Tall for ' + quarter + '. kvartal ' + year + '.'
 date_string_EN = 'Average number of actual weekly hours of work. Data for Q' + quarter + ' ' + year + '.'
@@ -389,7 +389,7 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig heltid Av2Nk (NO) + Working time per week actual WD0Uz (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL&time=2021-Q4')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL&time=2022-Q3')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'Türkiye':'Turkey'})
@@ -401,8 +401,8 @@ raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
 chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' EU average: ' + EU_snitt + '.'
-date = df.iloc[0,7]
-quarter = date[5]
+date = df.iloc[0,8]
+quarter = date[6]
 year = date[0:4]
 date_string = 'Faktisk arbeidstid per uke i timer for heltidsansatte. Tall for ' + quarter + '. kvartal ' + year + '.'
 date_string_EN = 'Average number of actual weekly hours of work. Data for Q' + quarter + ' ' + year + '.'
