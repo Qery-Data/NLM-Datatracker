@@ -10,10 +10,10 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Andel ledige stillinger QeY5e (NO) + Vacancy rate ZwZQs (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/jvs_q_nace2?s_adj=SA&lastTimePeriod=21&nace_r2=B-S&sizeclas=TOTAL&indic_em=JOBRATE&geo=FI&geo=NO&geo=SE&geo=NL&geo=DE&geo=EU27_2020')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/jvs_q_nace2?s_adj=SA&lastTimePeriod=21&nace_r2=B-S&sizeclas=TOTAL&indic_em=JOBRATE&geo=FI&geo=NO&geo=SE&geo=NL&geo=DE&geo=EU27_2020')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_ledige_stillinger_andel.csv', index=True)
 total = df_new.iloc[20,:]
 tittel_dato = (total.name)
@@ -48,9 +48,9 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
 #Andel arbeidsledige wNXU5 (NO) + Unemployment rate 0R3hu (EN)
-dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=DK&&geo=EU27_2020&geo=NO&geo=SE')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=DK&&geo=EU27_2020&geo=NO&geo=SE')
 df_tn = dataset_tn.write('dataframe')
-df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
+df_new_tn = df_tn.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new_tn.rename(columns={'Germany (until 1990 former territory of the FRG)': 'Germany', 'European Union - 27 countries (from 2020)': 'EU'},inplace=True)
 df_new_tn.to_csv('data/Eurostat_arbeidsledighet.csv', index=True)
 raw_date = dataset_tn["updated"]
@@ -81,10 +81,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel ungdomsarbeidsledige 5pqI6 (NO) + Youth unemployment rate jjdYo (EN)
-dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/une_rt_m?s_adj=TC&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T&geo=DE&geo=DK&geo=EU27_2020&geo=SE&geo=NO')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?s_adj=TC&lastTimePeriod=62&age=Y_LT25&unit=PC_ACT&sex=T&geo=DE&geo=DK&geo=EU27_2020&geo=SE&geo=NO')
 type(dataset_tn)
 df_tn = dataset_tn.write('dataframe')
-df_new_tn = df_tn.pivot(index='time', columns='geo', values='value')
+df_new_tn = df_tn.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new_tn.rename(columns={'Germany (until 1990 former territory of the FRG)': 'Germany', 'European Union - 27 countries (from 2020)': 'EU'},inplace=True)
 df_new_tn.to_csv('data/Eurostat_arbeidsledighet_unge.csv', index=True)
 raw_date = dataset_tn["updated"]
@@ -115,10 +115,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte CS8Rb (NO) + Employment rate VKfA9 (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=61&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=61&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -150,10 +150,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte sist quarter UG10W (NO) + Employment rate last quarter weNQJ (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=T&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -183,10 +183,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte menn sist quarter YpL1m (NO) + Employment share men last quarter Mqkeh (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=M&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=M&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__menn_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -215,10 +215,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel sysselsatte kvinner sist quarter ZERuL (NO) + Employment share women last quarter SuY2u (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=F&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?indic_em=EMP_LFS&lastTimePeriod=2&s_adj=SA&sex=F&age=Y15-74&unit=PC_POP&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__kvinner_andel_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -248,10 +248,10 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel midlertidig ansatte siste quarter ohRTM (NO) + Temporary employment rate vX91z (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_pt_q?wstatus=EMP_TEMP&lastTimePeriod=2&s_adj=NSA&sex=T&age=Y15-74&unit=PC_SAL&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_pt_q?wstatus=EMP_TEMP&lastTimePeriod=2&s_adj=NSA&sex=T&age=Y15-74&unit=PC_SAL&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&&geo=PL&geo=PT&geo=SE&geo=EE&geo=LU')
 type(dataset)
 df = dataset.write('dataframe')
-df_new = df.pivot(index='time', columns='geo', values='value')
+df_new = df.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new.to_csv('data/Eurostat_sysselsatte__midlertidig_siste_kvartal.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -281,11 +281,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel deltid sist år Eurostat lmKlf (NO) + Part time share last year cR3Tp (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_eppga?lastTimePeriod=1&sex=F&sex=M&sex=T&age=Y15-74&geo=AT&geo=BE&geo=CH&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=IE&geo=IS&geo=IT&geo=NL&geo=NO&geo=PT&geo=SE')
 type(dataset)
 df = dataset.write('dataframe')
 date = df.iloc[0,4]
-df_new = df.pivot(index='geo', columns='sex', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values='value')
+df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_arbeidstid_deltid_sist_kvartal.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -332,12 +333,13 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig NUF70 (NO) + Wokrking time per week actual xn9f1 (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL&time=2021Q4')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=TOTAL&wstatus=EMP&isco08=TOTAL&time=2021Q4')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'Türkiye':'Turkey'})
 df.to_csv('data/Eurostat_arbeidstid_faktiskuke_siste_kvartal.csv', index=True)
-df_new = df.pivot(index='geo', columns='time', values = 'value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values = 'value')
+df_new.index.name = 'geo'
 EU_snitt = str(df_new.iloc[10, 0])
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -387,12 +389,13 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Arbeidstid per uke avtalt/vanlig heltid Av2Nk (NO) + Working time per week actual WD0Uz (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsq_ewhais?sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL&time=2021Q4')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_ewhais?sex=T&age=Y_GE15&worktime=FT&wstatus=EMP&isco08=TOTAL&time=2021Q4')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'Türkiye':'Turkey'})
 df.to_csv('data/Eurostat_arbeidstid_faktiskuke_heltid_siste_kvartal.csv', index=True)
-df_new = df.pivot(index='geo', columns='time', values = 'value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values = 'value')
+df_new.index.name = 'geo'
 EU_snitt = str(df_new.iloc[10, 0])
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -442,11 +445,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel deltatt i læring siste 12 AES 1MDIh 1UpQT (NO) + Share of adults learning activities 7G7wd 84Kco (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/trng_aes_100?sex=T&lastTimePeriod=3&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_100?sex=T&lastTimePeriod=3&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='geo', columns='time', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values='value')
+df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -497,11 +501,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel deltatt i læring siste 12 AES Kjønn iwbnr (NO) + Share of adults learning activities last 12 months eIK1N (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/trng_aes_100?sex=F&sex=M&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_100?sex=F&sex=M&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='geo', columns='sex', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values='value')
+df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_kjonn.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -530,11 +535,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel deltatt i læring siste 12 AES Alder a5821 (NO) + Share of adults learning activities age IuO7H (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/trng_aes_101?age=Y25-34&age=Y35-44&age=Y45-54&age=Y55-64&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_101?age=Y25-34&age=Y35-44&age=Y45-54&age=Y55-64&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='geo', columns='age', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age', values='value')
+df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%d')
@@ -563,11 +569,12 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Lenght of working life 1sRO7 (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_dwl_a?sex=T&lastTimePeriod=20&geo=AT&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IS&geo=IT&geo=LT&geo=LU&geo=LV&geo=ME&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_dwl_a?sex=T&lastTimePeriod=20&geo=AT&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IS&geo=IT&geo=LT&geo=LU&geo=LV&geo=ME&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='geo', columns='time', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values='value')
+df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_working_life_lenght.csv', index=True)
 EU_avg = str(df_new.iloc[7,19])
 year = str(df_new.columns[19])
@@ -614,11 +621,11 @@ headers = {
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Lenght of working life EU average gender NvW5H (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/lfsi_dwl_a?sex=F&sex=M&sex=T&lastTimePeriod=22&geo=EU27_2020')
+dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_dwl_a?sex=F&sex=M&sex=T&lastTimePeriod=22&geo=EU27_2020')
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='sex', columns='time', values='value')
+df_new = df.pivot(index='Sex', columns='Time', values='value')
 df_new.to_csv('data/Eurostat_working_life_lenght_EU.csv', index=True)
 updated = dataset["updated"]
 updated_date = datetime.strptime(updated, '%Y-%m-%d')
