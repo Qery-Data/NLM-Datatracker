@@ -10,7 +10,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Lønnsutviklingen, nominelt EPHjU, årlig vekst 1R4EQ og reallønnsvekst k0DNV
-ssburl = 'https://data.ssb.no/api/v0/no/table/09785/'
+ssburl = 'https://data.ssb.no/api/v0/no/table/09786/'
 query = {
   "query": [
     {
@@ -18,8 +18,16 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "Arslonn",
           "ArslonnEndring"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [23
+
         ]
       }
     }
@@ -36,53 +44,7 @@ df_new = df.pivot(index='år', columns='statistikkvariabel',values='value')
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-ssburl = 'https://data.ssb.no/api/v0/no/table/03014/'
-query = {
-  "query": [
-    {
-      "code": "Konsumgrp",
-      "selection": {
-        "filter": "vs:CoiCop2016niva1",
-        "values": [
-          "TOTAL"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "KpiAar"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "all",
-        "values": [
-          "*"
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-result = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
-df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='år', columns='statistikkvariabel', values='value')
-df3_new = pd.concat([df_new,df2_new.reindex(df_new.index)], axis=1)
-df3_new['Lønn*KPI>2016']= df3_new['Årslønn, påløpt (1 000 kr)'] / (df3_new['Konsumprisindeks (2015=100)']/100)
-df3_new['Real>16'] = df3_new['Lønn*KPI>2016'].pct_change(periods=1)*100
-df3_new.rename(columns = {'Real>16':'Reallønn. Endring fra året før i prosent'}, inplace=True)
-df4_new = df3_new.iloc[:,[0,1,4]]
-df5_new = df4_new.iloc[3:]
-df5_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
+df_new.to_csv('data/SSB_lonn_aarligvekst_real_nominell.csv', index=True)
 #Update DW
 chartid = 'EPHjU'
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + ' *Gjennomsnittlig årlig nominell lønn fra Nasjonalregnskapet. Inkluderer avtalt lønn, bonuser og uregelmessige tillegg, men eksklusiv overtidstillegg.'

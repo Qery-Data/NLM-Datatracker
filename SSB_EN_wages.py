@@ -9,7 +9,7 @@ os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
 #Wages, nominal xJSYI, annual and real growth
-ssburl = 'https://data.ssb.no/api/v0/en/table/09785/'
+ssburl = 'https://data.ssb.no/api/v0/en/table/09786/'
 query = {
   "query": [
     {
@@ -17,8 +17,15 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "Arslonn",
           "ArslonnEndring"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "top",
+        "values": [10
         ]
       }
     }
@@ -35,53 +42,7 @@ df_new = df.pivot(index='year', columns='contents',values='value')
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
-ssburl = 'https://data.ssb.no/api/v0/en/table/03014/'
-query = {
-  "query": [
-    {
-      "code": "Konsumgrp",
-      "selection": {
-        "filter": "vs:CoiCop2016niva1",
-        "values": [
-          "TOTAL"
-        ]
-      }
-    },
-    {
-      "code": "ContentsCode",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "KpiAar"
-        ]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "all",
-        "values": [
-          "*"
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json-stat2"
-  }
-}
-result = requests.post(ssburl, json = query)
-dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
-df2 = dataset.write('dataframe')
-df2_new = df2.pivot(index='year', columns='contents', values='value')
-df3_new = pd.concat([df_new,df2_new.reindex(df_new.index)], axis=1)
-df3_new['Earnings*CPI>2016']= df3_new['Annual earnings (NOK 1 000)'] / (df3_new['Consumer Price Index (2015=100)']/100)
-df3_new['Real>16'] = df3_new['Earnings*CPI>2016'].pct_change(periods=1)*100
-df3_new.rename(columns = {'Real>16':'Real wage growth'}, inplace=True)
-df4_new = df3_new.iloc[:,[0,1,4]]
-df5_new = df4_new.iloc[3:]
-df5_new.to_csv('data_EN/SSB_earningswages_annual_real_nominal.csv', index=True)
+df_new.to_csv('data_EN/SSB_earningswages_annual_real_nominal.csv', index=True)
 #Update DW
 chartid = 'xJSYI'
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' *Annual earnings comprises the regular wage, including bonus and irregular supplements, but excluding over-time pay.'
