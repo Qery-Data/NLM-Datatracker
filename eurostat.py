@@ -539,7 +539,7 @@ dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/
 type(dataset)
 df = dataset.write('dataframe')
 df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age', values='value')
+df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age class', values='value')
 df_new.index.name = 'geo'
 df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
 raw_date = dataset["updated"]
