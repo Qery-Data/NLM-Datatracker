@@ -48,7 +48,7 @@ response = requests.request("PATCH", url, json=payload, headers=headers)
 
 
 #Andel arbeidsledige wNXU5 (NO) + Unemployment rate 0R3hu (EN)
-dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=DK&&geo=EU27_2020&geo=NO&geo=SE')
+dataset_tn = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?s_adj=TC&lastTimePeriod=62&age=TOTAL&unit=PC_ACT&sex=T&geo=DE&geo=DK&geo=EU27_2020&geo=NO&geo=SE')
 df_tn = dataset_tn.write('dataframe')
 df_new_tn = df_tn.pivot(index='Time', columns='Geopolitical entity (reporting)', values='value')
 df_new_tn.rename(columns={'Germany (until 1990 former territory of the FRG)': 'Germany', 'European Union - 27 countries (from 2020)': 'EU'},inplace=True)
