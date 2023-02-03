@@ -25,7 +25,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "top",
-        "values": [10
+        "values": [23
         ]
       }
     }
