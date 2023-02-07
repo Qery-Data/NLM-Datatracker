@@ -19,7 +19,12 @@ jobs:
           python-version: '3.10'
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: Update SSB Jobs
+      - name: Update SSB Vacancies
+        if: always()
+        env: 
+          DW_TOKEN: ${{ secrets.DW_TOKEN }}
+        run: python SSB_EN_vacancies.py
+        - name: Update SSB Jobs
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
