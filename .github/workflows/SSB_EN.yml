@@ -24,7 +24,7 @@ jobs:
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
         run: python SSB_EN_vacancies.py
-        - name: Update SSB Jobs
+      - name: Update SSB Jobs
         if: always()
         env: 
           DW_TOKEN: ${{ secrets.DW_TOKEN }}
