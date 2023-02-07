@@ -18,8 +18,7 @@ jobs:
       - name: Install Requirements
         run: pip install -r requirements.txt
       - name: SetLocale
-        run: |
-          sudo locale-gen nb_NO
+        run: sudo locale-gen nb_NO
       - name: Update SSB jobber
         if: always()
         env: 
