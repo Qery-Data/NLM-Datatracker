@@ -20,11 +20,6 @@ jobs:
       - name: SetLocale
         run: |
           sudo locale-gen nb_NO
-      - name: Update SSB ledige stillinger
-        if: always()
-        env: 
-          DW_TOKEN: ${{ secrets.DW_TOKEN }}
-        run: python SSB_ledige_stillinger.py
       - name: Update SSB jobber
         if: always()
         env: 
