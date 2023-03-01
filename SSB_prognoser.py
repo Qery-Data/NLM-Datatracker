@@ -368,6 +368,7 @@ df_new = df_new.rename(columns={'Utførte timeverk i Fastlands-Norge': 'Faktisk 
 df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:6],'SSB'] = pd.NA
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new.to_csv('data/Prognoser_timeverk_konsensus_figur.csv', index=True)
 df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2 = df_new.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
