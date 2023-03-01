@@ -89,6 +89,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_arbeidsledighet_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -116,6 +117,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_registrert_ledighet_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -186,6 +188,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_sysselsatte_personer_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -248,6 +251,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_arbeidsstyrken_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -310,6 +314,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_yrkesandel_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -364,6 +369,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:6],'SSB'] = pd.NA
 df_new.to_csv('data/Prognoser_timeverk_konsensus_figur.csv', index=True)
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2 = df_new.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new2.drop(columns=['Faktisk utvikling'], inplace=True)
 df_new2 = df_new2.transpose()
@@ -432,6 +438,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_aarslonn_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -505,6 +512,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_kpi_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
@@ -579,6 +587,7 @@ df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
 years_na = ['2015','2016','2017','2018','2019','2020']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
+df_new2.iloc[7:11, df_new2.columns.get_loc('Faktisk utvikling')] = df_new2.iloc[7:11, df_new2.columns.get_loc('Konsensus')].values
 df_new2.to_csv('data/Prognoser_bnp_fn_konsensus_figur.csv', index=True)
 df_new3 = df_new2.drop(index={'2015','2016','2017','2018','2019','2020','2021'})
 df_new3.drop(columns=['Faktisk utvikling'], inplace=True)
