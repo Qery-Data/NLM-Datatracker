@@ -11,7 +11,7 @@ access_token = os.getenv('DW_TOKEN')
 
 #Prognose datoer
 forecast_dates = {
-    'SSB': '09.12.2022',
+    'SSB': '10.03.2023',
     'Norges Bank': '15.12.2022',
     'FIN': '05.03.2023',
     'NAV': '06.12.2022',
