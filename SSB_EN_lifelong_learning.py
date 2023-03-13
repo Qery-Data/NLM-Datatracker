@@ -5,10 +5,10 @@ import json
 from datetime import datetime
 import locale
 import pandas as pd
-os.makedirs('data', exist_ok=True)
+os.makedirs('data_EN', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Share participated in formal or non formal learning activity. pwXtu (by type) p7BNo (not participated)
+#Share participated in formal or non formal learning activity by industry and type (q9d8g)
 ssburl = 'https://data.ssb.no/api/v0/en/table/12865/'
 query = {
   "query": [
@@ -20,7 +20,8 @@ query = {
           "01",
           "02",
           "03",
-          "04"
+          "04",
+          "05"
         ]
       }
     },
@@ -88,11 +89,8 @@ json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-chart_date_parti = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y') + ' *Defined as the share of adults who in the last 12 months did not participate in formal or non-formal education and training'
-title_time = str(df.iloc[0,4])
-
 #Update DW
-chartid = 'pwXtu'
+chartid = 'q9d8g'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
 payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
@@ -102,9 +100,89 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-chartid = 'p7BNo'
+#Share participated by learning activity (HpaHo)
+ssburl = 'https://data.ssb.no/api/v0/en/table/12864/'
+query = {
+  "query": [
+    {
+      "code": "UtdanningOppl",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      }
+    },
+    {
+      "code": "Kjonn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "Alder",
+      "selection": {
+        "filter": "vs:AlleAldre53b",
+        "values": [
+          "Ialt"
+        ]
+      }
+    },
+    {
+      "code": "ArbStyrkStatus",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1uS"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "DeltakereProsent"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2021",
+          "2022"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='formal and non-formal education', columns='year', values='value')
+df_new.to_csv('data_EN/SSB_learning_type.csv', index=True)
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+
+#Update DW
+chartid = 'HpaHo'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date_parti}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",

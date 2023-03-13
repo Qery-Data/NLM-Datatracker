@@ -9,7 +9,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Andel deltatt formell eller ikke formell utdanning etter næring.  OcGPl (etter type) ZGY5B (ikke deltatt)
+#Andel deltatt formell eller ikke formell utdanning etter næring.  OcGPl (etter type) 
 ssburl = 'https://data.ssb.no/api/v0/no/table/12865/'
 query = {
   "query": [
@@ -103,9 +103,87 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-chartid = 'ZGY5B'
+#Andel deltatt i opplæring/utdanning
+ssburl = 'https://data.ssb.no/api/v0/no/table/12864/'
+query = {
+  "query": [
+    {
+      "code": "UtdanningOppl",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      }
+    },
+    {
+      "code": "Kjonn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "Alder",
+      "selection": {
+        "filter": "vs:AlleAldre53b",
+        "values": []
+      }
+    },
+    {
+      "code": "ArbStyrkStatus",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1uS"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "DeltakereProsent"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2021",
+          "2022"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
+result = requests.post(ssburl, json = query)
+dataset = pyjstat.Dataset.read(result.text)
+type(dataset)
+df = dataset.write('dataframe')
+df_new = df.pivot(index='utdanning/opplæring', columns='år', values='value')
+df_new.to_csv('data/SSB_laring_type.csv', index=True)
+json_object = json.loads(result.text)
+raw_date = json_object["updated"]
+parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
+chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') 
+
+#Update DW
+chartid = 'Li3vf'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date_delt}}}
+payload = {"metadata": {"annotate": {"notes": chart_date}}}
 headers = {
     "Authorization": ("Bearer " + access_token),
     "Accept": "*/*",
