@@ -124,7 +124,6 @@ type(dataset)
 df = dataset.write('dataframe')
 df['change'] = df.loc[:, 'value'].diff()
 df['change in pct'] = df.loc[:, 'value'].pct_change()*100
-df_new = df[37:62]
 df_new.to_csv('data_EN/SSB_jobs_total_change.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object['updated']
