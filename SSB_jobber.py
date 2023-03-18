@@ -126,6 +126,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df["endring"] = df.loc[:,"value"].diff()
 df["endring i pst"] = df.loc[:,"value"].pct_change()*100
+df_new = df[0:62]
 df_new.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
