@@ -44,7 +44,7 @@ query = {
       "code": "Tid",
       "selection": {
         "filter": "Top",
-        "values": [63]
+        "values": [61]
       }
     }
   ],
@@ -110,7 +110,7 @@ query = {
       "selection": {
         "filter": "Top",
         "values": [
-          63
+          61
           ]
       }
     }
@@ -193,7 +193,7 @@ query = {
       "selection": {
         "filter": "top",
         "values": [
-          62
+          61
         ]
       }
     }
@@ -220,9 +220,9 @@ df_new3 = pd.concat([total, Change_month, Change_12month, Change_covid, Change_3
 df_new3.to_csv('data/SSB_jobber_naring.csv', index=True)
 date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y')
-date_string4 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
-date_string5 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + '.'
+date_string3 = 'Sesongjusterte foreløpige tall for ' + date_string2.strftime ('%B %Y')
+date_string4 = 'Sesongjusterte foreløpige tall for ' + date_string2.strftime ('%B %Y') + '.'
+date_string5 = 'Sesongjusterte foreløpige tall for ' + date_string2.strftime ('%B %Y') + '.'
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
@@ -307,7 +307,7 @@ df_new4 = pd.concat([total, Change_month_pct, Change_12month_pct, Change_covid_p
 df_new4.to_csv('data/SSB_jobber_naring_endring.csv', index=True)
 date_string = title_date.replace("M","")
 date_string2 = datetime.strptime(date_string, "%Y%m")
-date_string3 = 'Sesongjusterte tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med samme måned året før.'
+date_string3 = 'Sesongjusterte foreløpige tall for ' + date_string2.strftime ('%B %Y') + ' sammenlignet med samme måned året før.'
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
