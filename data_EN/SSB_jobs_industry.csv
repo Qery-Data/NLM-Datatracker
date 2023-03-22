@@ -1,17 +1,17 @@
 industry (SIC2007),Total,Change last month,Change last year,Change from feb.20,Change last 3 years,Change last 5 years
-Accommodation and food service activities,132622.0,278.0,17245.0,8405.0,8995.0,17338.0
-Administrative and support service activities,172478.0,-277.0,4728.0,5709.0,5226.0,13314.0
-"Agriculture, forestry and fishing",41972.0,2517.0,1873.0,4223.0,4476.0,6743.0
-Construction,261958.0,1392.0,7736.0,16266.0,16721.0,31017.0
-Education,262764.0,1026.0,4042.0,11956.0,14188.0,18514.0
-"Electricity, water supply, sewerage, waste management",37152.0,166.0,1356.0,2847.0,2996.0,4361.0
-Financial and insurance activities,51177.0,86.0,1884.0,3556.0,3589.0,5048.0
-Human health and social work activities,682239.0,263.0,7684.0,34446.0,37700.0,49557.0
-Information and communication,117488.0,294.0,6301.0,16623.0,16881.0,26023.0
-Manufacture,226547.0,442.0,3940.0,2882.0,3088.0,10334.0
-Mining and quarrying,64723.0,-187.0,3191.0,2393.0,2669.0,10047.0
-Other service activities,130263.0,-72.0,6253.0,9231.0,9539.0,16308.0
-"Public adm., defence, soc. security",192621.0,145.0,-935.0,5955.0,6108.0,9207.0
-"Real estate, professional, scientific and technical activities",193975.0,1314.0,10045.0,16680.0,17344.0,28020.0
-Transportation and storage,144225.0,1200.0,5887.0,-1565.0,-1349.0,692.0
-Wholesale and retail trade: repair of motor vehicles and motorcycles,389457.0,-164.0,3157.0,13337.0,12501.0,8551.0
+Accommodation and food service activities,127202,-1227,15759,6763,6388,14212
+Administrative and support service activities,169629,951,6169,6208,4923,12575
+"Agriculture, forestry and fishing",39946,803,1489,3611,3915,6756
+Construction,259176,4960,11074,19244,20942,33635
+Education,257053,-567,-595,8869,11112,12935
+"Electricity, water supply, sewerage, waste management",36843,126,1311,2728,3162,4214
+Financial and insurance activities,51156,129,1884,3639,3690,5207
+Human health and social work activities,670391,-52,3982,31058,39144,43640
+Information and communication,116546,43,6880,16513,16667,26000
+Manufacture,225375,1709,4741,4502,5187,12074
+Mining and quarrying,64431,-391,3207,2203,2721,9352
+Other service activities,127100,-493,6087,8856,8845,14696
+"Public adm., defence, soc. security",190913,-616,-2729,5434,5924,7359
+"Real estate, professional, scientific and technical activities",190873,469,8874,15722,16372,27360
+Transportation and storage,141310,370,4917,-1619,-1837,-396
+Wholesale and retail trade: repair of motor vehicles and motorcycles,385487,836,3821,14915,14150,11686
