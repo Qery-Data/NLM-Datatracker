@@ -27,7 +27,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "02"
+          "01"
         ]
       }
     },
@@ -36,7 +36,6 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "AntLonnstakSesong",
           "AntArbForholdSesong"
         ]
       }
@@ -93,7 +92,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "02"
+          "01"
         ]
       }
     },
@@ -176,7 +175,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "02"
+          "01"
         ]
       }
     },
