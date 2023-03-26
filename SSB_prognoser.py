@@ -9,7 +9,7 @@ locale.setlocale(locale.LC_TIME, 'nb_NO')
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
-#Prognose datoer
+#Forecast dates
 forecast_dates = {
     'SSB': '10.03.2023',
     'Norges Bank': '23.03.2023',
@@ -27,7 +27,13 @@ forecast_dates = {
     'Swedbank': '25.10.2022'
     }
 
-#Prognose Arbeidsledighet (AKU)
+# Function to check if forecast date is within the last 100 days
+def within_last_100_days(date_str):
+    forecast_date = datetime.strptime(date_str, '%d.%m.%Y')
+    days_difference = (datetime.now() - forecast_date).days
+    return days_difference <= 100
+
+#Forecast Unemployment/Arbeidsledighet (AKU/LFS)
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -83,9 +89,13 @@ forecasts = {
     'DNB': [3.4,3.8,4.0,pd.NA],
     'SEB': [3.6,3.8,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -97,7 +107,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_arbeidsledighet_tabell.csv', index=True)
 
-#Prognose Registrert ledighet (NAV)
+#Forecast Registrered unemployment/registrert ledighet (NAV)
 df = {'Faktisk utvikling': [3.0,2.7,2.4,2.3,5.0,3.1,1.8,pd.NA,pd.NA,pd.NA,pd.NA]}
 df_new = pd.DataFrame(df, index=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'])
 forecasts = {
@@ -111,9 +121,13 @@ forecasts = {
     'Nordea': [1.8,2.1,pd.NA,pd.NA],
     'Swedbank': [2.4,2.2,pd.NA,pd.NA]    
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns)
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -125,7 +139,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_registrert_ledighet_tabell.csv', index=True)
 
-#Prognose Sysselsatte personer
+#Forecast Employed persons/Sysselsatte personer
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -182,9 +196,13 @@ forecasts = {
     'Handelsbanken': [-0.3,-0.2,pd.NA,pd.NA],
     'Swedbank': [-0.8,0.5,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -196,7 +214,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_sysselsatte_personer_tabell.csv', index=True)
 
-#Prognose Arbeidsstyrken
+#Forecast Labour Force/Arbeidsstyrken
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -245,9 +263,13 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'NAV': [0.3,0.3,pd.NA,pd.NA],
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -259,7 +281,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_arbeidsstyrken_tabell.csv', index=True)
 
-#Prognose Yrkesandel
+#Forecast Labour Force Participation Rate/Yrkesandel
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -308,9 +330,13 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'NAV': [72.4,72.1,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -376,7 +402,7 @@ df_new2 = df_new2.transpose()
 df_new2['Dato'] = df_new2.index.map(forecast_dates)
 df_new2.to_csv('data/Prognoser_timeverk_tabell.csv', index=True)
 
-#Prognose Årslønn
+#Forecast Wages/Årslønn
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -431,9 +457,13 @@ forecasts = {
     'SEB': [4.7,3.8,pd.NA,pd.NA],
     'Swedbank': [3.8,3.0,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -445,7 +475,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_aarslonn_tabell.csv', index=True)
 
-#Prognose Konsumprisindeksen
+#Forecast CPI/Konsumprisindeksen
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -504,9 +534,13 @@ forecasts = {
     'SEB': [5.4,3.0,pd.NA,pd.NA],
     'Swedbank': [4.6,1.7,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
@@ -518,7 +552,7 @@ df_new3 = df_new3.transpose()
 df_new3['Dato'] = df_new3.index.map(forecast_dates)
 df_new3.to_csv('data/Prognoser_kpi_tabell.csv', index=True)
 
-#Prognose BNP Fastlands-Norge
+#Forecast GDP Mainland-Norway/BNP Fastlands-Norge
 ssburl = 'https://data.ssb.no/api/v0/no/table/12880/'
 query = {
   "query": [
@@ -579,9 +613,13 @@ forecasts = {
     'SEB': [-0.5,1.1,pd.NA,pd.NA],
     'Swedbank': [-0.5,1.4,pd.NA,pd.NA]
     }
-df_forecast = pd.DataFrame(forecasts, index=['2023','2024','2025','2026'])
+df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
-df_new2['Konsensus'] = df_new2.mean(axis=1).round(2)
+forecast_columns = list(df_forecast.columns) + ['SSB']
+recent_forecast_mask = [within_last_100_days(forecast_dates[col]) for col in forecast_columns]
+recent_forecasts_df = pd.concat([df_forecast, df_new['SSB']], axis=1).loc[:, recent_forecast_mask]
+mean_recent_forecasts = recent_forecasts_df.mean(axis=1).round(2)
+df_new2['Konsensus'] = mean_recent_forecasts
 years_na = ['2016','2017','2018','2019','2020','2021','2022']
 insert_na = [pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new2.loc[years_na, 'Konsensus'] = insert_na
