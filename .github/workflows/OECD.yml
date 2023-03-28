@@ -2,7 +2,7 @@ name: OECD
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "5 10 * * *"
+    - cron: "5 9 * * *"
 jobs:
   build-and-deploy:
     runs-on: Ubuntu-20.04
