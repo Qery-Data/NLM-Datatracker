@@ -851,7 +851,7 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total', "The Employers' Association Spekter"]].sum(skipna=True)
 df_new_totalt=df_new.loc[['Totalt'],:]
 
 #Companies
@@ -926,7 +926,7 @@ type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df2_new.loc['Totalt']= df2_new.sum(skipna=True)
-df2_new.loc['Andre'] = df2_new.loc[['Totalt']].sum(skipna=True)-df2_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
+df2_new.loc['Andre'] = df2_new.loc[['Totalt']].sum(skipna=True)-df2_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total', "The Employers' Association Spekter"]].sum(skipna=True)
 df2_new_totalt=df2_new.loc[['Totalt'],:]
 df_new_final=pd.concat([df_new_totalt, df2_new_totalt], axis=0)
 df_new_final.to_csv('data_EN/SSB_unioemp_employers_total.csv', index=True)
@@ -1028,8 +1028,8 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Total']= df_new.sum(skipna=True)
-df_new.loc['Others'] = df_new.loc[['Total']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
-df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total','Others'],:]
+df_new.loc['Others'] = df_new.loc[['Total']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total', "The Employers' Association Spekter"]].sum(skipna=True)
+df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total','Others'],:]
 df_new2.to_csv('data_EN/SSB_unioemp_employers_organization_employees.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
@@ -1118,8 +1118,8 @@ type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Total']= df_new.sum(skipna=True)
-df_new.loc['Others'] = df_new.loc[['Total']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total', "The Employers' Association Spekter"]].sum(skipna=True)
-df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','Confederation of Norwegian Business and Industry, total','Others'],:]
+df_new.loc['Others'] = df_new.loc[['Total']].sum(skipna=True)-df_new.loc[['Association of Local Authorities', 'Finance Norway','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total', "The Employers' Association Spekter"]].sum(skipna=True)
+df_new2=df_new.loc[["The Employers' Association Spekter",'Finance Norway','Association of Local Authorities','The Enterprise Federation of Norway','The Confederation of Norwegian Enterprise (NHO), total','Others'],:]
 df_new2.to_csv('data_EN/SSB_unioemp_employers_organization_companies.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
