@@ -21,7 +21,7 @@ forecast_dates = {
     'NHO': '07.03.2023',
     'Danske Bank': '04.04.2023',
     'DNB': '26.01.2023',
-    'Handelsbanken': '04.04.2023',
+    'Handelsbanken': '24.05.2023',
     'Nordea': '09.05.2023',
     'SEB': '03.05.2023',
     }
@@ -450,7 +450,7 @@ forecasts = {
     'FIN': [5.25,pd.NA,pd.NA,pd.NA],    
     'Danske Bank': [5.0,4.0,pd.NA,pd.NA],
     'DNB': [4.8,4.5,4.0,pd.NA],
-    'Handelsbanken': [5.2,4.3,3.3,pd.NA],
+    'Handelsbanken': [5.4,4.3,3.3,pd.NA],
     'Nordea': [5.6,4.5,pd.NA,pd.NA],
     'SEB': [5.4,4.2,pd.NA,pd.NA],
     }
@@ -527,7 +527,7 @@ forecasts = {
     'NHO': [4.9,3.3,2.9,pd.NA],
     'Danske Bank': [4.8,2.5,pd.NA,pd.NA],
     'DNB': [4.6,2.3,2.8,pd.NA],
-    'Handelsbanken': [4.9,3.2,2.0,pd.NA],
+    'Handelsbanken': [5.2,3.2,2.0,pd.NA],
     'Nordea': [5.3,3.0,pd.NA,pd.NA],
     'SEB': [5.5,3.4,pd.NA,pd.NA],
     }
