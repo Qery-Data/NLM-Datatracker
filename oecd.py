@@ -113,7 +113,7 @@ df_new.to_csv('data/OECD_organisasjonsgrad_rangering.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+RUS+SAU+ZAF.LRHUTTTT.STSA.M/all?startTime=2012-01'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_new = df.pivot(index='TIME', columns='Country', values='Value')
 df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_MEI_Unemployment.csv', index=True)
 
@@ -121,7 +121,7 @@ df_new.to_csv('data/OECD_MEI_Unemployment.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+RUS+SAU+ZAF.LRHU24TT.STSA.M/all?startTime=2012-01'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Time', columns='Country', values='Value')
+df_new = df.pivot(index='TIME', columns='Country', values='Value')
 df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_MEI_Youth_Unemployment.csv', index=True)
 
