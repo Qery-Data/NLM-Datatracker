@@ -129,7 +129,7 @@ df_new.to_csv('data/OECD_organisasjonsgrad_rangering.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+RUS+SAU+ZAF.LREM74TT.STSA.Q/all?startTime=2022-Q1'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df.pivot(index='Country', columns='TIME', values='Value')
 df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate.csv', index=True)
 
@@ -137,7 +137,7 @@ df_new.to_csv('data/OECD_Employment_Rate.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+RUS+SAU+ZAF.LREM74FE.STSA.Q/all?startTime=2022-Q1'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df.pivot(index='Country', columns='TIME', values='Value')
 df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate_Women.csv', index=True)
 
@@ -145,7 +145,7 @@ df_new.to_csv('data/OECD_Employment_Rate_Women.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/MEI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+RUS+SAU+ZAF.LREM74MA.STSA.Q/all?startTime=2022-Q1'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df.pivot(index='Country', columns='TIME', values='Value')
 df_new = df_new.round(decimals=1)
 df_new.to_csv('data/OECD_Employment_Rate_Men.csv', index=True)
 
@@ -153,7 +153,7 @@ df_new.to_csv('data/OECD_Employment_Rate_Men.csv', index=True)
 oecd_url='https://stats.oecd.org/SDMX-JSON/data/TEMP_I/AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+EA19+EU27_2020+OECD+ARG+BRA+BGR+CHN+CYP+IND+IDN+MLT+ROU+SAU+ZAF.MW.900000.DE.PER_CENT_TEMP.A/all?startTime=2012'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='Country', columns='Time', values='Value')
+df_new = df.pivot(index='Country', columns='TIME', values='Value')
 df_new.to_csv('data/OECD_Temporary_Employment.csv', index=True)
 
 #End
