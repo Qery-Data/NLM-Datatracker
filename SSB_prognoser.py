@@ -14,7 +14,7 @@ forecast_dates = {
     'SSB': '09.06.2023',
     'Norges Bank': '22.06.2023',
     'FIN': '11.05.2023',
-    'NAV': '22.03.2023',
+    'NAV': '21.06.2023',
     'IMF': '11.04.2023',
     'OECD': '07.06.2023',
     'LO': '10.05.2023',    
@@ -80,7 +80,7 @@ df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'FIN': [3.6,3.7,pd.NA,pd.NA],
-    'NAV': [3.6,3.8,pd.NA,pd.NA],
+    'NAV': [3.7,3.8,pd.NA,pd.NA],
     'IMF': [3.5,3.7,pd.NA,pd.NA],
     'OECD': [3.7,3.8,pd.NA,pd.NA],
     'LO': [3.7,3.9,4.2,pd.NA],    
@@ -186,7 +186,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [1.2,-0.2,0.2,0.6],
     'FIN': [0.8,0.2,pd.NA,pd.NA],
-    'NAV': [-0.1,0.0,pd.NA,pd.NA],
+    'NAV': [0.6,0.5,pd.NA,pd.NA],
     'LO': [0.5,0.0,0.0,pd.NA],    
     'NHO': [1.6,0.4,0.2,pd.NA],
     'DNB': [-0.2,0.2,0.2,pd.NA],
@@ -258,7 +258,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'NAV': [0.3,0.3,pd.NA,pd.NA],
+    'NAV': [1.1,0.5,pd.NA,pd.NA],
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -325,7 +325,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'NAV': [72.4,72.1,pd.NA,pd.NA]
+    'NAV': [72.6,72.4,pd.NA,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -598,7 +598,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [1.2,0.2,0.9,1.4],
     'FIN': [1.0,1.0,pd.NA,pd.NA],
-    'NAV': [1.0,1.4,pd.NA,pd.NA],
+    'NAV': [1.1,1.6,pd.NA,pd.NA],
     'OECD': [1.2,1.3,pd.NA,pd.NA],
     'LO': [1.4,0.9,1.0,pd.NA],    
     'NHO': [1.4,1.2,1.5,pd.NA],
