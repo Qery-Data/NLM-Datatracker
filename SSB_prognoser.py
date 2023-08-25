@@ -114,7 +114,7 @@ forecasts = {
     'Norges Bank': [1.9,2.3,2.4,2.4],
     'FIN': [1.8,2.0,pd.NA,pd.NA],
     'NHO': [2.1,2.2,2.1,pd.NA],
-    'DNB': [1.9,2.5,2.7,2.8,pd.NA],
+    'DNB': [1.9,2.5,2.7,2.8],
     'Danske Bank': [1.9,2.3,pd.NA,pd.NA],
     'Handelsbanken': [2.0,2.3,2.4,pd.NA],
     'Nordea': [1.9,2.5,pd.NA,pd.NA],
