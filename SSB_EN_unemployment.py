@@ -205,7 +205,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='month', values='value')
 df_new.to_csv('data_EN/SSB_unemployment_age_rate.csv', index=True)
