@@ -44,7 +44,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data_EN/SSB_vacancies.csv', index=False)
 json_object = json.loads(result.text)
@@ -98,7 +97,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data_EN/SSB_vacancies_rate.csv', index=False)
 json_object = json.loads(result.text)
@@ -174,7 +172,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='contents', values='value')
 df_new.to_csv('data_EN/SSB_vacancies_industry.csv', index=True)
@@ -262,7 +259,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,8,11,12]]
@@ -355,7 +351,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,8,11,12]]

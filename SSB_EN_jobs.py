@@ -55,7 +55,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='month', columns='contents', values='value')
 df_new.to_csv('data_EN/SSB_jobs_total.csv', index=True)
@@ -119,7 +118,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['change'] = df.loc[:, 'value'].diff()
 df['change in pct'] = df.loc[:, 'value'].pct_change()*100
@@ -202,7 +200,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='month', values='value')
 df_new2 = df_new.iloc[:,[0,24,48,59,60]]
@@ -388,7 +385,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new0 = df.pivot(index='region', columns='quarter', values='value')
 df_new = df_new0.rename(index={'Nordland - Nordlánnda': 'Nordland', 'Troms og Finnmark - Romsa ja Finnmárku':'Troms og Finnmark', 'Trøndelag - Trööndelage':'Trøndelag'})
@@ -830,7 +826,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
@@ -926,7 +921,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
@@ -1022,7 +1016,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
@@ -1118,7 +1111,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]
@@ -1204,7 +1196,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='immigration category', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[4,8,12,16,20]]
@@ -1289,7 +1280,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='immigration category', columns='quarter', values='value')
 df_new2 = df_new.iloc[:,[0,4]]

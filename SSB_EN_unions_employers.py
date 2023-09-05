@@ -36,7 +36,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_unioemp_unions_members.csv', index=True)
@@ -88,7 +87,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_unioemp_unions_working_org.csv', index=True)
@@ -163,7 +161,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 
@@ -221,7 +218,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='national confederation', columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -298,7 +294,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 
@@ -349,7 +344,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='national confederation', columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -425,7 +419,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 
@@ -476,7 +469,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='national confederation', columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -552,7 +544,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 #Working members
@@ -603,7 +594,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='national confederation', columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -685,7 +675,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='national confederation', columns='year', values='value')
 
@@ -742,7 +731,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='national confederation', columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -839,7 +827,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
@@ -914,7 +901,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df2_new.loc['Totalt']= df2_new.sum(skipna=True)
@@ -1016,7 +1002,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Total']= df_new.sum(skipna=True)
@@ -1106,7 +1091,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 df_new.loc['Total']= df_new.sum(skipna=True)
@@ -1190,7 +1174,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 #Tilsatte
@@ -1254,7 +1237,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -1349,7 +1331,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index="employers' associations", columns='year', values='value')
 #Employees
@@ -1409,7 +1390,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index="employers' associations", columns='year', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)

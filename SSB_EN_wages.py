@@ -36,7 +36,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='year', columns='contents',values='value')
 json_object = json.loads(result.text)
@@ -539,7 +538,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation',columns='year',values='value')
 df_new['Endring sist år'] = (df_new.iloc[:,4]-df_new.iloc[:,3])/df_new.iloc[:,3]*100
@@ -1036,7 +1034,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation',columns='measuring method',values='value')
 df_new.dropna(inplace=True)
@@ -1541,7 +1538,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation',columns='sector',values='value')
 df_new.dropna(thresh=3, inplace=True)
@@ -1649,7 +1645,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['målarbeidstid']=df['measuring method']+df['contractual/usual working hours per week']
 df_new=df.pivot(index='målarbeidstid', columns='sex', values='value')
@@ -1756,7 +1751,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['measuresex'] = df['measuring method']+df['sex']
 df_new = df.pivot(index='year', columns='measuresex',values='value')
@@ -1837,7 +1831,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2['measuresex'] = df['measuring method']+df['sex']
 df2_new = df2.pivot(index='year', columns='measuresex',values='value')
@@ -2348,7 +2341,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['measuresex'] = df['measuring method']+df['sex']
 df_new = df.pivot(index='occupation', columns='measuresex', values='value')
@@ -2486,7 +2478,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='industry (SIC2007)', columns='level of education', values='value')
 df_new = df_new.reindex(columns=['Total', 'Primary and lower secondary education', 'Upper secondary education', 'First stage of tertiary education, undergraduate level', 'First and second stage of tertiary education, graduate and postgraduate level'])
@@ -3366,7 +3357,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='place of work and place of residence', values='value')
 df_new.dropna(inplace=True)
@@ -4297,7 +4287,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='sex', values='value')
 df_new.dropna(inplace=True)

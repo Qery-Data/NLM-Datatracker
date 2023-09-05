@@ -62,7 +62,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data_EN/SSB_unemployment.csv', index=False)
 json_object = json.loads(result.text)
@@ -134,7 +133,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data_EN/SSB_unemployment_rate.csv', index=False)
 json_object = json.loads(result.text)
@@ -281,7 +279,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sex', columns='month', values='value')
 df_new.to_csv('data_EN/SSB_unemployment_gender_rate.csv', index=True)

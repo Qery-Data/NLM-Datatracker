@@ -48,7 +48,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='statistikkvariabel', columns='år', values='value')
 df_new.to_csv('data/SSB_arbeidstid_heltid_deltid.csv', index=True)
@@ -106,7 +105,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='statistikkvariabel', columns='år', values='value')
 df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_kvinner.csv', index=True)
@@ -164,7 +162,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='statistikkvariabel', columns='år', values='value')
 df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_menn.csv', index=True)
@@ -240,7 +237,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke', columns='statistikkvariabel', values='value')
 df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_yrker.csv', index=True)
@@ -326,7 +322,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke', columns='kjønn', values='value')
 df_new.to_csv('data/SSB_arbeidstid_heltid_deltid_yrker_kjonn.csv', index=True)
@@ -410,7 +405,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke', columns='år', values='value')
 df_new.to_csv('data/SSB_arbeidstid_snitt_yrker.csv', index=True)

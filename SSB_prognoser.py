@@ -71,7 +71,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Arbeidsledighetsrate (nivå)': 'Faktisk utvikling'})
@@ -176,7 +175,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Sysselsatte personer': 'Faktisk utvikling'})
@@ -250,7 +248,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Arbeidsstyrke': 'Faktisk utvikling'})
@@ -317,7 +314,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Yrkesandel (nivå)': 'Faktisk utvikling'})
@@ -384,7 +380,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Utførte timeverk i Fastlands-Norge': 'Faktisk utvikling'})
@@ -438,7 +433,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Årslønn': 'Faktisk utvikling'})
@@ -511,7 +505,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'Konsumprisindeksen (KPI)': 'Faktisk utvikling'})
@@ -588,7 +581,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel', values='value')
 df_new = df_new.rename(columns={'BNP Fastlands-Norge': 'Faktisk utvikling'})

@@ -63,7 +63,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_arbeidsledige.csv', index=False)
 json_object = json.loads(result.text)
@@ -135,7 +134,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data/SSB_arbeidsledige_pst.csv', index=False)
 json_object = json.loads(result.text)
@@ -208,7 +206,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='alder', columns='måned', values='value')
 df_new.to_csv('data/SSB_arbeidsledige_alder_pst.csv', index=True)
@@ -282,7 +279,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='kjønn', columns='måned', values='value')
 df_new.to_csv('data/SSB_arbeidsledige_kjønn_pst.csv', index=True)

@@ -81,7 +81,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='formal and non-formal education', columns='industry (SIC2007)', values='value')
 df_new.to_csv('data_EN/SSB_learning_industry.csv', index=True)
@@ -170,7 +169,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='formal and non-formal education', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_learning_type.csv', index=True)

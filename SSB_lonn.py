@@ -38,7 +38,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='år', columns='statistikkvariabel',values='value')
 json_object = json.loads(result.text)
@@ -541,7 +540,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke',columns='år',values='value')
 df_new['Endring sist år'] = (df_new.iloc[:,4]-df_new.iloc[:,3])/df_new.iloc[:,3]*100
@@ -1038,7 +1036,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke',columns='statistikkmål',values='value')
 df_new.dropna(inplace=True)
@@ -1543,7 +1540,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='yrke',columns='sektor',values='value')
 df_new.dropna(thresh=3, inplace=True)
@@ -1651,7 +1647,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['målarbeidstid']=df['statistikkmål']+df['avtalt/vanlig arbeidstid per uke']
 df_new=df.pivot(index='målarbeidstid', columns='kjønn', values='value')
@@ -1750,7 +1745,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['målkjønn'] = df['statistikkmål']+df['kjønn']
 df_new = df.pivot(index='år', columns='målkjønn',values='value')
@@ -1831,7 +1825,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2['målkjønn'] = df['statistikkmål']+df['kjønn']
 df2_new = df2.pivot(index='år', columns='målkjønn',values='value')
@@ -2375,7 +2368,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['målkjønn'] = df['statistikkmål']+df['kjønn']
 df_new = df.pivot(index='yrke', columns='målkjønn', values='value')
@@ -2892,7 +2884,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df['målkjønn'] = df['statistikkmål']+df['kjønn']
 df_new = df.pivot(index='yrke', columns='målkjønn', values='value')
@@ -3030,7 +3021,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='næring (SN2007)', columns='utdanningsnivå', values='value')
 df_new = df_new.reindex(columns=['I alt', 'Grunnskoleutdanning', 'Videregående utdanning', 'Universitets- og høgskoleutdanning, lavere nivå', 'Universitets- og høgskoleutdanning, høyere nivå, og forskerutdanning'])
@@ -3910,7 +3900,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='arbeidssted/bosted', values='value')
 df_new.dropna(inplace=True)
@@ -4838,7 +4827,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='region', columns='kjønn', values='value')
 df_new.dropna(inplace=True)

@@ -47,7 +47,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_full_part.csv', index=True)
@@ -114,7 +113,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_women_full_part.csv', index=True)
@@ -181,7 +179,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_men_full_part.csv', index=True)
@@ -266,7 +263,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='contents', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_full_part.csv', index=True)
@@ -352,7 +348,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='sex', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_women_men_full.csv', index=True)
@@ -436,7 +431,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='occupation', columns='year', values='value')
 df_new.to_csv('data_EN/SSB_working_time_industry_average_weekly.csv', index=True)

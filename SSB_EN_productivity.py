@@ -62,7 +62,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 
 ssburl = 'https://data.ssb.no/api/v0/en/table/09170/'
@@ -118,9 +117,7 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
-
 df_new=df.pivot(index='industry', columns='contents',values='value')
 df_new2=df2.pivot(index='industry', columns='contents',values='value')
 df_new3= pd.concat([df_new, df_new2], axis=1)

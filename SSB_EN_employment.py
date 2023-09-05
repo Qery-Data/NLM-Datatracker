@@ -64,7 +64,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df.to_csv('data_EN/SSB_employment_rate.csv', index=False)
 json_object = json.loads(result.text)
@@ -137,7 +136,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sex', columns='month', values='value')
 df_new.to_csv('data_EN/SSB_employment_gender_rate.csv', index=True)
@@ -211,7 +209,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='month', values='value')
 df_new.to_csv('data_EN/SSB_employment_age_rate.csv', index=True)
@@ -275,7 +272,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='contents', columns='quarter', values='value')
 df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)
@@ -358,7 +354,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='sex', columns='quarter', values='value')
 df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)
@@ -444,7 +439,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='age', columns='quarter', values='value')
 df_new.columns = df_new.columns.str.replace("[(K)]", "Q", regex=True)

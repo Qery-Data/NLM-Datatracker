@@ -37,7 +37,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='statistikkvariabel', columns='år', values='value')
 df_new.to_csv('data/SSB_organisasjonsgrad_medlemmer_vs_yrkesaktive.csv', index=True)
@@ -89,7 +88,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 df_new.to_csv('data/SSB_organisasjonsgrad_arbeidstaker_medlemmer_yrkesaktive.csv', index=True)
@@ -163,7 +161,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 
@@ -221,7 +218,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -308,7 +304,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 #Medlemsutvikling i YS oDPyE
@@ -359,7 +354,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -434,7 +428,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 #Medlemsutvikling i Unio mhydR
@@ -485,7 +478,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -562,7 +554,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 #Medlemsutvikling i Akademikerne fyMbm
@@ -614,7 +605,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -695,7 +685,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='Landsforening', columns='år', values='value')
 #Medlemsutvikling i i andre arbeidstakerorganisasjoner 86GF4
@@ -752,7 +741,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='Landsforening', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -849,7 +837,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
@@ -925,7 +912,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df2_new.loc['Totalt']= df2_new.sum(skipna=True)
@@ -1002,7 +988,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
@@ -1092,7 +1077,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
@@ -1176,7 +1160,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 #Tilsatte
@@ -1240,7 +1223,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
@@ -1336,7 +1318,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 #Tilsatte
@@ -1396,7 +1377,6 @@ query = {
 }
 result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
-type(dataset)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df3_new=pd.concat([df_new, df2_new], axis=1)
