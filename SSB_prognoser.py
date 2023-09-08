@@ -11,7 +11,7 @@ access_token = os.getenv('DW_TOKEN')
 
 #Forecast dates
 forecast_dates = {
-    'SSB': '09.06.2023',
+    'SSB': '08.09.2023',
     'Norges Bank': '22.06.2023',
     'FIN': '11.05.2023',
     'NAV': '21.06.2023',
@@ -19,7 +19,7 @@ forecast_dates = {
     'OECD': '07.06.2023',
     'LO': '10.05.2023',    
     'NHO': '13.06.2023',
-    'Danske Bank': '20.06.2023',
+    'Danske Bank': '05.09.2023',
     'DNB': '24.08.2023',
     'Handelsbanken': '24.05.2023',
     'Nordea': '09.05.2023',
@@ -188,7 +188,7 @@ forecasts = {
     'LO': [0.5,0.0,0.0,pd.NA],    
     'NHO': [1.6,0.4,0.2,pd.NA],
     'DNB': [0.2,0.1,0.3,0.4],
-    'Danske Bank': [0.8,-0.1,pd.NA,pd.NA],
+    'Danske Bank': [1.1,-0.1,pd.NA,pd.NA],
     'Handelsbanken': [0.8,0.0,0.5,pd.NA],
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
@@ -442,7 +442,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [5.5,4.7,4.3,3.7],
     'FIN': [5.25,pd.NA,pd.NA,pd.NA],    
-    'Danske Bank': [5.3,4.2,pd.NA,pd.NA],
+    'Danske Bank': [5.4,4.4,pd.NA,pd.NA],
     'DNB': [5.5,5.2,4.3,4.0],
     'Handelsbanken': [5.4,4.3,3.3,pd.NA],
     'Nordea': [5.6,4.5,pd.NA,pd.NA],
@@ -518,7 +518,7 @@ forecasts = {
     'OECD': [5.4,3.5,pd.NA,pd.NA],
     'LO': [4.9,2.1,2.5,pd.NA],    
     'NHO': [4.9,4.0,2.9,pd.NA],
-    'Danske Bank': [5.3,2.5,pd.NA,pd.NA],
+    'Danske Bank': [5.8,2.5,pd.NA,pd.NA],
     'DNB': [5.8,4.4,3.3,2.9],
     'Handelsbanken': [5.2,3.2,2.0,pd.NA],
     'Nordea': [5.3,3.0,pd.NA,pd.NA],
@@ -594,7 +594,7 @@ forecasts = {
     'OECD': [1.2,1.3,pd.NA,pd.NA],
     'LO': [1.4,0.9,1.0,pd.NA],    
     'NHO': [1.4,1.2,1.5,pd.NA],
-    'Danske Bank': [1.1,1.4,pd.NA,pd.NA],
+    'Danske Bank': [1.2,1.4,pd.NA,pd.NA],
     'DNB': [1.2,1.0,1.4,1.4],
     'Handelsbanken': [1.2,0.5,1.2,pd.NA],
     'Nordea': [0.5,0.5,pd.NA,pd.NA],
