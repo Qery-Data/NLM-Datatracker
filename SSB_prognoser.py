@@ -22,8 +22,9 @@ forecast_dates = {
     'Danske Bank': '05.09.2023',
     'DNB': '24.08.2023',
     'Handelsbanken': '24.05.2023',
-    'Nordea': '09.05.2023',
+    'Nordea': '06.09.2023',
     'SEB': '29.08.2023',
+    'SØA': '13.09.2023'
     }
 
 # Function to check if forecast date is within the last 100 days
@@ -85,7 +86,8 @@ forecasts = {
     'LO': [3.7,3.9,4.2,pd.NA],    
     'NHO': [3.7,3.8,3.6,pd.NA],
     'DNB': [3.7,3.9,3.9,3.9],
-    'SEB': [3.5,3.9,3.7,pd.NA]
+    'SEB': [3.5,3.9,3.7,pd.NA],
+    'SØA': [3.6,4.1,4.2,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -116,7 +118,7 @@ forecasts = {
     'DNB': [1.9,2.5,2.7,2.8],
     'Danske Bank': [1.9,2.3,pd.NA,pd.NA],
     'Handelsbanken': [2.0,2.3,2.4,pd.NA],
-    'Nordea': [1.9,2.5,pd.NA,pd.NA],
+    'Nordea': [1.9,2.3,2.5,pd.NA],
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -190,6 +192,7 @@ forecasts = {
     'DNB': [0.2,0.1,0.3,0.4],
     'Danske Bank': [1.1,-0.1,pd.NA,pd.NA],
     'Handelsbanken': [0.8,0.0,0.5,pd.NA],
+    'SØA': [1.2,-0.4,-0.7,0.2]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -445,8 +448,9 @@ forecasts = {
     'Danske Bank': [5.4,4.4,pd.NA,pd.NA],
     'DNB': [5.5,5.2,4.3,4.0],
     'Handelsbanken': [5.4,4.3,3.3,pd.NA],
-    'Nordea': [5.6,4.5,pd.NA,pd.NA],
+    'Nordea': [5.6,5.0,4.0,pd.NA],
     'SEB': [5.5,4.5,3.3,pd.NA],
+    'SØA': [5.6,4.8,4.0,4.0]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -521,8 +525,9 @@ forecasts = {
     'Danske Bank': [5.8,2.5,pd.NA,pd.NA],
     'DNB': [5.8,4.4,3.3,2.9],
     'Handelsbanken': [5.2,3.2,2.0,pd.NA],
-    'Nordea': [5.3,3.0,pd.NA,pd.NA],
+    'Nordea': [5.8,4.0,3.0,pd.NA],
     'SEB': [5.9,4.0,2.6,pd.NA],
+    'SØA': [5.8,4.4,3.2,2.9]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -597,8 +602,9 @@ forecasts = {
     'Danske Bank': [1.2,1.4,pd.NA,pd.NA],
     'DNB': [1.2,1.0,1.4,1.4],
     'Handelsbanken': [1.2,0.5,1.2,pd.NA],
-    'Nordea': [0.5,0.5,pd.NA,pd.NA],
+    'Nordea': [1.2,0.5,1.0,pd.NA],
     'SEB': [1.4,0.6,1.8,pd.NA],
+    'SØA': [0.9,0.3,1.4,1.8]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
