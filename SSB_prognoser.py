@@ -518,7 +518,7 @@ df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [5.8,4.8,3.1,2.5],
-    'FIN': [6.9,3.8,2.5,pd.NA],    
+    'FIN': [6.0,3.8,2.5,pd.NA],    
     'IMF': [4.9,2.8,pd.NA,pd.NA],
     'OECD': [5.4,3.5,pd.NA,pd.NA],
     'LO': [5.9,4.1,2.6,pd.NA],    
