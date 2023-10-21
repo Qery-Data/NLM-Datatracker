@@ -15,7 +15,7 @@ forecast_dates = {
     'Norges Bank': '22.09.2023',
     'FIN': '06.10.2023',
     'NAV': '21.06.2023',
-    'IMF': '11.04.2023',
+    'IMF': '10.10.2023',
     'OECD': '07.06.2023',
     'LO': '29.09.2023',    
     'NHO': '03.10.2023',
@@ -81,7 +81,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'FIN': [3.5,3.7,3.7,pd.NA],
     'NAV': [3.7,3.8,pd.NA,pd.NA],
-    'IMF': [3.5,3.7,pd.NA,pd.NA],
+    'IMF': [3.6,3.8,pd.NA,pd.NA],
     'OECD': [3.7,3.8,pd.NA,pd.NA],
     'LO': [3.6,3.9,4.1,pd.NA],    
     'NHO': [3.6,3.9,3.9,pd.NA],
@@ -519,7 +519,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [5.8,4.8,3.1,2.5],
     'FIN': [6.0,3.8,2.5,pd.NA],    
-    'IMF': [4.9,2.8,pd.NA,pd.NA],
+    'IMF': [5.8,3.7,pd.NA,pd.NA],
     'OECD': [5.4,3.5,pd.NA,pd.NA],
     'LO': [5.9,4.1,2.6,pd.NA],    
     'NHO': [4.9,4.2,3.2,pd.NA],
