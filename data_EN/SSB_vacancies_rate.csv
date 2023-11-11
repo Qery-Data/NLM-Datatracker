@@ -1,5 +1,4 @@
 industry (SIC2007),contents,quarter,value
-All industries,"Job vacancy rate, seasonally adjusted",2018K2,2.4
 All industries,"Job vacancy rate, seasonally adjusted",2018K3,2.5
 All industries,"Job vacancy rate, seasonally adjusted",2018K4,2.2
 All industries,"Job vacancy rate, seasonally adjusted",2019K1,2.5
@@ -8,7 +7,7 @@ All industries,"Job vacancy rate, seasonally adjusted",2019K3,2.4
 All industries,"Job vacancy rate, seasonally adjusted",2019K4,2.4
 All industries,"Job vacancy rate, seasonally adjusted",2020K1,2.3
 All industries,"Job vacancy rate, seasonally adjusted",2020K2,1.9
-All industries,"Job vacancy rate, seasonally adjusted",2020K3,2.3
+All industries,"Job vacancy rate, seasonally adjusted",2020K3,2.2
 All industries,"Job vacancy rate, seasonally adjusted",2020K4,2.2
 All industries,"Job vacancy rate, seasonally adjusted",2021K1,2.5
 All industries,"Job vacancy rate, seasonally adjusted",2021K2,3.2
@@ -20,3 +19,4 @@ All industries,"Job vacancy rate, seasonally adjusted",2022K3,3.3
 All industries,"Job vacancy rate, seasonally adjusted",2022K4,3.7
 All industries,"Job vacancy rate, seasonally adjusted",2023K1,4.1
 All industries,"Job vacancy rate, seasonally adjusted",2023K2,3.7
+All industries,"Job vacancy rate, seasonally adjusted",2023K3,3.7
