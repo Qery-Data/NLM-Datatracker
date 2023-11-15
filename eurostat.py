@@ -489,71 +489,71 @@ headers = {
     }
 response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Andel deltatt i læring siste 12 AES Kjønn iwbnr (NO) + Share of adults learning activities last 12 months eIK1N (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_100?sex=F&sex=M&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
-df = dataset.write('dataframe')
-df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values='value')
-df_new.index.name = 'geo'
-df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_kjonn.csv', index=True)
-raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
-chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-#Update DW (NO)
-chartid = 'iwbnr'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Andel deltatt i læring siste 12 AES Kjønn iwbnr (NO) + Share of adults learning activities last 12 months eIK1N (EN)
+# dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_100?lang=en&age=Y25-64&sex=M&sex=F&training=FE_NFE&geo=EU27_2020&geo=EA20&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=NO&geo=CH&geo=UK&geo=BA&geo=MK&geo=AL&geo=RS&geo=TR&time=2016')
+# df = dataset.write('dataframe')
+# df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
+# df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Sex', values='value')
+# df_new.index.name = 'geo'
+# df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_kjonn.csv', index=True)
+# raw_date = dataset["updated"]
+# parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
+# chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+# chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+# #Update DW (NO)
+# chartid = 'iwbnr'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Update DW (EN)
-chartid = 'eIK1N'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW (EN)
+# chartid = 'eIK1N'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Andel deltatt i læring siste 12 AES Alder a5821 (NO) + Share of adults learning activities age IuO7H (EN)
-dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_101?age=Y25-34&age=Y35-44&age=Y45-54&age=Y55-64&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
-df = dataset.write('dataframe')
-df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
-df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age class', values='value')
-df_new.index.name = 'geo'
-df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
-raw_date = dataset["updated"]
-parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
-chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
-chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
-#Update DW (NO)
-chartid = 'a5821'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Andel deltatt i læring siste 12 AES Alder a5821 (NO) + Share of adults learning activities age IuO7H (EN)
+# dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/trng_aes_101?age=Y25-34&age=Y35-44&age=Y45-54&age=Y55-64&lastTimePeriod=1&training=FE_NFE&geo=AL&geo=AT&geo=BA&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
+# df = dataset.write('dataframe')
+# df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of the FRG)':'Germany', 'European Union - 27 countries (from 2020)':'EU'})
+# df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Age class', values='value')
+# df_new.index.name = 'geo'
+# df_new.to_csv('data/Eurostat_livslang_laring_AES_siste_aar_alder.csv', index=True)
+# raw_date = dataset["updated"]
+# parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
+# chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y')
+# chart_date_EN = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
+# #Update DW (NO)
+# chartid = 'a5821'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Update DW (EN)
-chartid = 'IuO7H'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW (EN)
+# chartid = 'IuO7H'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date_EN}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Lenght of working life 1sRO7 (EN)
 dataset = pyjstat.Dataset.read('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_dwl_a?sex=T&lastTimePeriod=20&geo=AT&geo=BE&geo=BG&geo=CH&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=EU27_2020&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IS&geo=IT&geo=LT&geo=LU&geo=LV&geo=ME&geo=MK&geo=MT&geo=NL&geo=NO&geo=PL&geo=PT&geo=RO&geo=RS&geo=SE&geo=SI&geo=SK&geo=TR&geo=UK')
