@@ -12,7 +12,7 @@ access_token = os.getenv('DW_TOKEN')
 #Forecast dates
 forecast_dates = {
     'SSB': '08.12.2023',
-    'Norges Bank': '22.09.2023',
+    'Norges Bank': '14.12.2023',
     'FIN': '06.10.2023',
     'NAV': '01.12.2023',
     'IMF': '10.10.2023',
@@ -112,7 +112,7 @@ df = {'Faktisk utvikling': [3.0,2.7,2.4,2.3,5.0,3.1,1.8,pd.NA,pd.NA,pd.NA,pd.NA]
 df_new = pd.DataFrame(df, index=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'])
 forecasts = {
     'NAV': [1.8,2.1,2.3,pd.NA],
-    'Norges Bank': [1.8,2.2,2.4,2.4],
+    'Norges Bank': [1.8,2.1,2.3,2.3],
     'FIN': [1.8,2.0,2.1,pd.NA],
     'NHO': [1.8,2.5,2.5,2.3],
     'DNB': [1.9,2.5,2.7,2.8],
@@ -184,7 +184,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [1.5,-0.1,0.1,0.6],
+    'Norges Bank': [1.3,-0.1,0.4,0.7],
     'FIN': [1.3,0.1,0.5,pd.NA],
     'NAV': [1.0,0.5,0.6,pd.NA],
     'LO': [1.2,0.4,0.3,pd.NA],    
@@ -444,7 +444,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [5.5,5.2,4.6,3.9],
+    'Norges Bank': [5.5,5.0,4.3,3.7],
     'FIN': [5.5,4.9,pd.NA,pd.NA],    
     'Danske Bank': [5.4,4.4,3.5,pd.NA],
     'DNB': [5.5,5.2,4.3,4.0],
@@ -517,7 +517,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [5.8,4.8,3.1,2.5],
+    'Norges Bank': [5.5,5.0,4.3,3.7],
     'FIN': [6.0,3.8,2.5,pd.NA],    
     'IMF': [5.8,3.7,pd.NA,pd.NA],
     'OECD': [5.5,3.9,3.2,pd.NA],
@@ -594,7 +594,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'Norges Bank': [1.3,0.3,0.8,1.4],
+    'Norges Bank': [1.0,0.1,1.2,1.5],
     'FIN': [0.6,0.8,1.9,pd.NA],
     'NAV': [0.7,1.1,1.8,pd.NA],
     'OECD': [1.1,0.5,1.3,pd.NA],
