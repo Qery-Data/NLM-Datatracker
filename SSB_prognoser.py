@@ -21,7 +21,7 @@ forecast_dates = {
     'NHO': '12.12.2023',
     'Danske Bank': '12.12.2023',
     'DNB': '24.08.2023',
-    'Handelsbanken': '20.09.2023',
+    'Handelsbanken': '20.12.2023',
     'Nordea': '06.09.2023',
     'SEB': '14.11.2023',
     'SØA': '13.09.2023'
@@ -117,7 +117,7 @@ forecasts = {
     'NHO': [1.8,2.5,2.5,2.3],
     'DNB': [1.9,2.5,2.7,2.8],
     'Danske Bank': [1.9,2.3,2.5,pd.NA],
-    'Handelsbanken': [1.9,2.4,2.5,pd.NA],
+    'Handelsbanken': [1.8,2.2,2.3,pd.NA],
     'Nordea': [1.9,2.3,2.5,pd.NA],
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
@@ -191,7 +191,7 @@ forecasts = {
     'NHO': [1.4,0.4,0.7,1.6],
     'DNB': [0.2,0.1,0.3,0.4],
     'Danske Bank': [1.2,-0.1,0.4,pd.NA],
-    'Handelsbanken': [1.4,-0.1,0.1,pd.NA],
+    'Handelsbanken': [1.3,-0.1,0.4,pd.NA],
     'SØA': [1.2,-0.4,-0.7,0.2]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
@@ -448,7 +448,7 @@ forecasts = {
     'FIN': [5.5,4.9,pd.NA,pd.NA],    
     'Danske Bank': [5.4,4.4,3.5,pd.NA],
     'DNB': [5.5,5.2,4.3,4.0],
-    'Handelsbanken': [5.5,4.9,4.0,pd.NA],
+    'Handelsbanken': [5.5,5.0,4.2,pd.NA],
     'Nordea': [5.6,5.0,4.0,pd.NA],
     'SEB': [5.5,4.9,3.8,pd.NA],
     'SØA': [5.6,4.8,4.0,4.0]
@@ -525,7 +525,7 @@ forecasts = {
     'NHO': [5.5,3.9,3.4,2.9],
     'Danske Bank': [5.6,3.0,2.0,pd.NA],
     'DNB': [5.8,4.4,3.3,2.9],
-    'Handelsbanken': [5.7,4.1,3.2,pd.NA],
+    'Handelsbanken': [5.5,4.2,2.8,pd.NA],
     'Nordea': [5.8,4.0,3.0,pd.NA],
     'SEB': [5.6,4.6,2.6,pd.NA],
     'SØA': [5.8,4.4,3.2,2.9]
