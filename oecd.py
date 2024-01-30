@@ -76,7 +76,7 @@ result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
 df_index = df_new.div(df_new.iloc[0]).mul(100)
-df_index.insert(8, 'Fastlands-Norge',[100,103,104.8,108.1,110.9,114.2,115.8,116.5,115,114.9,116.7,116.7,119.1,121.5,122.4,123.3,125,125.9,126.9,126.9,126.5,128.3,pd.NA], True)
+df_index.insert(8, 'Fastlands-Norge',[100,103,104.8,108.1,110.9,114.2,115.8,116.5,115,114.9,116.7,116.7,119.1,121.5,122.4,123.3,125,125.9,126.9,126.9,126.5,128.3,pd.NA,pd.NA], True)
 df_index.to_csv('data/OECD_produktivitet_time_utvikling_2000.csv', index=True)
 
 # Produktivitet per time index 2015 N1JHC (NO) and 1FF4k (EN)
@@ -84,7 +84,7 @@ oecd_url='https://stats.oecd.org/SDMX-JSON/data/PDB_GR/DNK+FIN+DEU+NOR+SWE+EA19+
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='Time', columns='Country', values='Value')
-df_new.insert(8, 'Fastlands-Norge',[123.3,125,125.9,126.9,126.9,126.5,128.3,pd.NA], True)
+df_new.insert(8, 'Fastlands-Norge',[123.3,125,125.9,126.9,126.9,126.5,128.3,pd.NA, pd.NA], True)
 df_index = df_new.div(df_new.iloc[0]).mul(100)
 df_index.to_csv('data/OECD_produktivitet_time_utvikling_2015.csv', index=True)
 
