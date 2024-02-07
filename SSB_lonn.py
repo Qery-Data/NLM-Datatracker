@@ -1841,7 +1841,7 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.'
 title_date = str(df.iloc[4,6])
-date_string = 'Kvinners månedslønn som andel av menns lønn etter ulike beregningsmåter.'+' Tall for ' + title_date +'.'
+date_string = 'Kvinners månedslønn som andel av menns lønn etter ulike beregningsmåter.'
 #Update DW 1
 chartid = 'Fn94r'
 url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
