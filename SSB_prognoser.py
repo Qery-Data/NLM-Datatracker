@@ -17,7 +17,7 @@ forecast_dates = {
     'NAV': '01.12.2023',
     'IMF': '10.10.2023',
     'OECD': '29.11.2023',
-    'LO': '29.09.2023',    
+    'LO': '16.02.2024',    
     'NHO': '12.12.2023',
     'Danske Bank': '12.12.2023',
     'DNB': '25.01.2024',
@@ -83,7 +83,7 @@ forecasts = {
     'NAV': [3.6,3.7,3.8,pd.NA],
     'IMF': [3.6,3.8,pd.NA,pd.NA],
     'OECD': [3.6,3.8,3.8  ,pd.NA],
-    'LO': [3.6,3.9,4.1,pd.NA],    
+    'LO': [3.6,3.9,4.2,pd.NA],    
     'NHO': [3.5,3.9,3.9,3.7],
     'DNB': [3.6,4.0,4.1,4.1],
     'SEB': [3.6,3.9,3.7,pd.NA],
@@ -187,7 +187,7 @@ forecasts = {
     'Norges Bank': [1.3,-0.1,0.4,0.7],
     'FIN': [1.3,0.1,0.5,pd.NA],
     'NAV': [1.0,0.5,0.6,pd.NA],
-    'LO': [1.2,0.4,0.3,pd.NA],    
+    'LO': [1.3,0.0,0.0,pd.NA],    
     'NHO': [1.4,0.4,0.7,1.6],
     'DNB': [1.3,0.4,0.5,0.7],
     'Danske Bank': [1.2,-0.1,0.4,pd.NA],
@@ -258,8 +258,7 @@ df_new ['SSB'] = df_new['Faktisk utvikling']
 df_new.loc[df_new.index[7:11],'Faktisk utvikling'] = pd.NA
 df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
-    'NAV': [1.4,0.7,0.6,pd.NA],
-    'LO': [0.9,0.5,0.5,pd.NA]
+    'NAV': [1.4,0.7,0.6,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2023', '2024', '2025', '2026'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -521,7 +520,7 @@ forecasts = {
     'FIN': [6.0,3.8,2.5,pd.NA],    
     'IMF': [5.8,3.7,pd.NA,pd.NA],
     'OECD': [5.5,3.9,3.2,pd.NA],
-    'LO': [5.9,4.1,2.6,pd.NA],    
+    'LO': [5.5,4.1,2.3,pd.NA],    
     'NHO': [5.5,3.9,3.4,2.9],
     'Danske Bank': [5.6,3.0,2.0,pd.NA],
     'DNB': [5.5,4.2,3.3,2.9],
@@ -598,7 +597,7 @@ forecasts = {
     'FIN': [0.6,0.8,1.9,pd.NA],
     'NAV': [0.7,1.1,1.8,pd.NA],
     'OECD': [1.1,0.5,1.3,pd.NA],
-    'LO': [0.9,1.3,1.7,pd.NA],    
+    'LO': [0.7,1.0,1.2,pd.NA],    
     'NHO': [1.0,1.0,1.5,1.6],
     'Danske Bank': [1.1,1.1,2.1,pd.NA],
     'DNB': [1.0,0.6,1.4,1.8],
