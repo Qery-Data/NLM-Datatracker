@@ -93,15 +93,15 @@ chart_date_delt = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + 
 title_time = str(df.iloc[0,4])
 
 #Update DW
-chartid = 'OcGPl'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'OcGPl'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Andel deltatt i opplæring/utdanning
 ssburl = 'https://data.ssb.no/api/v0/no/table/12864/'
@@ -180,12 +180,12 @@ parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') 
 
 #Update DW
-chartid = 'Li3vf'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'Li3vf'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)

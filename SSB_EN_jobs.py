@@ -223,74 +223,74 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 
-#Update DW NPfNj (Total last month)
-chartid = 'NPfNj'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": date_string3}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": chart_date}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW NPfNj (Total last month)
+# chartid = 'NPfNj'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"describe": {"intro": date_string3}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"annotate": {"notes": chart_date}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Update DW vnqke (Change from feb.20)
-chartid = 'vnqke'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": date_string5 + " compared with February 2020."}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": chart_date}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW vnqke (Change from feb.20)
+# chartid = 'vnqke'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"describe": {"intro": date_string5 + " compared with February 2020."}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"annotate": {"notes": chart_date}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
-#Update DW SXwZ8 (Table change in numbers)
-chartid = 'SXwZ8'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": date_string4}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": chart_date}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW SXwZ8 (Table change in numbers)
+# chartid = 'SXwZ8'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"describe": {"intro": date_string4}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"annotate": {"notes": chart_date}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs change per industry HIT0e
 Change_month_pct = ((df_new2.iloc[:,4] - df_new2.iloc[:,3]) / df_new2.iloc[:,3]*100)
@@ -308,27 +308,27 @@ raw_date = json_object["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ')
 chart_date = 'Data last published: ' + parsed_date.strftime ('%d/%m/%y')
 #Update DW
-chartid = 'HIT0e'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"describe": {"intro": date_string3}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {
-    "metadata": {"annotate": {"notes": chart_date}}
-    }
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'HIT0e'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"describe": {"intro": date_string3}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {
+#     "metadata": {"annotate": {"notes": chart_date}}
+#     }
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 # Jobs by county Tr5SU
 ssburl = 'https://data.ssb.no/api/v0/en/table/11657/'
@@ -406,23 +406,23 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Data for Q' + date_string2 + ' ' + date_string3 + '. Change compared with Q' + date_string2 + ' ' + date_string7 + '.'
 #Update DW
-chartid = 'Tr5SU'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'Tr5SU'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 # Jobs by municipality QDsDL
 ssburl = 'https://data.ssb.no/api/v0/en/table/11657/'
@@ -845,24 +845,24 @@ date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Data for Q' + date_string2 + ' ' + date_string3 + '. Change compared with Q' + date_string2 + ' ' +  date_string7 + '.'
-#Update DW
-chartid = 'QDsDL'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW
+# chartid = 'QDsDL'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs by age 6mzit
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -941,23 +941,23 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
 #Update DW
-chartid = '6mzit'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = '6mzit'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs by age,men uDHve
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -1036,23 +1036,23 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style="color:#000000;font-weight:400;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style="border-bottom: 2px solid; #555; color:#000000; font-weight:600; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;' 
 #Update DW
-chartid = 'uDHve'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'uDHve'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs by age, women Ccuaf
 ssburl = 'https://data.ssb.no/api/v0/en/table/11652/'
@@ -1130,24 +1130,24 @@ date_int5 = int(date_string3)
 date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.' + '<br> <a target="_self" href="https://datawrapper.dwcdn.net/6mzit/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Total</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/Ccuaf/" style="border-bottom: 2px solid #555;color:#000000;font-weight:600;  cursor:pointer;" rel="nofollow noopener noreferrer">Women</a> &nbsp; <a target="_self" href="https://datawrapper.dwcdn.net/uDHve/" style=" color:#000000; font-weight:400; cursor:pointer;" rel="nofollow noopener noreferrer">Men</a> &nbsp;'
-#Update DW
-chartid = 'Ccuaf'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# #Update DW
+# chartid = 'Ccuaf'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs by immigration category, last five quarters etFYD
 ssburl = 'https://data.ssb.no/api/v0/en/table/12315/'
@@ -1214,23 +1214,23 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Q' + date_string2 + ' in the last five years.'
 #Update DW
-chartid = 'etFYD'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'etFYD'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
 
 #Jobs by immigration category, change AQjLG
 ssburl = 'https://data.ssb.no/api/v0/en/table/12315/'
@@ -1300,20 +1300,20 @@ date_int6 = date_int5 - 1
 date_string7 = str(date_int6)
 date_string4 = 'Q' + date_string2 + ' ' + date_string3 + ' compared with ' + 'Q' + date_string2 + ' ' + date_string7 + '.'
 #Update DW
-chartid = 'AQjLG'
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"annotate": {"notes": chart_date}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
-url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
-payload = {"metadata": {"describe": {"intro": date_string4}}}
-headers = {
-    "Authorization": ("Bearer " + access_token),
-    "Accept": "*/*",
-    "Content-Type": "application/json"
-    }
-response = requests.request("PATCH", url, json=payload, headers=headers)
+# chartid = 'AQjLG'
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"annotate": {"notes": chart_date}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
+# url = "https://api.datawrapper.de/v3/charts/" + chartid + '/'
+# payload = {"metadata": {"describe": {"intro": date_string4}}}
+# headers = {
+#     "Authorization": ("Bearer " + access_token),
+#     "Accept": "*/*",
+#     "Content-Type": "application/json"
+#     }
+# response = requests.request("PATCH", url, json=payload, headers=headers)
