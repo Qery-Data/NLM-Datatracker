@@ -1,4 +1,5 @@
 region,Lives in the region,Works in the region
+Aarborte - Hattfjelldal,45110.0,44520.0
 Alstahaug,50400.0,50110.0
 Alta,51000.0,50050.0
 Alvdal,47430.0,48000.0
@@ -95,12 +96,10 @@ Kåfjord,50420.0,50290.0
 Hadsel,50580.0,50480.0
 Halden,51060.0,51150.0
 Hamar,54230.0,53350.0
-Hamarøy,51250.0,49640.0
 Hammerfest,51180.0,50920.0
 Hareid,50280.0,50130.0
 Harstad,51580.0,50530.0
 Hasvik,45000.0,45000.0
-Hattfjelldal,45110.0,44520.0
 Haugesund,53510.0,53060.0
 Heim,51340.0,49430.0
 Hemnes,48710.0,49290.0
@@ -119,6 +118,7 @@ Hurdal,49630.0,48230.0
 Hustadvika,49430.0,48340.0
 Hvaler,52500.0,47430.0
 Hyllestad,50090.0,50910.0
+Hábmer - Hamarøy,51250.0,49640.0
 Hå,50140.0,49550.0
 Hægebostad,50660.0,48770.0
 Høyanger,51560.0,50000.0
@@ -152,7 +152,7 @@ Lebesby,48530.0,47770.0
 Leirfjord,50170.0,48560.0
 Leka,52680.0,55340.0
 Lesja,48710.0,43940.0
-Levanger,51410.0,50760.0
+Levanger - Levangke,51410.0,50760.0
 Lier,54170.0,48280.0
 Lierne,48330.0,45660.0
 Lillehammer,53150.0,51680.0
@@ -186,7 +186,7 @@ Moskenes,44500.0,40000.0
 Moss,52290.0,50000.0
 Målselv,50010.0,50000.0
 Måsøy,45590.0,42410.0
-Namsos,50740.0,49830.0
+Namsos - Nåavmesjenjaelmie,50740.0,49830.0
 Namsskogan,48050.0,49500.0
 Nannestad,49440.0,47460.0
 Narvik,51500.0,50830.0
@@ -217,7 +217,7 @@ Overhalla,49800.0,48920.0
 Porsanger - Porsángu - Porsanki,50290.0,49920.0
 Porsgrunn,52780.0,53450.0
 Rakkestad,47610.0,45980.0
-Rana,50740.0,50420.0
+Rana - Raane,50740.0,50420.0
 Randaberg,54840.0,50660.0
 Rauma,49410.0,48170.0
 Rendalen,46070.0,42780.0
@@ -231,7 +231,7 @@ Rollag,46830.0,43870.0
 Råde,49930.0,46160.0
 Rælingen,53810.0,49720.0
 Rødøy,54230.0,55000.0
-Røros - Rosse,46650.0,44960.0
+Røros - Rossen,46650.0,44960.0
 Salangen,49520.0,50080.0
 Saltdal,51200.0,51800.0
 Samnanger,52670.0,48920.0
@@ -284,7 +284,7 @@ Sør-Aurdal,47780.0,46100.0
 Sør-Fron,48220.0,47100.0
 Sør-Odal,48700.0,45580.0
 Sør-Varanger,50410.0,50200.0
-Sørfold,51340.0,52270.0
+Sørfold - Fuolldá,51340.0,52270.0
 Sørreisa,50480.0,48930.0
 Time,52690.0,51960.0
 Tingvoll,49780.0,46410.0
