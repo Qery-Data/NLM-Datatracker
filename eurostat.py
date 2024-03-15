@@ -331,7 +331,7 @@ df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of t
 df.to_csv('data/Eurostat_arbeidstid_faktiskuke_siste_kvartal.csv', index=True)
 df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values = 'value')
 df_new.index.name = 'geo'
-EU_snitt = str(df_new.loc["European Union - 27 countries (from 2020)", "2022-Q4"])
+EU_snitt = str(df_new.loc["European Union - 27 countries (from 2020)", "2023-Q4"])
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
@@ -386,7 +386,7 @@ df=df.replace({'Czechia':'Czech Rep.','Germany (until 1990 former territory of t
 df.to_csv('data/Eurostat_arbeidstid_faktiskuke_heltid_siste_kvartal.csv', index=True)
 df_new = df.pivot(index='Geopolitical entity (reporting)', columns='Time', values = 'value')
 df_new.index.name = 'geo'
-EU_snitt = str(df_new.loc["European Union - 27 countries (from 2020)", "2022-Q4"])
+EU_snitt = str(df_new.loc["European Union - 27 countries (from 2020)", "2023-Q4"])
 raw_date = dataset["updated"]
 parsed_date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%S%z')
 chart_date = 'Data sist publisert: ' + parsed_date.strftime ('%d/%m/%y') + '.' + ' Gjennomsnitt for EU: ' + EU_snitt + '.'
