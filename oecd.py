@@ -9,11 +9,54 @@ import pandas as pd
 os.makedirs('data', exist_ok=True)
 access_token = os.getenv('DW_TOKEN')
 
+rename_columns = {
+    "AUS": "Australia",
+    "AUT": "Austria",
+    "BEL": "Belgium",
+    "CAN": "Canada",
+    "CHL": "Chile",
+    "COL": "Colombia",
+    "CRI": "Costa Rica",
+    "CZE": "Czechia",
+    "DNK": "Denmark",
+    "EST": "Estonia",
+    "EA20": "Euro area",
+    "EU27_2020": "EU27",
+    "FIN": "Finland",
+    "FRA": "France",
+    "DEU": "Germany",
+    "GRC": "Greece",
+    "HUN": "Hungary",
+    "ISL": "Iceland",
+    "IRL": "Ireland",
+    "ISR": "Israel",
+    "ITA": "Italy",
+    "JPN": "Japan",
+    "KOR": "Korea",
+    "LVA": "Latvia",
+    "LTU": "Lithuania",
+    "LUX": "Luxembourg",
+    "MEX": "Mexico",
+    "NLD": "Netherlands",
+    "NOR": "Norway",
+    "POL": "Poland",
+    "PRT": "Portugal",
+    "SVK": "Slovak Republic",
+    "SVN": "Slovenia",
+    "ESP": "Spain",
+    "SWE": "Sweden",
+    "TUR": "Türkiye",
+    "GBR": "United Kingdom",
+    "USA": "United States",
+}
+
 #Gjennomsnittlig årlig arbeidstimer d6F9Q (NO) and 2BNuF (EN)
-oecd_url='https://stats.oecd.org/SDMX-JSON/data/ANHRS/DNK+NOR+SWE+USA+OECD+EU27.TE.A/all?startTime=1970&pid=c0dcdd50-2d08-440b-94d7-8aa50471b7ff'
+oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_HW@DF_AVG_ANN_HRS_WKD,1.0/DNK+NOR+SWE+USA+OECD+EU27........_T....?startPeriod=1970'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='TIME', columns='Country', values='Value')
+df_new = df.pivot(index='TIME_PERIOD', columns='REF_AREA', values='OBS_VALUE')
+df_new.index.rename("TIME", inplace=True)
+df_new = df_new.rename(columns=rename_columns)
 df_new.to_csv('data/OECD_arbeidstid_aarligsnitt.csv', index=True)
 
 # Produktivitet per time sammenligning sist år kCW5D (BNP) k3zon (BNI) (NO) + fszx7 (GDP) J4cFQ (GNI)
