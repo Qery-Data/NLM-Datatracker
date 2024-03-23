@@ -35,7 +35,7 @@ df_new = df_new.rename(index=rename_columns)
 df_new.to_csv('data_EN/OECD_Productivity_GDP.csv', index=True)
 df_new_no = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
 df_new_no = df_new_no.rename(index=rename_columns_no)
-df_new_no.to_csv('data/OECD_Produktivitet_BNP_NO.csv', index=True)
+df_new_no.to_csv('data/OECD_Produktivitet_BNP.csv', index=True)
 
 #Produktivitet BNI per timeverk siste år
 oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_LV,1.0/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GNIHRS..USD_EXC_H.V...?lastNObservations=2'
