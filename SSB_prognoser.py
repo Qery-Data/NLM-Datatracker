@@ -15,7 +15,7 @@ forecast_dates = {
     'Norges Bank': '21.03.2024',
     'FIN': '06.10.2023',
     'NAV': '19.03.2024',
-    'IMF': '10.10.2023',
+    'IMF': '16.04.2024',
     'OECD': '29.11.2023',
     'LO': '16.02.2024',    
     'NHO': '11.03.2024',
@@ -80,7 +80,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'FIN': [3.7,3.7,pd.NA,pd.NA],
     'NAV': [4.0,4.1,pd.NA,pd.NA],
-    'IMF': [3.8,pd.NA,pd.NA,pd.NA],
+    'IMF': [3.8,3.8,pd.NA,pd.NA],
     'OECD': [3.8,3.8  ,pd.NA,pd.NA],
     'LO': [3.9,4.2,pd.NA,pd.NA],    
     'NHO': [3.9,4.0,3.8,pd.NA],
@@ -514,7 +514,7 @@ df_new.loc[df_new.index[0:7],'SSB'] = pd.NA
 forecasts = {
     'Norges Bank': [3.8,2.7,2.6,2.3],
     'FIN': [3.8,2.5,pd.NA,pd.NA],    
-    'IMF': [3.7,pd.NA,pd.NA,pd.NA],
+    'IMF': [3.3,2.6,pd.NA,pd.NA],
     'OECD': [3.9,3.2,pd.NA,pd.NA],
     'LO': [4.1,2.3,pd.NA,pd.NA],    
     'NHO': [4.1,3.3,2.4,pd.NA],
