@@ -839,7 +839,7 @@ dataset = pyjstat.Dataset.read(result.text)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
 df_new_totalt=df_new.loc[['Totalt'],:]
 
 #Medlemsutvikling i alle arbeidsgiverorganisasjoner te3SI
@@ -914,7 +914,7 @@ dataset = pyjstat.Dataset.read(result.text)
 df2 = dataset.write('dataframe')
 df2_new = df2.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df2_new.loc['Totalt']= df2_new.sum(skipna=True)
-df2_new.loc['Andre'] = df2_new.loc[['Totalt']].sum(skipna=True)-df2_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df2_new.loc['Andre'] = df2_new.loc[['Totalt']].sum(skipna=True)-df2_new.loc[['KS', 'Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
 df2_new_total=df2_new.loc[['Totalt'],:]
 df_new_final=pd.concat([df_new_totalt, df2_new_total], axis=0)
 df_new_final.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_totalt.csv', index=True)
@@ -990,8 +990,8 @@ dataset = pyjstat.Dataset.read(result.text)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
-df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','Finans Norge','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
 df_new2.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
@@ -1079,8 +1079,8 @@ dataset = pyjstat.Dataset.read(result.text)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='arbeidsgivarorganisasjon', columns='år', values='value')
 df_new.loc['Totalt']= df_new.sum(skipna=True)
-df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Finans Norge','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
-df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','Finans Norge','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
+df_new.loc['Andre'] = df_new.loc[['Totalt']].sum(skipna=True)-df_new.loc[['KS', 'Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt', 'Arbeidsgiverforeningen SPEKTER']].sum(skipna=True)
+df_new2=df_new.loc[['Arbeidsgiverforeningen SPEKTER','KS','Hovedorganisasjonen Virke','Næringslivets Hovedorganisasjon i alt','Andre'],:]
 df_new2.to_csv('data/SSB_organisasjonsgrad_arbeidsgiverorganisasjoner_utvikling_bedrifter.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
