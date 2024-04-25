@@ -56,6 +56,7 @@ result = requests.post(ssburl, json = query)
 dataset = pyjstat.Dataset.read(result.text)
 df = dataset.write('dataframe')
 df_new = df.pivot(index='måned', columns='statistikkvariabel', values='value')
+df_new = df[0:60]
 df_new.to_csv('data/SSB_jobber_totalt.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
@@ -112,7 +113,7 @@ dataset = pyjstat.Dataset.read(result.text)
 df = dataset.write('dataframe')
 df["endring"] = df.loc[:,"value"].diff()
 df["endring i pst"] = df.loc[:,"value"].pct_change()*100
-df_new = df[0:62]
+df_new = df[0:60]
 df_new.to_csv('data/SSB_jobber_totalt_endring.csv', index=True)
 json_object = json.loads(result.text)
 raw_date = json_object["updated"]
