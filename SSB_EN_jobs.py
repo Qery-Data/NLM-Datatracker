@@ -26,7 +26,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "01"
+          "02"
         ]
       }
     },
@@ -91,7 +91,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "01"
+          "02"
         ]
       }
     },
@@ -171,7 +171,7 @@ query = {
       "selection": {
         "filter": "item",
         "values": [
-          "01"
+          "02"
         ]
       }
     },
