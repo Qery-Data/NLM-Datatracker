@@ -22,7 +22,7 @@ forecast_dates = {
     'Danske Bank': '05.03.2024',
     'DNB': '25.01.2024',
     'Handelsbanken': '20.12.2023',
-    'Nordea': '24.01.2024',
+    'Nordea': '24.04.2024',
     'SEB': '23.01.2024'
     }
 
@@ -116,7 +116,7 @@ forecasts = {
     'DNB': [2.4,2.8,2.8,2.8],
     'Danske Bank': [2.3,2.5,pd.NA,pd.NA],
     'Handelsbanken': [2.2,2.3,pd.NA,pd.NA],
-    'Nordea': [2.1,2.1,pd.NA,pd.NA],
+    'Nordea': [2.0,2.0,pd.NA,pd.NA],
     }
 df_forecast = pd.DataFrame(forecasts, index=['2024', '2025', '2026', '2027'])
 df_new2 = pd.concat([df_new, df_forecast], axis=1)
@@ -445,7 +445,7 @@ forecasts = {
     'Danske Bank': [4.7,3.5,pd.NA,pd.NA],
     'DNB': [5.1,4.2,4.0,3.8],
     'Handelsbanken': [5.0,4.2,pd.NA,pd.NA],
-    'Nordea': [4.8,4.0,pd.NA,pd.NA],
+    'Nordea': [5.2,4.5,pd.NA,pd.NA],
     'SEB': [4.9,4.0,pd.NA,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2024', '2025', '2026','2027'])
@@ -521,7 +521,7 @@ forecasts = {
     'Danske Bank': [3.8,2.0,pd.NA,pd.NA],
     'DNB': [4.2,3.3,2.9,2.3],
     'Handelsbanken': [4.2,2.8,pd.NA,pd.NA],
-    'Nordea': [3.8,2.8,pd.NA,pd.NA],
+    'Nordea': [3.7,3.3,pd.NA,pd.NA],
     'SEB': [3.9,2.8,pd.NA,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2024', '2025', '2026','2027'])
@@ -597,7 +597,7 @@ forecasts = {
     'Danske Bank': [1.1,2.1,pd.NA,pd.NA],
     'DNB': [0.6,1.4,1.8,1.9],
     'Handelsbanken': [0.4,1.2,pd.NA,pd.NA],
-    'Nordea': [1.0,1.5,pd.NA,pd.NA],
+    'Nordea': [1.0,1.7,pd.NA,pd.NA],
     'SEB': [0.5,1.4,pd.NA,pd.NA]
     }
 df_forecast = pd.DataFrame(forecasts, index=['2024', '2025', '2026','2027'])
