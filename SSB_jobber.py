@@ -228,19 +228,23 @@ query = {
     {
       "code": "Region",
       "selection": {
-        "filter": "vs:FylkerFastIkkeFast",
+        "filter": "agg_single:FylkerFastIkkeFastA",
         "values": [
-          "30",
+          "31",
+          "32",
           "03",
+          "33",
           "34",
-          "38",
+          "39",
+          "40",
           "42",
           "11",
           "46",
           "15",
           "50",
           "18",
-          "54"
+          "55",
+          "56"
         ]
       }
     },
