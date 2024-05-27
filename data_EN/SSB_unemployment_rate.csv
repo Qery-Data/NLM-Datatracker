@@ -1,9 +1,8 @@
 sex,age,type of adjustment,contents,month,value
-Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M03,3.7
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M04,3.7
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M05,3.8
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M06,3.9
-Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M07,4.0
+Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M07,3.9
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M08,4.0
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M09,4.1
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2019M10,4.1
@@ -49,7 +48,7 @@ Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M01,3.5
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M02,3.5
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M03,3.5
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M04,3.5
-Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M05,3.6
+Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M05,3.5
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M06,3.6
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M07,3.6
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M08,3.6
@@ -60,3 +59,4 @@ Both sexes,15-74 years,Trend,Unemployment rate (LFS),2023M12,3.8
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2024M01,3.8
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2024M02,3.9
 Both sexes,15-74 years,Trend,Unemployment rate (LFS),2024M03,3.9
+Both sexes,15-74 years,Trend,Unemployment rate (LFS),2024M04,4.0
