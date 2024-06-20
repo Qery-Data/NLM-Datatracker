@@ -66,7 +66,7 @@ df_new_no = df_new_no.round(1)
 df_new_no.to_csv('data/OECD_Produktivitet_Vekstrater_NO.csv', index=True)
 
 #Sysselsettingsandel OECD
-oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y._T.Y15T74..Q?lastNObservations=5&dimensionAtObservation=AllDimensions'
+oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y._T.Y15T74..Q?lastNObservations=4&dimensionAtObservation=AllDimensions'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
@@ -77,7 +77,7 @@ df_new_no = df_new_no.rename(index=rename_columns_no)
 df_new_no.to_csv('data/OECD_Sysselsatte.csv', index=True)
 
 #Sysselsettingsandel Menn OECD
-oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y.M.Y15T74..Q?lastNObservations=5&dimensionAtObservation=AllDimensions'
+oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y.M.Y15T74..Q?lastNObservations=4&dimensionAtObservation=AllDimensions'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
@@ -88,7 +88,7 @@ df_new_no = df_new_no.rename(index=rename_columns_no)
 df_new_no.to_csv('data/OECD_Sysselsatte_Menn.csv', index=True)
 
 #Sysselsettingsandel Kvinner OECD 
-oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y.F.Y15T74..Q?lastNObservations=5&dimensionAtObservation=AllDimensions'
+oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_EMP_WAP_Q/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+EU27_2020.EMP_WAP.._Z.Y.F.Y15T74..Q?lastNObservations=4&dimensionAtObservation=AllDimensions'
 result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
 df=pd.read_csv(io.StringIO(result.text))
 df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
