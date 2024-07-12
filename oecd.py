@@ -27,26 +27,26 @@ df_new_no = df_new_no.rename(columns=rename_columns_no)
 df_new_no.to_csv('data/OECD_arbeidstid_aarligsnitt.csv', index=True)
 
 #Produktivitet BNP per timeverk siste år
-oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GDPHRS..USD_EXC_H.V...?lastNObservations=2'
-result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
-df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
-df_new = df_new.rename(index=rename_columns)
-df_new.to_csv('data_EN/OECD_Productivity_GDP.csv', index=True)
-df_new_no = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
-df_new_no = df_new_no.rename(index=rename_columns_no)
-df_new_no.to_csv('data/OECD_Produktivitet_BNP.csv', index=True)
+# oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GDPHRS..USD_EXC_H.V...?lastNObservations=2'
+# result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+# df=pd.read_csv(io.StringIO(result.text))
+# df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
+# df_new = df_new.rename(index=rename_columns)
+# df_new.to_csv('data_EN/OECD_Productivity_GDP.csv', index=True)
+# df_new_no = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
+# df_new_no = df_new_no.rename(index=rename_columns_no)
+# df_new_no.to_csv('data/OECD_Produktivitet_BNP.csv', index=True)
 
 #Produktivitet BNI per timeverk siste år
-oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GNIHRS..USD_EXC_H.V...?lastNObservations=2'
-result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
-df=pd.read_csv(io.StringIO(result.text))
-df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
-df_new = df_new.rename(index=rename_columns)
-df_new.to_csv('data_EN/OECD_Productivity_GNI.csv', index=True)
-df_new_no = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
-df_new_no = df_new_no.rename(index=rename_columns_no)
-df_new_no.to_csv('data/OECD_Produktivitet_BNI.csv', index=True)
+# oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_LV/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GNIHRS..USD_EXC_H.V...?lastNObservations=2'
+# result = requests.get(oecd_url, headers={'Accept': 'text/csv'})
+# df=pd.read_csv(io.StringIO(result.text))
+# df_new = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
+# df_new = df_new.rename(index=rename_columns)
+# df_new.to_csv('data_EN/OECD_Productivity_GNI.csv', index=True)
+# df_new_no = df.pivot(index='REF_AREA', columns='TIME_PERIOD', values='OBS_VALUE')
+# df_new_no = df_new_no.rename(index=rename_columns_no)
+# df_new_no.to_csv('data/OECD_Produktivitet_BNI.csv', index=True)
 
 #Produktivitet sammenligning av vekstrater 2000-2007 v 2010-2022
 oecd_url='https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB_GR/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+HUN+GRC+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD.A.GDPHRS..PA....?startPeriod=2000&dimensionAtObservation=AllDimensions'
