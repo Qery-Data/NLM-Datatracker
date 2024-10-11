@@ -2346,7 +2346,7 @@ df['measuresex'] = df['measuring method']+df['sex']
 df_new = df.pivot(index='occupation', columns='measuresex', values='value')
 df_new['Women as share of men']=df_new['MedianFemales']/df_new['MedianMales']*100
 df_new['Women difference to men']=df_new['MedianFemales']-df_new['MedianMales']
-df_new['Share women'] = df_new['Number of eployments with earningsFemales']/(df_new['Number of eployments with earningsFemales']+df_new['Number of eployments with earningsMales'])*100
+df_new['Share women'] = df_new['Number of employments with earningsFemales']/(df_new['Number of employments with earningsFemales']+df_new['Number of employments with earningsMales'])*100
 df_new.dropna(inplace=True)
 df_new.rename(columns={'MedianFemales': 'Women','MedianMales': 'Men',}, inplace=True)
 df_new.to_csv('data_EN/SSB_earningswages_women_men_occupation_median.csv', index=True)
